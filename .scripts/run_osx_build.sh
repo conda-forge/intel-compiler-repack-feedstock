@@ -24,8 +24,7 @@ source ${MINIFORGE_HOME}/etc/profile.d/conda.sh
 conda activate base
 
 echo -e "\n\nInstalling conda-forge-ci-setup=3 and conda-build."
-mamba install -n base --update-specs --quiet --yes "conda-forge-ci-setup=3" conda-build pip boa
-mamba update -n base --update-specs --quiet --yes "conda-forge-ci-setup=3" conda-build pip boa
+mamba install -n base --update-specs --quiet --yes "conda-forge-ci-setup=3" conda-build pip
 
 
 
@@ -55,7 +54,7 @@ source run_conda_forge_build_setup
 echo -e "\n\nMaking the build clobber file"
 make_build_number ./ ./recipe ./.ci_support/${CONFIG}.yaml
 
-conda mambabuild ./recipe -m ./.ci_support/${CONFIG}.yaml --suppress-variables --clobber-file ./.ci_support/clobber_${CONFIG}.yaml ${EXTRA_CB_OPTIONS:-}
+conda build ./recipe -m ./.ci_support/${CONFIG}.yaml --suppress-variables --clobber-file ./.ci_support/clobber_${CONFIG}.yaml ${EXTRA_CB_OPTIONS:-}
 ( startgroup "Validating outputs" ) 2> /dev/null
 
 validate_recipe_outputs "${FEEDSTOCK_NAME}"
