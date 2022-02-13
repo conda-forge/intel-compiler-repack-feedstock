@@ -40,7 +40,7 @@ build:
   number: {{ build_number }}
   binary_relocation: false
   detect_binary_files_with_prefix: false
-  skip: True                                  # [not (linux64 or osx)]
+  skip: True                                  # [not (linux64 or osx or win)]
 
 outputs:
   - name: intel-cmplr-lic-rt
