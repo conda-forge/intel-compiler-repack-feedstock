@@ -40,7 +40,7 @@ build:
   number: {{ build_number }}
   binary_relocation: false
   detect_binary_files_with_prefix: false
-  skip: True                                  # [not (linux64 or osx)]
+  skip: True                                  # [not (linux64 or osx or win)]
 
 outputs:
   - name: intel-cmplr-lic-rt
@@ -75,6 +75,7 @@ outputs:
         - {{ compiler('cxx') }}
       host:
         - ocl-icd  # [linux]
+        - khronos-opencl-icd-loader  # [win]
         - zlib
       run:
     about:
@@ -180,7 +181,8 @@ outputs:
         - curl -O https://raw.githubusercontent.com/inducer/pyopencl/v2021.2.13/examples/demo.py
         - export PYOPENCL_CTX=intel  # [unix]
         - set PYOPENCL_CTX=intel     # [win]
-        - python demo.py
+        # TODO: enable this test for win
+        - python demo.py             # [not win]
 
   - name: dpcpp-cpp-rt
     script: repack.sh   # [unix]
@@ -196,6 +198,7 @@ outputs:
       host:
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}  # [not osx]
         - ocl-icd   # [linux]
+        - khronos-opencl-icd-loader  # [win]
       run:
         - _openmp_mutex * *_llvm   # [linux]
         - llvm-openmp              # [not linux]
