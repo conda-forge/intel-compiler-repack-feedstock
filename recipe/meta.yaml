@@ -181,8 +181,8 @@ outputs:
         - curl -O https://raw.githubusercontent.com/inducer/pyopencl/v2021.2.13/examples/demo.py
         - export PYOPENCL_CTX=intel  # [unix]
         - set PYOPENCL_CTX=intel     # [win]
-        # TODO: enable this test for win
-        - python demo.py             # [not win]
+        - set TBB_DLL_PATH=%LIBRARY_BIN%  # [win]
+        - python demo.py
 
   - name: dpcpp-cpp-rt
     script: repack.sh   # [unix]
