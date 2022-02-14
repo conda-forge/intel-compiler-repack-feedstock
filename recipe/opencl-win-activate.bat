@@ -1,0 +1,3 @@
+@echo off
+set "TBB_DLL_PATH_CONDA_BACKUP=%TBB_DLL_PATH%"
+set "TBB_DLL_PATH=%CONDA_PREFIX%\Library\bin"
