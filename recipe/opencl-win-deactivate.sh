@@ -1,0 +1,5 @@
+export TBB_DLL_PATH=$TBB_DLL_PATH_CONDA_BACKUP
+unset TBB_DLL_PATH_CONDA_BACKUP
+if [ -z $TBB_DLL_PATH ]; then
+    unset TBB_DLL_PATH
+fi
