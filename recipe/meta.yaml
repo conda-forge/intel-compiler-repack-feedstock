@@ -297,6 +297,9 @@ outputs:
         Activation for Intel® oneAPI DPC++/C++ Compiler.
         This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
     test:
+      requires:
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
       files:
         - simple.cpp
       commands:
