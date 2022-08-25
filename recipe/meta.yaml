@@ -308,7 +308,8 @@ outputs:
         - ls -A1 ${PREFIX}/lib/*         # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
         - dir %PREFIX%\Library\lib\*  # [win]
-        - dpcpp simple.cpp -o simple.exe
+        - dpcpp --gcc-toolchain=$PREFIX/$BUILD simple.cpp -o simple.exe  # [unix]
+        - dpcpp simple.cpp -o simple.exe  # [win]
 
   - name: oneccl-devel
     version: {{ oneccl_version }}
