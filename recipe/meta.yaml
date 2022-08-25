@@ -297,12 +297,15 @@ outputs:
         Activation for Intel® oneAPI DPC++/C++ Compiler.
         This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
     test:
+      files:
+        - simple.cpp
       commands:
         - ls -A1 ${PREFIX}/bin/*         # [unix]
         - ls -A1 ${PREFIX}/include/*     # [unix]
         - ls -A1 ${PREFIX}/lib/*         # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
         - dir %PREFIX%\Library\lib\*  # [win]
+        - dpcpp simple.cpp -o simple.exe
 
   - name: oneccl-devel
     version: {{ oneccl_version }}
