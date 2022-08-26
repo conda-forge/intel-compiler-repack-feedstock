@@ -194,5 +194,6 @@ Feedstock Maintainers
 =====================
 
 * [@napetrov](https://github.com/napetrov/)
+* [@oleksandr-pavlyk](https://github.com/oleksandr-pavlyk/)
 * [@tomashek](https://github.com/tomashek/)
 
