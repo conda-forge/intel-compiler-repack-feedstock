@@ -232,6 +232,7 @@ outputs:
         # 2. Pin to year for now, similar to MKL.
         strong:
           - {{ pin_subpackage("dpcpp-cpp-rt", max_pin="x") }}
+          - __glibc >=2.17,<3.0.a0  # [linux64]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -247,6 +248,7 @@ outputs:
         - llvm-openmp              # [not linux]
       run:
         - {{ pin_subpackage('dpcpp-cpp-rt', exact=True) }}
+        - sysroot_linux-64 2.17  # [linux64]
 
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
@@ -279,6 +281,7 @@ outputs:
         # 2. Pin to year for now, similar to MKL.
         strong:
           - {{ pin_subpackage("dpcpp-cpp-rt", max_pin="x") }}
+          - __glibc >=2.17,<3.0.a0  # [linux64]
     requirements:   # [linux64 or win64]
       run:          # [linux64 or win64]
         - {{ pin_subpackage('dpcpp_impl_linux-64', exact=True) }}  # [linux64]
@@ -300,7 +303,6 @@ outputs:
       requires:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
-        - sysroot_linux-64 2.17  # [linux64]
       files:
         - simple.cpp
       commands:
