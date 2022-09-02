@@ -1,13 +1,13 @@
-{% set version = "2022.0.1" %}          # [linux]
-{% set version = "2022.0.0" %}          # [osx or win]
-{% set intel_build_number = "3633" %}   # [linux]
-{% set intel_build_number = "3615" %}   # [osx]
-{% set intel_build_number = "3663" %}   # [win]
+{% set version = "2022.1.0" %}          # [linux]
+{% set version = "2022.1.0" %}          # [osx or win]
+{% set intel_build_number = "3768" %}   # [linux]
+{% set intel_build_number = "3718" %}   # [osx]
+{% set intel_build_number = "3787" %}   # [win]
 
 {% set oneccl_version = "2021.5.0" %}
 {% set oneccl_build_number = "478" %}
 
-{% set tbb_version = "2021.0.0" %}
+{% set tbb_version = "2021.6.0" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
 {% set dst_build_number = '0' %}
@@ -232,6 +232,7 @@ outputs:
         # 2. Pin to year for now, similar to MKL.
         strong:
           - {{ pin_subpackage("dpcpp-cpp-rt", max_pin="x") }}
+          - __glibc >=2.17,<3.0.a0  # [linux64]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -247,6 +248,7 @@ outputs:
         - llvm-openmp              # [not linux]
       run:
         - {{ pin_subpackage('dpcpp-cpp-rt', exact=True) }}
+        - sysroot_linux-64 2.17  # [linux64]
 
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
@@ -279,6 +281,7 @@ outputs:
         # 2. Pin to year for now, similar to MKL.
         strong:
           - {{ pin_subpackage("dpcpp-cpp-rt", max_pin="x") }}
+          - __glibc >=2.17,<3.0.a0  # [linux64]
     requirements:   # [linux64 or win64]
       run:          # [linux64 or win64]
         - {{ pin_subpackage('dpcpp_impl_linux-64', exact=True) }}  # [linux64]
@@ -297,12 +300,20 @@ outputs:
         Activation for Intel® oneAPI DPC++/C++ Compiler.
         This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
     test:
+      requires:
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+      files:
+        - simple.cpp
       commands:
         - ls -A1 ${PREFIX}/bin/*         # [unix]
         - ls -A1 ${PREFIX}/include/*     # [unix]
         - ls -A1 ${PREFIX}/lib/*         # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
         - dir %PREFIX%\Library\lib\*  # [win]
+        - dpcpp --gcc-toolchain=$PREFIX --sysroot=$PREFIX/$HOST/sysroot -target $HOST ${LDFLAGS} ${CXXFLAGS} simple.cpp -lpthread -o simple.exe  # [unix]
+        # Need for -I option is a bug in compiler activation script. Can be removed when fixed
+        - dpcpp simple.cpp -I%PREFIX%\include -o simple.exe  # [win]
 
   - name: oneccl-devel
     version: {{ oneccl_version }}
@@ -355,3 +366,5 @@ extra:
   recipe-maintainers:
     - napetrov
     - tomashek
+    - oleksandr-pavlyk
+

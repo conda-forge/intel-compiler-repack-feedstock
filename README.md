@@ -5,7 +5,7 @@ Home: https://software.intel.com/content/www/us/en/develop/tools.html
 
 Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/intel-compiler-repack-feedstock/blob/master/LICENSE.txt)
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/intel-compiler-repack-feedstock/blob/main/LICENSE.txt)
 
 Summary: Runtime for Intel® C++ Compiler Classic
 
@@ -28,8 +28,8 @@ Current build status
     <td>
       <details>
         <summary>
-          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15400&branchName=master">
-            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/intel-compiler-repack-feedstock?branchName=master">
+          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15400&branchName=main">
+            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/intel-compiler-repack-feedstock?branchName=main">
           </a>
         </summary>
         <table>
@@ -37,22 +37,22 @@ Current build status
           <tbody><tr>
               <td>linux_64</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15400&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/intel-compiler-repack-feedstock?branchName=master&jobName=linux&configuration=linux_64_" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15400&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/intel-compiler-repack-feedstock?branchName=main&jobName=linux&configuration=linux_64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15400&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/intel-compiler-repack-feedstock?branchName=master&jobName=osx&configuration=osx_64_" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15400&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/intel-compiler-repack-feedstock?branchName=main&jobName=osx&configuration=osx_64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>win_64</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15400&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/intel-compiler-repack-feedstock?branchName=master&jobName=win&configuration=win_64_" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15400&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/intel-compiler-repack-feedstock?branchName=main&jobName=win&configuration=win_64_" alt="variant">
                 </a>
               </td>
             </tr>
@@ -70,7 +70,9 @@ Current release info
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-dpcpp--cpp--rt-green.svg)](https://anaconda.org/conda-forge/dpcpp-cpp-rt) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dpcpp-cpp-rt.svg)](https://anaconda.org/conda-forge/dpcpp-cpp-rt) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dpcpp-cpp-rt.svg)](https://anaconda.org/conda-forge/dpcpp-cpp-rt) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dpcpp-cpp-rt.svg)](https://anaconda.org/conda-forge/dpcpp-cpp-rt) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-dpcpp_impl_linux--64-green.svg)](https://anaconda.org/conda-forge/dpcpp_impl_linux-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dpcpp_impl_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_impl_linux-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dpcpp_impl_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_impl_linux-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dpcpp_impl_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_impl_linux-64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-dpcpp_impl_win--64-green.svg)](https://anaconda.org/conda-forge/dpcpp_impl_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dpcpp_impl_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_impl_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dpcpp_impl_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_impl_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dpcpp_impl_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_impl_win-64) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-dpcpp_linux--64-green.svg)](https://anaconda.org/conda-forge/dpcpp_linux-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dpcpp_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_linux-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dpcpp_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_linux-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dpcpp_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_linux-64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-dpcpp_win--64-green.svg)](https://anaconda.org/conda-forge/dpcpp_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dpcpp_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dpcpp_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dpcpp_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_win-64) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-intel--cmplr--lib--rt-green.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-rt) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/intel-cmplr-lib-rt.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-rt) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/intel-cmplr-lib-rt.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-rt) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/intel-cmplr-lib-rt.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-rt) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-intel--cmplr--lic--rt-green.svg)](https://anaconda.org/conda-forge/intel-cmplr-lic-rt) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/intel-cmplr-lic-rt.svg)](https://anaconda.org/conda-forge/intel-cmplr-lic-rt) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/intel-cmplr-lic-rt.svg)](https://anaconda.org/conda-forge/intel-cmplr-lic-rt) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/intel-cmplr-lic-rt.svg)](https://anaconda.org/conda-forge/intel-cmplr-lic-rt) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-intel--fortran--rt-green.svg)](https://anaconda.org/conda-forge/intel-fortran-rt) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/intel-fortran-rt.svg)](https://anaconda.org/conda-forge/intel-fortran-rt) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/intel-fortran-rt.svg)](https://anaconda.org/conda-forge/intel-fortran-rt) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/intel-fortran-rt.svg)](https://anaconda.org/conda-forge/intel-fortran-rt) |
@@ -87,16 +89,41 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `dpcpp-cpp-rt, dpcpp_impl_linux-64, dpcpp_linux-64, intel-cmplr-lib-rt, intel-cmplr-lic-rt, intel-fortran-rt, intel-opencl-rt, oneccl-devel` can be installed with:
+Once the `conda-forge` channel has been enabled, `dpcpp-cpp-rt, dpcpp_impl_linux-64, dpcpp_impl_win-64, dpcpp_linux-64, dpcpp_win-64, intel-cmplr-lib-rt, intel-cmplr-lic-rt, intel-fortran-rt, intel-opencl-rt, oneccl-devel` can be installed with `conda`:
 
 ```
-conda install dpcpp-cpp-rt dpcpp_impl_linux-64 dpcpp_linux-64 intel-cmplr-lib-rt intel-cmplr-lic-rt intel-fortran-rt intel-opencl-rt oneccl-devel
+conda install dpcpp-cpp-rt dpcpp_impl_linux-64 dpcpp_impl_win-64 dpcpp_linux-64 dpcpp_win-64 intel-cmplr-lib-rt intel-cmplr-lic-rt intel-fortran-rt intel-opencl-rt oneccl-devel
 ```
 
-It is possible to list all of the versions of `dpcpp-cpp-rt` available on your platform with:
+or with `mamba`:
+
+```
+mamba install dpcpp-cpp-rt dpcpp_impl_linux-64 dpcpp_impl_win-64 dpcpp_linux-64 dpcpp_win-64 intel-cmplr-lib-rt intel-cmplr-lic-rt intel-fortran-rt intel-opencl-rt oneccl-devel
+```
+
+It is possible to list all of the versions of `dpcpp-cpp-rt` available on your platform with `conda`:
 
 ```
 conda search dpcpp-cpp-rt --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search dpcpp-cpp-rt --channel conda-forge
+```
+
+Alternatively, `mamba repoquery` may provide more information:
+
+```
+# Search all versions available on your platform:
+mamba repoquery search dpcpp-cpp-rt --channel conda-forge
+
+# List packages depending on `dpcpp-cpp-rt`:
+mamba repoquery whoneeds dpcpp-cpp-rt --channel conda-forge
+
+# List dependencies of `dpcpp-cpp-rt`:
+mamba repoquery depends dpcpp-cpp-rt --channel conda-forge
 ```
 
 
@@ -114,10 +141,12 @@ for each of the installable packages. Such a repository is known as a *feedstock
 A feedstock is made up of a conda recipe (the instructions on what and how to build
 the package) and the necessary configurations for automatic building using freely
 available continuous integration services. Thanks to the awesome service provided by
-[CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/)
-and [TravisCI](https://travis-ci.com/) it is possible to build and upload installable
-packages to the [conda-forge](https://anaconda.org/conda-forge)
-[Anaconda-Cloud](https://anaconda.org/) channel for Linux, Windows and OSX respectively.
+[Azure](https://azure.microsoft.com/en-us/services/devops/), [GitHub](https://github.com/),
+[CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
+[Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
+it is possible to build and upload installable packages to the
+[conda-forge](https://anaconda.org/conda-forge) [Anaconda-Cloud](https://anaconda.org/)
+channel for Linux, Windows and OSX respectively.
 
 To manage the continuous integration and simplify feedstock maintenance
 [conda-smithy](https://github.com/conda-forge/conda-smithy) has been developed.
@@ -165,5 +194,6 @@ Feedstock Maintainers
 =====================
 
 * [@napetrov](https://github.com/napetrov/)
+* [@oleksandr-pavlyk](https://github.com/oleksandr-pavlyk/)
 * [@tomashek](https://github.com/tomashek/)
 
