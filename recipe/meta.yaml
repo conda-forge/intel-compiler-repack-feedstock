@@ -10,7 +10,7 @@
 {% set tbb_version = "2021.6.0" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
-{% set dst_build_number = '0' %}
+{% set dst_build_number = '1' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
 package:
@@ -23,6 +23,8 @@ source:
     folder: intel-cmplr-lic-rt
   - url: https://anaconda.org/intel/intel-fortran-rt/{{ version }}/download/{{ target_platform }}/intel-fortran-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-fortran-rt
+  - url: https://anaconda.org/intel/icc_rt/{{ version }}/download/{{ target_platform }}/icc_rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
+    folder: icc_rt
   - url: https://anaconda.org/intel/dpcpp-cpp-rt/{{ version }}/download/{{ target_platform }}/dpcpp-cpp-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [not win32]
     folder: dpcpp-cpp-rt  # [not win32]
   - url: https://anaconda.org/intel/intel-cmplr-lib-rt/{{ version }}/download/{{ target_platform }}/intel-cmplr-lib-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [not osx]
@@ -135,6 +137,41 @@ outputs:
         - ls -A1 ${PREFIX}/lib/*  # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
 
+  - name: icc_rt
+    script: repack.sh   # [unix]
+    script: repack.bat  # [win]
+    build:                               # [osx]
+      missing_dso_whitelist:             # [osx]
+        - '**/for_mac_ftn_alloc.dylib'   # [osx]
+    requirements:
+      build:
+        - {{ compiler('c') }}
+        - patchelf                 # [linux]
+      host:
+        - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}  # [not osx]
+        - {{ pin_subpackage('dpcpp-cpp-rt', exact=True) }}        # [osx]
+      run:
+        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
+        - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}  # [not osx]
+        - {{ pin_subpackage('dpcpp-cpp-rt', exact=True) }}        # [osx]
+    about:
+      home: https://software.intel.com/content/www/us/en/develop/tools.html
+      doc_url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/fortran-compiler.html
+      dev_url: https://software.intel.com/content/www/us/en/develop/documentation/fortran-compiler-oneapi-dev-guide-and-reference/top.html
+      summary: Runtime for Intel® Fortran Compiler Classic and Intel® Fortran Compiler (Beta)
+      license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+      license_family: Proprietary
+      license_file: 
+        - icc_rt/info/licenses/license.txt
+        - icc_rt/info/licenses/tpp.txt
+      description: |
+        Runtime for Intel® oneAPI DPC++/C++ Compiler & Intel® C++ Compiler Classic 2022.1.0.
+        This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+    test:
+      commands:
+        - ls -A1 ${PREFIX}/lib/*  # [unix]
+        - dir %PREFIX%\Library\bin\*  # [win]
+
   - name: intel-opencl-rt
     script: opencl-rt-build.sh   # [unix]
     script: opencl-rt-bld.bat  # [win]
@@ -201,6 +238,7 @@ outputs:
       run:
         - _openmp_mutex * *_llvm   # [linux]
         - llvm-openmp              # [not linux]
+        - {{ pin_subpackage('icc_rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}  # [not osx]
         - {{ pin_subpackage('intel-opencl-rt', exact=True) }}     # [not osx]
@@ -367,4 +405,3 @@ extra:
     - napetrov
     - tomashek
     - oleksandr-pavlyk
-
