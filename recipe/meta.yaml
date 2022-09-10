@@ -55,7 +55,7 @@ outputs:
       summary: Intel End User License Agreement for Developer Tools
       license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
       license_family: Proprietary
-      license_file: 
+      license_file:
         - intel-cmplr-lic-rt/info/licenses/license.txt
         - intel-cmplr-lic-rt/info/licenses/tpp.txt
       description: |
@@ -87,7 +87,7 @@ outputs:
       summary: Runtime for Intel® C++ Compiler Classic
       license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
       license_family: Proprietary
-      license_file: 
+      license_file:
         - intel-cmplr-lib-rt/info/licenses/license.txt
         - intel-cmplr-lib-rt/info/licenses/tpp.txt
       description: |
@@ -126,7 +126,7 @@ outputs:
       summary: Runtime for Intel® Fortran Compiler Classic and Intel® Fortran Compiler (Beta)
       license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
       license_family: Proprietary
-      license_file: 
+      license_file:
         - intel-fortran-rt/info/licenses/license.txt
         - intel-fortran-rt/info/licenses/tpp.txt
       description: |
@@ -161,7 +161,7 @@ outputs:
       summary: Runtime for Intel® Fortran Compiler Classic and Intel® Fortran Compiler (Beta)
       license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
       license_family: Proprietary
-      license_file: 
+      license_file:
         - icc_rt/info/licenses/license.txt
         - icc_rt/info/licenses/tpp.txt
       description: |
@@ -238,7 +238,7 @@ outputs:
       run:
         - _openmp_mutex * *_llvm   # [linux]
         - llvm-openmp              # [not linux]
-        - {{ pin_subpackage('icc_rt', exact=True) }}
+        - {{ pin_subpackage('icc_rt', min_pin='x.x', max_pin='x.x') }}
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}  # [not osx]
         - {{ pin_subpackage('intel-opencl-rt', exact=True) }}     # [not osx]
@@ -249,7 +249,7 @@ outputs:
       summary: Runtime for Intel® oneAPI DPC++/C++ Compiler
       license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
       license_family: Proprietary
-      license_file: 
+      license_file:
         - dpcpp-cpp-rt/info/licenses/license.txt
         - dpcpp-cpp-rt/info/licenses/tpp.txt
       description: |
@@ -295,7 +295,7 @@ outputs:
       summary: Implementation for Intel® oneAPI DPC++/C++ Compiler
       license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
       license_family: Proprietary
-      license_file: 
+      license_file:
         - dpcpp_impl_{{ target_platform }}/info/licenses/license.txt  # [linux64 or win64]
         - dpcpp_impl_{{ target_platform }}/info/licenses/tpp.txt      # [linux64 or win64]
       description: |
@@ -384,7 +384,7 @@ outputs:
       summary: Intel® oneAPI Collective Communications Library*
       license: LicenseRef-Proprietary-Intel-Simplified-Software-License
       license_family: Proprietary
-      license_file: 
+      license_file:
         - oneccl-devel/info/licenses/license.txt
         - oneccl-devel/info/licenses/tpp.txt
       description: |
