@@ -148,12 +148,12 @@ outputs:
         - {{ compiler('c') }}
         - patchelf                 # [linux]
       host:
-        - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}  # [not osx]
-        - {{ pin_subpackage('dpcpp-cpp-rt', exact=True) }}        # [osx]
+        - {{ pin_subpackage('intel-cmplr-lib-rt', min_pin='x', max_pin='x') }}  # [not osx]
+        - {{ pin_subpackage('dpcpp-cpp-rt', min_pin='x', max_pin='x') }}        # [osx]
       run:
-        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
-        - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}  # [not osx]
-        - {{ pin_subpackage('dpcpp-cpp-rt', exact=True) }}        # [osx]
+        - {{ pin_subpackage('intel-cmplr-lic-rt', min_pin='x', max_pin='x') }}
+        - {{ pin_subpackage('intel-cmplr-lib-rt', min_pin='x', max_pin='x') }}  # [not osx]
+        - {{ pin_subpackage('dpcpp-cpp-rt', min_pin='x', max_pin='x') }}        # [osx]
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
       doc_url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/fortran-compiler.html
