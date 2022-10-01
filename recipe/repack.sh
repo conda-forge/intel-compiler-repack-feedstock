@@ -20,5 +20,5 @@ fi
 
 if [[ "$PKG_NAME" == "dpcpp_impl_linux-64" ]]; then
   # Not sure why these libraries are there, but seems to be unused.
-  rm $PREFIX/lib/libffi.so*
+  rm -f $PREFIX/lib/libffi.so*
 fi
