@@ -12,6 +12,6 @@ if platform.system() == "Windows":
     with open(f_name, 'w') as fh:
         for line in cl_content:
             if line.startswith("CL_CONFIG_TBB_DLL_PATH"):
-                fh.write("CL_CONFIG_TBB_DLL_PATH = %LIBRARY_BIN%\n")
+                fh.write(f"CL_CONFIG_TBB_DLL_PATH = {sys.prefix}\\Library\\bin\n")
             else:
                 fh.write(line)
