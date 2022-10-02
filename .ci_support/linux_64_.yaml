@@ -20,13 +20,6 @@ libxml2:
 - '2.9'
 mpich:
 - '4'
-pin_run_as_build:
-  curl:
-    max_pin: x
-  libxml2:
-    max_pin: x.x
-  zlib:
-    max_pin: x.x
 target_platform:
 - linux-64
 zip_keys:
