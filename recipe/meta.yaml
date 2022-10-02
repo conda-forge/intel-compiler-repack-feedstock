@@ -154,6 +154,7 @@ outputs:
         - zlib
         - libxml2
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
+        - python  # [win]
       run:
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         # TODO figure out why pin_subpackage does not work for below

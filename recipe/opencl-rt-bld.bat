@@ -7,12 +7,5 @@ if %ERRORLEVEL% GEQ 8 exit 1
 mkdir "%LIBRARY_PREFIX%\etc\OpenCL\vendors\"
 echo %LIBRARY_LIB%\intel-ocl-cpu\intelocl64.dll> %LIBRARY_PREFIX%\etc\OpenCL\vendors\intel-ocl-cpu.icd
 
-
-:: Copy the [de]activate scripts to %PREFIX%\etc\conda\[de]activate.d.
-:: This will allow them to be run on environment activation.
-FOR %%F IN (activate deactivate) DO (
-    copy %RECIPE_DIR%\opencl-win-%%F.bat %PREFIX%\etc\conda\%%F.d\%PKG_NAME%_%%F.bat
-	:: We also copy .sh scripts to be able to use them
-    :: with POSIX CLI on Windows.
-    copy %RECIPE_DIR%\opencl-win-%%F.sh %PREFIX%\etc\conda\%%F.d\%PKG_NAME%_%%F.sh
-)
+:: populate CL_CONFIG_TBB_DLL_PATH = entry in cl.cfg setting it to %LIBRARY_BIN%
+python %RECIPE_DIR%\set_tbb_dll_path.py %LIBRARY_LIB%\intel-ocl-cpu\cl.cfg
