@@ -178,6 +178,7 @@ outputs:
         - curl
       commands:
         - test -f $PREFIX/lib/intel-ocl-cpu/libintelocl.so          # [linux]
+        - type %PREFIX%\Library\lib\intel-ocl-cpu\cl.cfg            # [win]
         - export OCL_ICD_DEBUG=7                                    # [linux]
         - curl -O https://raw.githubusercontent.com/inducer/pyopencl/v2021.2.13/examples/demo.py
         - export PYOPENCL_CTX=intel  # [unix]

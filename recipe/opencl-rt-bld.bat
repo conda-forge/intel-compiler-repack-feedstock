@@ -9,5 +9,3 @@ echo %LIBRARY_LIB%\intel-ocl-cpu\intelocl64.dll> %LIBRARY_PREFIX%\etc\OpenCL\ven
 
 :: populate CL_CONFIG_TBB_DLL_PATH = entry in cl.cfg setting it to %LIBRARY_BIN%
 python %RECIPE_DIR%\set_tbb_dll_path.py %LIBRARY_LIB%\intel-ocl-cpu\cl.cfg
-:: display configuration file
-type %LIBRARY_LIB%\intel-ocl-cpu\cl.cfg
