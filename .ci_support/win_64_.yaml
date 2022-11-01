@@ -9,7 +9,16 @@ curl:
 cxx_compiler:
 - vs2019
 libxml2:
-- '2.9'
+- '2.10'
+pin_run_as_build:
+  python:
+    min_pin: x.x
+    max_pin: x.x
+python:
+- 3.10.* *_cpython
+- 3.11.* *_cpython
+- 3.8.* *_cpython
+- 3.9.* *_cpython
 target_platform:
 - win-64
 zlib:
