@@ -1,13 +1,13 @@
-{% set version = "2022.2.0" %}          # [linux]
-{% set version = "2022.2.0" %}          # [osx or win]
-{% set intel_build_number = "8734" %}   # [linux]
-{% set intel_build_number = "8682" %}   # [osx]
-{% set intel_build_number = "9553" %}   # [win]
+{% set version = "2023.0.0" %}          # [linux]
+{% set version = "2023.0.0" %}          # [osx or win]
+{% set intel_build_number = "25370" %}   # [linux]
+{% set intel_build_number = "25369" %}   # [osx]
+{% set intel_build_number = "25922" %}   # [win]
 
-{% set oneccl_version = "2021.7.0" %}
-{% set oneccl_build_number = "8733" %}
+{% set oneccl_version = "2021.8.0" %}
+{% set oneccl_build_number = "25371" %}
 
-{% set tbb_version = "2021.7.0" %}
+{% set tbb_version = "2021.8.0" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
 {% set dst_build_number = '0' %}
@@ -313,9 +313,8 @@ outputs:
         - ls -A1 ${PREFIX}/lib/*         # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
         - dir %PREFIX%\Library\lib\*  # [win]
-        - dpcpp --gcc-toolchain=$PREFIX --sysroot=$PREFIX/$HOST/sysroot -target $HOST ${LDFLAGS} ${CXXFLAGS} simple.cpp -lpthread -o simple.exe  # [unix]
-        # Need for -I option is a bug in compiler activation script. Can be removed when fixed
-        - dpcpp simple.cpp -I%PREFIX%\include -o simple.exe  # [win]
+        - icpx -fsycl --gcc-toolchain=$PREFIX --sysroot=$PREFIX/$HOST/sysroot -target $HOST ${LDFLAGS} ${CXXFLAGS} simple.cpp -lpthread -o simple.exe  # [unix]
+        - icpx -fsycl simple.cpp -o simple.exe  # [win]
 
   - name: oneccl-devel
     version: {{ oneccl_version }}
