@@ -314,7 +314,7 @@ outputs:
         - dir %PREFIX%\Library\bin\*  # [win]
         - dir %PREFIX%\Library\lib\*  # [win]
         - icpx -fsycl --gcc-toolchain=$PREFIX --sysroot=$PREFIX/$HOST/sysroot -target $HOST ${LDFLAGS} ${CXXFLAGS} simple.cpp -lpthread -o simple.exe  # [unix]
-        - icpx -fsycl simple.cpp -o simple.exe  # [win]
+        - icpx -fsycl simple.cpp -I%PREFIX%\include -o simple.exe  # [win]
 
   - name: oneccl-devel
     version: {{ oneccl_version }}
