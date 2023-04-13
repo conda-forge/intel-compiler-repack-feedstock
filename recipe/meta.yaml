@@ -1,16 +1,16 @@
-{% set version = "2023.0.0" %}          # [linux]
-{% set version = "2023.0.0" %}          # [osx or win]
-{% set intel_build_number = "25370" %}   # [linux]
-{% set intel_build_number = "25369" %}   # [osx]
-{% set intel_build_number = "25922" %}   # [win]
+{% set version = "2023.1.0" %}          # [linux]
+{% set version = "2023.1.0" %}          # [osx or win]
+{% set intel_build_number = "46305" %}   # [linux]
+{% set intel_build_number = "43547" %}   # [osx]
+{% set intel_build_number = "46319" %}   # [win]
 
-{% set oneccl_version = "2021.8.0" %}
-{% set oneccl_build_number = "25371" %}
+{% set oneccl_version = "2021.9.0" %}
+{% set oneccl_build_number = "43543" %}
 
-{% set tbb_version = "2021.8.0" %}
+{% set tbb_version = "2021.9.0" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
-{% set dst_build_number = '1' %}
+{% set dst_build_number = '0' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
 package:
@@ -314,7 +314,7 @@ outputs:
         - dir %PREFIX%\Library\bin\*  # [win]
         - dir %PREFIX%\Library\lib\*  # [win]
         - icpx -fsycl --gcc-toolchain=$PREFIX --sysroot=$PREFIX/$HOST/sysroot -target $HOST ${LDFLAGS} ${CXXFLAGS} simple.cpp -lpthread -o simple.exe  # [unix]
-        - icpx -fsycl simple.cpp -o simple.exe  # [win]
+        - icpx -fsycl simple.cpp -I%PREFIX%\include -o simple.exe  # [win]
 
   - name: oneccl-devel
     version: {{ oneccl_version }}

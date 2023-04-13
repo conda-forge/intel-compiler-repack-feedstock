@@ -1,11 +1,22 @@
+About intel-compiler-repack-feedstock
+=====================================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/intel-compiler-repack-feedstock/blob/main/LICENSE.txt)
+
 About intel-compiler-repack
-===========================
+---------------------------
+
+Home: https://github.com/AnacondaRecipes/intel-compilers-repack-feedstock
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: Repackaged Intel® compilers and runtimes.
+About intel-cmplr-lib-rt
+------------------------
 
 Home: https://software.intel.com/content/www/us/en/develop/tools.html
 
 Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/intel-compiler-repack-feedstock/blob/main/LICENSE.txt)
 
 Summary: Runtime for Intel® C++ Compiler Classic
 
@@ -14,6 +25,150 @@ Development: https://software.intel.com/content/www/us/en/develop/documentation/
 Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
 
 Runtime for Intel® C++ Compiler Classic.
+This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
+About intel-cmplr-lic-rt
+------------------------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: Intel End User License Agreement for Developer Tools
+
+Development: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html
+
+Intel End User License Agreement for Developer Tools.
+This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
+About intel-fortran-rt
+----------------------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: Runtime for Intel® Fortran Compiler Classic and Intel® Fortran Compiler (Beta)
+
+Development: https://software.intel.com/content/www/us/en/develop/documentation/fortran-compiler-oneapi-dev-guide-and-reference/top.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/fortran-compiler.html
+
+Runtime for Intel® Fortran Compiler Classic and Intel® Fortran Compiler (Beta).
+This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
+About intel-opencl-rt
+---------------------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: Intel® CPU Runtime for OpenCL(TM) Applications
+
+Development: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Intel® CPU Runtime for OpenCL(TM) Applications
+This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
+About dpcpp-cpp-rt
+------------------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: Runtime for Intel® oneAPI DPC++/C++ Compiler
+
+Development: https://software.intel.com/content/www/us/en/develop/documentation/oneapi-dpcpp-cpp-compiler-dev-guide-and-reference/top.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
+
+Runtime for Intel® oneAPI DPC++/C++ Compiler.
+This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
+About dpcpp_impl_linux-64
+-------------------------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: Implementation for Intel® oneAPI DPC++/C++ Compiler
+
+Development: https://software.intel.com/content/www/us/en/develop/documentation/oneapi-dpcpp-cpp-compiler-dev-guide-and-reference/top.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
+
+Implementation for Intel® oneAPI DPC++/C++ Compiler.
+This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
+About oneccl-devel
+------------------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-Simplified-Software-License
+
+Summary: Intel® oneAPI Collective Communications Library*
+
+Development: https://software.intel.com/content/www/us/en/develop/documentation/oneccl-developer-guide-and-reference/top.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/oneccl.htm
+
+Intel® oneAPI Collective Communications Library*.
+This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
+About dpcpp_linux-64
+--------------------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: Implementation for Intel® oneAPI DPC++/C++ Compiler
+
+Development: https://software.intel.com/content/www/us/en/develop/documentation/oneapi-dpcpp-cpp-compiler-dev-guide-and-reference/top.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
+
+Activation for Intel® oneAPI DPC++/C++ Compiler.
+This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
+About dpcpp_impl_win-64
+-----------------------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: Implementation for Intel® oneAPI DPC++/C++ Compiler
+
+Development: https://software.intel.com/content/www/us/en/develop/documentation/oneapi-dpcpp-cpp-compiler-dev-guide-and-reference/top.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
+
+Implementation for Intel® oneAPI DPC++/C++ Compiler.
+This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
+About dpcpp_win-64
+------------------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: Implementation for Intel® oneAPI DPC++/C++ Compiler
+
+Development: https://software.intel.com/content/www/us/en/develop/documentation/oneapi-dpcpp-cpp-compiler-dev-guide-and-reference/top.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
+
+Activation for Intel® oneAPI DPC++/C++ Compiler.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
 
