@@ -5,11 +5,11 @@ channel_sources:
 channel_targets:
 - conda-forge main
 curl:
-- '7'
+- '8'
 cxx_compiler:
 - vs2019
 libxml2:
-- '2.10'
+- '2.11'
 pin_run_as_build:
   python:
     min_pin: x.x
