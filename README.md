@@ -3,6 +3,7 @@ About intel-compiler-repack-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/intel-compiler-repack-feedstock/blob/main/LICENSE.txt)
 
+
 About intel-compiler-repack
 ---------------------------
 
@@ -11,6 +12,7 @@ Home: https://github.com/AnacondaRecipes/intel-compilers-repack-feedstock
 Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
 
 Summary: Repackaged Intel® compilers and runtimes.
+
 About intel-cmplr-lib-rt
 ------------------------
 
@@ -26,6 +28,7 @@ Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi
 
 Runtime for Intel® C++ Compiler Classic.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
 
 About intel-cmplr-lic-rt
 ------------------------
@@ -43,6 +46,7 @@ Documentation: https://software.intel.com/content/www/us/en/develop/articles/end
 Intel End User License Agreement for Developer Tools.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
+
 About intel-fortran-rt
 ----------------------
 
@@ -58,6 +62,7 @@ Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi
 
 Runtime for Intel® Fortran Compiler Classic and Intel® Fortran Compiler (Beta).
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
 
 About intel-opencl-rt
 ---------------------
@@ -75,6 +80,7 @@ Documentation: https://software.intel.com/content/www/us/en/develop/tools.html
 Intel® CPU Runtime for OpenCL(TM) Applications
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
+
 About dpcpp-cpp-rt
 ------------------
 
@@ -90,6 +96,7 @@ Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi
 
 Runtime for Intel® oneAPI DPC++/C++ Compiler.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
 
 About dpcpp_impl_linux-64
 -------------------------
@@ -107,6 +114,7 @@ Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi
 Implementation for Intel® oneAPI DPC++/C++ Compiler.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
+
 About oneccl-devel
 ------------------
 
@@ -122,6 +130,7 @@ Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi
 
 Intel® oneAPI Collective Communications Library*.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
 
 About dpcpp_linux-64
 --------------------
@@ -139,6 +148,7 @@ Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi
 Activation for Intel® oneAPI DPC++/C++ Compiler.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
+
 About dpcpp_impl_win-64
 -----------------------
 
@@ -154,6 +164,7 @@ Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi
 
 Implementation for Intel® oneAPI DPC++/C++ Compiler.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
 
 About dpcpp_win-64
 ------------------
