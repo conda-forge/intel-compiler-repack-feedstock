@@ -1,13 +1,13 @@
-{% set version = "2023.1.0" %}          # [linux]
-{% set version = "2023.1.0" %}          # [osx or win]
-{% set intel_build_number = "46305" %}   # [linux]
-{% set intel_build_number = "43547" %}   # [osx]
-{% set intel_build_number = "46319" %}   # [win]
+{% set version = "2023.2.0" %}          # [linux]
+{% set version = "2023.2.0" %}          # [osx or win]
+{% set intel_build_number = "49495" %}   # [linux]
+{% set intel_build_number = "49499" %}   # [osx]
+{% set intel_build_number = "49496" %}   # [win]
 
-{% set oneccl_version = "2021.9.0" %}
-{% set oneccl_build_number = "43543" %}
+{% set oneccl_version = "2021.10.0" %}
+{% set oneccl_build_number = "49084" %}
 
-{% set tbb_version = "2021.9.0" %}
+{% set tbb_version = "2021.10.0" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
 {% set dst_build_number = '0' %}
