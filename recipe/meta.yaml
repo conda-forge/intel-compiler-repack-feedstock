@@ -274,7 +274,7 @@ outputs:
         - dir %PREFIX%\Library\lib\*  # [win]
 
   - name: dpcpp_{{ target_platform }}
-    script: repack.sh   # [unix]
+    script: activate.sh   # [unix]
     script: repack.bat  # [win]
     build:
       skip: True  # [not (linux64 or win64)]
@@ -313,7 +313,7 @@ outputs:
         - ls -A1 ${PREFIX}/lib/*         # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
         - dir %PREFIX%\Library\lib\*  # [win]
-        - icpx -fsycl --gcc-toolchain=$PREFIX --sysroot=$PREFIX/$HOST/sysroot -target $HOST ${LDFLAGS} ${CXXFLAGS} simple.cpp -lpthread -o simple.exe  # [unix]
+        - icpx -fsycl ${CXXFLAGS} simple.cpp ${LDFLAGS} -lpthread -o simple.exe  # [unix]
         - icpx -fsycl simple.cpp -I%PREFIX%\include -o simple.exe  # [win]
 
   - name: oneccl-devel
