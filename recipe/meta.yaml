@@ -274,7 +274,7 @@ outputs:
         - dir %PREFIX%\Library\lib\*  # [win]
 
   - name: dpcpp_{{ target_platform }}
-    script: activate.sh   # [unix]
+    script: install_activate.sh   # [unix]
     script: repack.bat  # [win]
     build:
       skip: True  # [not (linux64 or win64)]

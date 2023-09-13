@@ -21,6 +21,11 @@ if [ "${CONDA_BUILD:-0}" = "1" ]; then
   env > /tmp/old-env-$$.txt
 fi
 
+if [ "${CC:-}" = "" ] && [ "${CONDA_BUILD:-}" = "1" ]; then
+  echo "Need to use C/C++ compiler activation package"
+  exit 1
+fi
+
 export CFLAGS="${CFLAGS} --gcc-toolchain=${PREFIX:-${CONDA_PREFIX}} --sysroot=${PREFIX:-${CONDA_PREFIX}}/$HOST/sysroot -target $HOST"
 export CPPFLAGS="${CPPFLAGS} --gcc-toolchain=${PREFIX:-${CONDA_PREFIX}} --sysroot=${PREFIX:-${CONDA_PREFIX}}/$HOST/sysroot -target $HOST"
 export CXXFLAGS="${CXXFLAGS} --gcc-toolchain=${PREFIX:-${CONDA_PREFIX}} --sysroot=${PREFIX:-${CONDA_PREFIX}}/$HOST/sysroot -target $HOST"
