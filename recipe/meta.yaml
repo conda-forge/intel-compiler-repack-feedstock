@@ -10,7 +10,7 @@
 {% set tbb_version = "2021.10.0" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
-{% set dst_build_number = '0' %}
+{% set dst_build_number = '1' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
 package:
@@ -141,6 +141,9 @@ outputs:
     build:
       skip: True  # [win32 or osx]
       binary_relocation: False   # [win]
+      ignore_run_exports:        # [win]
+        - python_abi             # [win]
+        - python                 # [win]
     requirements:
       build:
         - {{ compiler('c') }}
