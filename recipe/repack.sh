@@ -21,4 +21,7 @@ fi
 if [[ "$PKG_NAME" == "dpcpp_impl_linux-64" ]]; then
   # Not sure why these libraries are there, but seems to be unused.
   rm -f $PREFIX/lib/libffi.so*
+  HOST=x86_64-conda-linux-gnu
+  echo "--gcc-toolchain=${PREFIX} --sysroot=${PREFIX}/${HOST}/sysroot -target ${HOST}" > ${PREFIX}/bin/$HOST-icpx.cfg
+  echo "--gcc-toolchain=${PREFIX} --sysroot=${PREFIX}/${HOST}/sysroot -target ${HOST}" > ${PREFIX}/bin/$HOST-icx.cfg
 fi

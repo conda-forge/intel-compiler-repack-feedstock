@@ -26,12 +26,10 @@ if [ "${CC:-}" = "" ] && [ "${CONDA_BUILD:-}" = "1" ]; then
   exit 1
 fi
 
-export CFLAGS="${CFLAGS} --gcc-toolchain=${PREFIX:-${CONDA_PREFIX}} --sysroot=${PREFIX:-${CONDA_PREFIX}}/$HOST/sysroot -target $HOST"
-export CPPFLAGS="${CPPFLAGS} --gcc-toolchain=${PREFIX:-${CONDA_PREFIX}} --sysroot=${PREFIX:-${CONDA_PREFIX}}/$HOST/sysroot -target $HOST"
-export CXXFLAGS="${CXXFLAGS} --gcc-toolchain=${PREFIX:-${CONDA_PREFIX}} --sysroot=${PREFIX:-${CONDA_PREFIX}}/$HOST/sysroot -target $HOST"
-export LDFLAGS="${LDFLAGS} --gcc-toolchain=${PREFIX:-${CONDA_PREFIX}} --sysroot=${PREFIX:-${CONDA_PREFIX}}/$HOST/sysroot -target $HOST"
 export CC=icx
 export CXX=icpx
+export ICPXCFG="$BUILD_PREFIX/bin/$HOST-icpx.cfg"
+export ICXCFG="$BUILD_PREFIX/bin/$HOST-icx.cfg"
 
 if [ $? -ne 0 ]; then
   echo "ERROR: $(_get_sourced_filename) failed, see above for details"

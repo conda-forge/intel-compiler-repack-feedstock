@@ -251,6 +251,8 @@ outputs:
       run:
         - {{ pin_subpackage('dpcpp-cpp-rt', exact=True) }}
         - sysroot_linux-64 2.17  # [linux64]
+        - gcc_impl_linux-64      # [linux64]
+        - gxx_impl_linux-64      # [linux64]
 
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
