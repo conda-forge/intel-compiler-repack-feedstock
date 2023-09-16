@@ -10,7 +10,7 @@
 {% set tbb_version = "2021.10.0" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
-{% set dst_build_number = '1' %}
+{% set dst_build_number = '2' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
 package:
@@ -107,13 +107,11 @@ outputs:
         - {{ compiler('c') }}
         - patchelf                 # [linux]
       host:
-        - mpich                    # [linux]
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}  # [not osx]
         - {{ pin_subpackage('dpcpp-cpp-rt', exact=True) }}        # [osx]
       run:
         - _openmp_mutex * *_llvm   # [linux]
         - llvm-openmp              # [not linux]
-        - mpich                    # [linux]
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}  # [not osx]
         - {{ pin_subpackage('dpcpp-cpp-rt', exact=True) }}        # [osx]
