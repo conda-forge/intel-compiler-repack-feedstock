@@ -28,8 +28,8 @@ fi
 
 export CC=icx
 export CXX=icpx
-export ICPXCFG="$CONDA_PREFIX/bin/$HOST-icpx.cfg"
-export ICXCFG="$CONDA_PREFIX/bin/$HOST-icx.cfg"
+export ICPXCFG="$CONDA_PREFIX/bin/@HOST@-icpx.cfg"
+export ICXCFG="$CONDA_PREFIX/bin/@HOST@-icx.cfg"
 
 if [ $? -ne 0 ]; then
   echo "ERROR: $(_get_sourced_filename) failed, see above for details"
