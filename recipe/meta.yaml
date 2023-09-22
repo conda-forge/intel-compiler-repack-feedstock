@@ -10,7 +10,7 @@
 {% set tbb_version = "2021.10.0" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
-{% set dst_build_number = '4' %}
+{% set dst_build_number = '5' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
 package:

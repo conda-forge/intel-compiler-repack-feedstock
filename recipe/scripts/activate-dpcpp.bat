@@ -1,2 +1,2 @@
 set "CC=icx"
-set "CXX=icpx"
+set "CXX=icx"
