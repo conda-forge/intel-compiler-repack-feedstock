@@ -10,7 +10,7 @@
 {% set tbb_version = "2021.10.0" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
-{% set dst_build_number = '5' %}
+{% set dst_build_number = '6' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
 package:
@@ -146,7 +146,7 @@ outputs:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
-        - sysroot_linux-64 2.17  # [linux]
+        - sysroot_linux-64 2.28  # [linux]
         - patchelf               # [linux]
       host:
         - tbb-devel {{ tbb_version.split('.')[0] }}.*
@@ -235,7 +235,7 @@ outputs:
         # 2. Pin to year for now, similar to MKL.
         strong:
           - {{ pin_subpackage("dpcpp-cpp-rt", max_pin="x") }}
-          - __glibc >=2.17,<3.0.a0  # [linux64]
+          - __glibc >=2.28,<3.0.a0  # [linux64]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -251,7 +251,7 @@ outputs:
         - llvm-openmp              # [not linux]
       run:
         - {{ pin_subpackage('dpcpp-cpp-rt', exact=True) }}
-        - sysroot_linux-64 2.17  # [linux64]
+        - sysroot_linux-64 2.28  # [linux64]
         - gcc_impl_linux-64      # [linux64]
         - gxx_impl_linux-64      # [linux64]
 
@@ -286,7 +286,7 @@ outputs:
         # 2. Pin to year for now, similar to MKL.
         strong:
           - {{ pin_subpackage("dpcpp-cpp-rt", max_pin="x") }}
-          - __glibc >=2.17,<3.0.a0  # [linux64]
+          - __glibc >=2.28,<3.0.a0  # [linux64]
     requirements:   # [linux64 or win64]
       run:          # [linux64 or win64]
         - {{ pin_subpackage('dpcpp_impl_linux-64', exact=True) }}  # [linux64]
