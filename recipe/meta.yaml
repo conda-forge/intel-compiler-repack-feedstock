@@ -1,16 +1,15 @@
-{% set version = "2023.2.0" %}          # [linux]
-{% set version = "2023.2.0" %}          # [osx or win]
-{% set intel_build_number = "49495" %}   # [linux]
-{% set intel_build_number = "49499" %}   # [osx]
-{% set intel_build_number = "49496" %}   # [win]
+{% set version = "2024.0.0" %}          # [linux]
+{% set version = "2024.0.0" %}          # [win]
+{% set intel_build_number = "49819" %}   # [linux]
+{% set intel_build_number = "49840" %}   # [win]
 
-{% set oneccl_version = "2021.10.0" %}
-{% set oneccl_build_number = "49084" %}
+{% set oneccl_version = "2021.11.0" %}
+{% set oneccl_build_number = "49156" %}
 
-{% set tbb_version = "2021.10.0" %}
+{% set tbb_version = "2021.11.0" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
-{% set dst_build_number = '5' %}
+{% set dst_build_number = '0' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
 package:
@@ -25,8 +24,8 @@ source:
     folder: intel-fortran-rt
   - url: https://anaconda.org/intel/dpcpp-cpp-rt/{{ version }}/download/{{ target_platform }}/dpcpp-cpp-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [not win32]
     folder: dpcpp-cpp-rt  # [not win32]
-  - url: https://anaconda.org/intel/intel-cmplr-lib-rt/{{ version }}/download/{{ target_platform }}/intel-cmplr-lib-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [not osx]
-    folder: intel-cmplr-lib-rt  # [not osx]
+  - url: https://anaconda.org/intel/intel-cmplr-lib-rt/{{ version }}/download/{{ target_platform }}/intel-cmplr-lib-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
+    folder: intel-cmplr-lib-rt
   - url: https://anaconda.org/intel/dpcpp_impl_{{ target_platform }}/{{ version }}/download/{{ target_platform }}/dpcpp_impl_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
     folder: dpcpp_impl_{{ target_platform }}  # [linux64 or win64]
   - url: https://anaconda.org/intel/dpcpp_{{ target_platform }}/{{ version }}/download/{{ target_platform }}/dpcpp_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
@@ -40,7 +39,7 @@ build:
   number: {{ build_number }}
   binary_relocation: false
   detect_binary_files_with_prefix: false
-  skip: True                                  # [not (linux64 or osx or win)]
+  skip: True                                  # [not (linux64 or win)]
 
 outputs:
   - name: intel-cmplr-lic-rt
@@ -53,7 +52,7 @@ outputs:
       summary: Intel End User License Agreement for Developer Tools
       license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
       license_family: Proprietary
-      license_file: 
+      license_file:
         - intel-cmplr-lic-rt/info/licenses/license.txt
         - intel-cmplr-lic-rt/info/licenses/tpp.txt
       description: |
@@ -67,8 +66,6 @@ outputs:
   - name: intel-cmplr-lib-rt
     script: repack.sh   # [unix]
     script: repack.bat  # [win]
-    build:
-      skip: True  # [osx]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -85,7 +82,7 @@ outputs:
       summary: Runtime for Intel® C++ Compiler Classic
       license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
       license_family: Proprietary
-      license_file: 
+      license_file:
         - intel-cmplr-lib-rt/info/licenses/license.txt
         - intel-cmplr-lib-rt/info/licenses/tpp.txt
       description: |
@@ -99,22 +96,17 @@ outputs:
   - name: intel-fortran-rt
     script: repack.sh   # [unix]
     script: repack.bat  # [win]
-    build:                               # [osx]
-      missing_dso_whitelist:             # [osx]
-        - '**/for_mac_ftn_alloc.dylib'   # [osx]
     requirements:
       build:
         - {{ compiler('c') }}
         - patchelf                 # [linux]
       host:
-        - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}  # [not osx]
-        - {{ pin_subpackage('dpcpp-cpp-rt', exact=True) }}        # [osx]
+        - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
       run:
         - _openmp_mutex * *_llvm   # [linux]
         - llvm-openmp              # [not linux]
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
-        - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}  # [not osx]
-        - {{ pin_subpackage('dpcpp-cpp-rt', exact=True) }}        # [osx]
+        - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
       doc_url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/fortran-compiler.html
@@ -122,7 +114,7 @@ outputs:
       summary: Runtime for Intel® Fortran Compiler Classic and Intel® Fortran Compiler (Beta)
       license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
       license_family: Proprietary
-      license_file: 
+      license_file:
         - intel-fortran-rt/info/licenses/license.txt
         - intel-fortran-rt/info/licenses/tpp.txt
       description: |
@@ -137,7 +129,7 @@ outputs:
     script: opencl-rt-build.sh   # [unix]
     script: opencl-rt-bld.bat  # [win]
     build:
-      skip: True  # [win32 or osx]
+      skip: True  # [win32]
       binary_relocation: False   # [win]
       ignore_run_exports:        # [win]
         - python_abi             # [win]
@@ -151,7 +143,7 @@ outputs:
       host:
         - tbb-devel {{ tbb_version.split('.')[0] }}.*
         - ocl-icd  # [linux]
-        - khronos-opencl-icd-loader  # [osx or win]
+        - khronos-opencl-icd-loader  # [win]
         - zlib
         - libxml2
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
@@ -179,7 +171,7 @@ outputs:
         - curl
       commands:
         - test -f $PREFIX/lib/intel-ocl-cpu/libintelocl.so          # [linux]
-        - type %PREFIX%\Library\lib\intel-ocl-cpu\cl.cfg            # [win]
+        - type %PREFIX%\Library\bin\intel-ocl-cpu\cl.cfg            # [win]
         - export OCL_ICD_DEBUG=7                                    # [linux]
         - curl -O https://raw.githubusercontent.com/inducer/pyopencl/v2021.2.13/examples/demo.py
         - export PYOPENCL_CTX=intel  # [unix]
@@ -198,15 +190,15 @@ outputs:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
       host:
-        - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}  # [not osx]
+        - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
         - ocl-icd   # [linux]
         - khronos-opencl-icd-loader  # [win]
       run:
         - _openmp_mutex * *_llvm   # [linux]
         - llvm-openmp              # [not linux]
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
-        - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}  # [not osx]
-        - {{ pin_subpackage('intel-opencl-rt', exact=True) }}     # [not osx]
+        - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
+        - {{ pin_subpackage('intel-opencl-rt', exact=True) }}
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
       doc_url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
@@ -214,7 +206,7 @@ outputs:
       summary: Runtime for Intel® oneAPI DPC++/C++ Compiler
       license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
       license_family: Proprietary
-      license_file: 
+      license_file:
         - dpcpp-cpp-rt/info/licenses/license.txt
         - dpcpp-cpp-rt/info/licenses/tpp.txt
       description: |
@@ -262,7 +254,7 @@ outputs:
       summary: Implementation for Intel® oneAPI DPC++/C++ Compiler
       license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
       license_family: Proprietary
-      license_file: 
+      license_file:
         - dpcpp_impl_{{ target_platform }}/info/licenses/license.txt  # [linux64 or win64]
         - dpcpp_impl_{{ target_platform }}/info/licenses/tpp.txt      # [linux64 or win64]
       description: |
@@ -350,7 +342,7 @@ outputs:
       summary: Intel® oneAPI Collective Communications Library*
       license: LicenseRef-Proprietary-Intel-Simplified-Software-License
       license_family: Proprietary
-      license_file: 
+      license_file:
         - oneccl-devel/info/licenses/license.txt
         - oneccl-devel/info/licenses/tpp.txt
       description: |
