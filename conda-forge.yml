@@ -1,9 +1,12 @@
-conda_forge_output_validation: true
+build_platform:
+  osx_arm64: osx_64
 build_with_mambabuild: false
+conda_build:
+  pkg_format: '2'
+conda_forge_output_validation: true
 github:
   branch_name: main
   tooling_branch_name: main
 os_version:
   linux_64: cos7
-conda_build:
-  pkg_format: '2'
+test: native_and_emulated
