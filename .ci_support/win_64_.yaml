@@ -9,7 +9,7 @@ curl:
 cxx_compiler:
 - vs2019
 libxml2:
-- '2.12'
+- '2'
 pin_run_as_build:
   python:
     min_pin: x.x
