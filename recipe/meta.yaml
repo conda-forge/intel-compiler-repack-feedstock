@@ -1,10 +1,10 @@
-{% set version = "2024.0.0" %}          # [linux]
-{% set version = "2024.0.0" %}          # [win]
-{% set intel_build_number = "49819" %}   # [linux]
-{% set intel_build_number = "49840" %}   # [win]
+{% set version = "2024.0.3" %}          # [linux]
+{% set version = "2024.0.3" %}          # [win]
+{% set intel_build_number = "49895" %}   # [linux]
+{% set intel_build_number = "49907" %}   # [win]
 
-{% set oneccl_version = "2021.11.0" %}
-{% set oneccl_build_number = "49156" %}
+{% set oneccl_version = "2021.11.2" %}
+{% set oneccl_build_number = "5" %}
 
 {% set tbb_version = "2021.11.0" %}
 
