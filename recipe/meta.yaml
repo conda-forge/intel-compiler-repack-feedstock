@@ -7,6 +7,7 @@
 {% set oneccl_build_number = "309" %}
 
 {% set tbb_version = "2021.12.0" %}
+{% set intel_ch = "https://anaconda.org/intel" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
 {% set dst_build_number = '0' %}
@@ -18,27 +19,27 @@ package:
 
 source:
   # Is there a better way to specify skipping the source if it does not exist? (so it matches 'skip: True' selectors)
-  - url: https://anaconda.org/intel/intel-cmplr-lic-rt/{{ version }}/download/{{ target_platform }}/intel-cmplr-lic-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
+  - url: {{ intel_ch }}/intel-cmplr-lic-rt/{{ version }}/download/{{ target_platform }}/intel-cmplr-lic-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-cmplr-lic-rt
-  - url: https://anaconda.org/intel/intel-fortran-rt/{{ version }}/download/{{ target_platform }}/intel-fortran-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
+  - url: {{ intel_ch }}/intel-fortran-rt/{{ version }}/download/{{ target_platform }}/intel-fortran-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-fortran-rt
-  - url: https://anaconda.org/intel/dpcpp-cpp-rt/{{ version }}/download/{{ target_platform }}/dpcpp-cpp-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [not win32]
+  - url: {{ intel_ch }}/dpcpp-cpp-rt/{{ version }}/download/{{ target_platform }}/dpcpp-cpp-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [not win32]
     folder: dpcpp-cpp-rt  # [not win32]
-  - url: https://anaconda.org/intel/intel-cmplr-lib-rt/{{ version }}/download/{{ target_platform }}/intel-cmplr-lib-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
+  - url: {{ intel_ch }}/intel-cmplr-lib-rt/{{ version }}/download/{{ target_platform }}/intel-cmplr-lib-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-cmplr-lib-rt
-  - url: https://anaconda.org/intel/dpcpp_impl_{{ target_platform }}/{{ version }}/download/{{ target_platform }}/dpcpp_impl_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
+  - url: {{ intel_ch }}/dpcpp_impl_{{ target_platform }}/{{ version }}/download/{{ target_platform }}/dpcpp_impl_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
     folder: dpcpp_impl_{{ target_platform }}  # [linux64 or win64]
-  - url: https://anaconda.org/intel/dpcpp_{{ target_platform }}/{{ version }}/download/{{ target_platform }}/dpcpp_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
+  - url: {{ intel_ch }}/dpcpp_{{ target_platform }}/{{ version }}/download/{{ target_platform }}/dpcpp_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
     folder: dpcpp_{{ target_platform }}  # [linux64 or win64]
-  - url: https://anaconda.org/intel/intel-opencl-rt/{{ version }}/download/{{ target_platform }}/intel-opencl-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
+  - url: {{ intel_ch }}/intel-opencl-rt/{{ version }}/download/{{ target_platform }}/intel-opencl-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
     folder: intel-opencl-rt  # [linux64 or win64]
-  - url: https://anaconda.org/intel/oneccl-devel/{{ oneccl_version }}/download/{{ target_platform }}/oneccl-devel-{{ oneccl_version }}-intel_{{ oneccl_build_number }}.tar.bz2  # [linux64]
+  - url: {{ intel_ch }}/oneccl-devel/{{ oneccl_version }}/download/{{ target_platform }}/oneccl-devel-{{ oneccl_version }}-intel_{{ oneccl_build_number }}.tar.bz2  # [linux64]
     folder: oneccl-devel  # [linux64]
 
 build:
   number: {{ build_number }}
-  binary_relocation: false
-  detect_binary_files_with_prefix: false
+  binary_relocation: False
+  detect_binary_files_with_prefix: False
   skip: True                                  # [not (linux64 or win)]
 
 outputs:
@@ -222,8 +223,11 @@ outputs:
     script: repack.bat  # [win]
     build:
       skip: True  # [not (linux64 or win64)]
+      binary_relocation: False
+      overlinking_ignore_patterns:
+        - "**"
       run_exports:
-        # 1. strong so if gets added if this package is in the build requirement section.
+        # 1. strong so it gets added if this package is in the build requirement section.
         # 2. Pin to year for now, similar to MKL.
         strong:
           - {{ pin_subpackage("dpcpp-cpp-rt", max_pin="x") }}
@@ -274,7 +278,7 @@ outputs:
     build:
       skip: True  # [not (linux64 or win64)]
       run_exports:
-        # 1. strong so if gets added if this package is in the build requirement section.
+        # 1. strong so it gets added if this package is in the build requirement section.
         # 2. Pin to year for now, similar to MKL.
         strong:
           - {{ pin_subpackage("dpcpp-cpp-rt", max_pin="x") }}
