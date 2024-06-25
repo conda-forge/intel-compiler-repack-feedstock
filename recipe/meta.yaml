@@ -292,8 +292,7 @@ outputs:
           - {{ pin_subpackage("dpcpp-cpp-rt", max_pin="x") }}
     requirements:   # [linux64 or win64]
       run:          # [linux64 or win64]
-        - {{ pin_subpackage('dpcpp_impl_linux-64', exact=True) }}  # [linux64]
-        - {{ pin_subpackage('dpcpp_impl_win-64', exact=True) }}    # [win64]
+        - {{ pin_subpackage('dpcpp_impl_' ~ target_platform, exact=True) }}
         # Keep versions in sync with dpcpp_impl_{{ target_platform }}
         - binutils_impl_{{ target_platform }} >=2.30     # [linux]
         - sysroot_{{ target_platform }}                  # [linux]
