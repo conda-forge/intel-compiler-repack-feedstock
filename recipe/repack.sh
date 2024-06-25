@@ -6,6 +6,15 @@ set -ex
 
 src="${SRC_DIR}/${PKG_NAME}"
 
+# TODO: remove once fixed in the upstream
+if [[ "$PKG_NAME" == "dpcpp_impl_linux-64" ]]; then
+  # Move intel specific headers files from the global include directory to
+  # allow other compilers work in the same environment.
+  find ${src}/include -maxdepth 1 -type f -exec mv {} ${src}/opt/compiler/include \;
+  # Move it to the sycl directory to much structure with /opt/intel/include
+  mv ${src}/lib/clang/18/include/CL ${src}/include/sycl/CL
+fi
+
 cp -av "${src}"/* "${PREFIX}/"
 
 # replace old info folder with our new regenerated one
