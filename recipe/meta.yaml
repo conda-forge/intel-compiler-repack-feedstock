@@ -231,7 +231,8 @@ outputs:
         # 2. Pin to year for now, similar to MKL.
         strong:
           - {{ pin_subpackage("dpcpp-cpp-rt", max_pin="x") }}
-          - __glibc >=2.17,<3.0.a0  # [linux64]
+          - {{ pin_compatible("libgcc-ng") }}     # [linux64]
+          - {{ pin_compatible("libstdcxx-ng") }}  # [linux64] 
     requirements:
       build:
         - {{ compiler('c') }}
@@ -247,9 +248,16 @@ outputs:
         - llvm-openmp              # [not linux]
       run:
         - {{ pin_subpackage('dpcpp-cpp-rt', exact=True) }}
-        - sysroot_linux-64 2.17  # [linux64]
-        - gcc_impl_linux-64      # [linux64]
-        - gxx_impl_linux-64      # [linux64]
+        # Refer version dependencies at 
+        # https://www.intel.com/content/www/us/en/developer/articles/system-requirements/intel-oneapi-dpcpp-system-requirements.html
+        # Keep versions in sync with dpcpp_{{ target_platform }}
+        - binutils_impl_{{ target_platform }} >=2.30     # [linux]
+        - libgcc-devel_{{ target_platform }} >=7.5.0     # [linux]
+        - libstdcxx-devel_{{ target_platform }} >=7.5.0  # [linux]
+        # None of the other compilers pin to glibc, so we don't either. It also
+        # appears that sysroot version must be aligned with host system, e.g.:
+        # https://github.com/conda-forge/ctng-compiler-activation-feedstock/issues/108
+        - sysroot_{{ target_platform }} >=2.17           # [linux]
 
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
@@ -282,11 +290,13 @@ outputs:
         # 2. Pin to year for now, similar to MKL.
         strong:
           - {{ pin_subpackage("dpcpp-cpp-rt", max_pin="x") }}
-          - __glibc >=2.17,<3.0.a0  # [linux64]
     requirements:   # [linux64 or win64]
       run:          # [linux64 or win64]
         - {{ pin_subpackage('dpcpp_impl_linux-64', exact=True) }}  # [linux64]
         - {{ pin_subpackage('dpcpp_impl_win-64', exact=True) }}    # [win64]
+        # Keep versions in sync with dpcpp_impl_{{ target_platform }}
+        - binutils_impl_{{ target_platform }} >=2.30     # [linux]
+        - sysroot_{{ target_platform }}                  # [linux]
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
       doc_url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
