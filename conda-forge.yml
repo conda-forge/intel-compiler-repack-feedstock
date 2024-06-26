@@ -1,5 +1,5 @@
 conda_forge_output_validation: true
-build_with_mambabuild: false
+conda_build_tool: conda-build
 github:
   branch_name: main
   tooling_branch_name: main
