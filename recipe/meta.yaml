@@ -229,6 +229,8 @@ outputs:
       binary_relocation: False
       overlinking_ignore_patterns:
         - "**"
+      ignore_run_exports_from:
+        - {{ c_stdlib }}_{{ target_platform }}
       run_exports:
         # 1. strong so it gets added if this package is in the build requirement section.
         # 2. Pin to year for now, similar to MKL.
@@ -252,17 +254,14 @@ outputs:
         - llvm-openmp              # [not linux]
       run:
         - {{ pin_subpackage('dpcpp-cpp-rt', exact=True) }}
-        # Refer version dependencies at 
-        # https://www.intel.com/content/www/us/en/developer/articles/system-requirements/intel-oneapi-dpcpp-system-requirements.html
-        # Keep versions in sync with dpcpp_{{ target_platform }}
-        - binutils_impl_{{ target_platform }} >=2.30     # [linux]
-        - libgcc-devel_{{ target_platform }} >=7.5.0     # [linux]
-        - libstdcxx-devel_{{ target_platform }} >=7.5.0  # [linux]
-        # None of the other compilers pin to glibc, so we don't either. It also
-        # appears that sysroot version must be aligned with host system, e.g.:
+        - binutils_impl_{{ target_platform }} >={{ binutils_version }}        # [linux]
+        - libgcc-devel_{{ target_platform }} >={{ c_compiler_version }}       # [linux]
+        - libstdcxx-devel_{{ target_platform }} >={{ cxx_compiler_version }}  # [linux]
+        # None of the other compilers pin to sysroot, so we don't either. It
+        # also appears that sysroot version must be aligned with host system,
+        # e.g.:
         # https://github.com/conda-forge/ctng-compiler-activation-feedstock/issues/108
-        - sysroot_{{ target_platform }} >=2.17           # [linux]
-
+        - {{ c_stdlib }}_{{ target_platform }}
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
       doc_url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
@@ -297,9 +296,8 @@ outputs:
     requirements:
       run:
         - {{ pin_subpackage('dpcpp_impl_' ~ target_platform, exact=True) }}
-        # Keep versions in sync with dpcpp_impl_{{ target_platform }}
-        - binutils_impl_{{ target_platform }} >=2.30     # [linux]
-        - sysroot_{{ target_platform }}                  # [linux]
+        - binutils_{{ target_platform }} >={{ binutils_version }}  # [linux]
+        - {{ c_stdlib }}_{{ target_platform }}
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
       doc_url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
