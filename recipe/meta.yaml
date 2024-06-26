@@ -294,8 +294,8 @@ outputs:
         # 2. Pin to year for now, similar to MKL.
         strong:
           - {{ pin_subpackage("dpcpp-cpp-rt", max_pin="x") }}
-    requirements:   # [linux64 or win64]
-      run:          # [linux64 or win64]
+    requirements:
+      run:
         - {{ pin_subpackage('dpcpp_impl_' ~ target_platform, exact=True) }}
         # Keep versions in sync with dpcpp_impl_{{ target_platform }}
         - binutils_impl_{{ target_platform }} >=2.30     # [linux]
