@@ -71,6 +71,7 @@ outputs:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
       host:
         - ocl-icd  # [linux]
         - khronos-opencl-icd-loader  # [win]
@@ -100,6 +101,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib('c') }}
         - patchelf                 # [linux]
       host:
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
@@ -139,7 +141,7 @@ outputs:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
-        - sysroot_linux-64 2.17  # [linux]
+        - {{ stdlib('c') }}
         - patchelf               # [linux]
       host:
         - tbb-devel {{ tbb_version.split('.')[0] }}.*
@@ -190,6 +192,7 @@ outputs:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
       host:
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
         - ocl-icd   # [linux]
@@ -237,6 +240,7 @@ outputs:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
       host:
         - zlib
         - libxml2
@@ -313,6 +317,7 @@ outputs:
       requires:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
       files:
         - simple.cpp
       commands:
@@ -337,6 +342,7 @@ outputs:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
       host:
         - mpich                    # [linux]
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
