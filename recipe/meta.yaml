@@ -21,20 +21,28 @@ source:
   # Is there a better way to specify skipping the source if it does not exist? (so it matches 'skip: True' selectors)
   - url: {{ intel_ch }}/intel-cmplr-lic-rt/{{ version }}/download/{{ target_platform }}/intel-cmplr-lic-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-cmplr-lic-rt
+    sha256: 3794d69ff625403ee002f4836d68a51fa06f68fb32082596b724d075a4af1e14  # [linux64]
   - url: {{ intel_ch }}/intel-fortran-rt/{{ version }}/download/{{ target_platform }}/intel-fortran-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-fortran-rt
+    sha256: afd236cef1a9d9772468fd3e0f545e5135b83823b56305900fd2bcbfa3f40bd3  # [linux64]
   - url: {{ intel_ch }}/dpcpp-cpp-rt/{{ version }}/download/{{ target_platform }}/dpcpp-cpp-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [not win32]
     folder: dpcpp-cpp-rt  # [not win32]
+    sha256: ab3ef09509893100233de23d5af8bd3872bfc46c79cc9c9d10e21d5a2003c389  # [linux64]
   - url: {{ intel_ch }}/intel-cmplr-lib-rt/{{ version }}/download/{{ target_platform }}/intel-cmplr-lib-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-cmplr-lib-rt
+    sha256: 7ceb4091d88d792ebb05940dd9bd6f3cc71e0a59cb893f00c4494ee02a9c1ca6  # [linux64]
   - url: {{ intel_ch }}/dpcpp_impl_{{ target_platform }}/{{ version }}/download/{{ target_platform }}/dpcpp_impl_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
     folder: dpcpp_impl_{{ target_platform }}  # [linux64 or win64]
+    sha256: 84cccd5d33f93a73d2925e438066f3303f1caf5201cc326beabe46a30f01dd77  # [linux64]
   - url: {{ intel_ch }}/dpcpp_{{ target_platform }}/{{ version }}/download/{{ target_platform }}/dpcpp_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
     folder: dpcpp_{{ target_platform }}  # [linux64 or win64]
+    sha256: a11c55e5ecb711c431335923101b3c93dbe5528644a8f94e08b0b734bcd0c6ea  # [linux64]
   - url: {{ intel_ch }}/intel-opencl-rt/{{ version }}/download/{{ target_platform }}/intel-opencl-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
     folder: intel-opencl-rt  # [linux64 or win64]
+    sha256: 4cbc18ea466d0f057f67839689360a51737e26b9add6d687259c460c890cbb57  # [linux64]
   - url: {{ intel_ch }}/oneccl-devel/{{ oneccl_version }}/download/{{ target_platform }}/oneccl-devel-{{ oneccl_version }}-intel_{{ oneccl_build_number }}.tar.bz2  # [linux64]
     folder: oneccl-devel  # [linux64]
+    sha256: 8f9953612b121fdd9a65aabcc554f3333b54be781e9d509544305b774d50516a  # [linux64]
 
 build:
   number: {{ build_number }}
