@@ -15,6 +15,16 @@ if [[ "$PKG_NAME" == "dpcpp_impl_linux-64" ]]; then
   mv ${src}/lib/clang/18/include/CL ${src}/include/sycl/CL
 fi
 
+# TODO: remove once fixed in the upstream
+if [[ "$PKG_NAME" == "intel-cmplr-lib-rt" ]]; then
+  # One of the libraries is referencing to libur_loader.so which is part of 
+  # intel-sycl-rt that results in cyclic dependency. This change breaks cyclic
+  # dependency and organize the libraries in a tree way dependency. 
+  # intel-cmplr-lib-rt is in dependency of intel-sycl-rt, so no changes to
+  # downstream projects required.
+  mv ${SRC_DIR}/intel-sycl-rt/lib/libur_loader.so* ${src}/lib/
+fi
+
 cp -av "${src}"/* "${PREFIX}/"
 
 # replace old info folder with our new regenerated one
