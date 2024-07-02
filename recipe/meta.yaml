@@ -1,7 +1,7 @@
-{% set version = "2024.1.0" %}          # [linux]
-{% set version = "2024.1.0" %}          # [win]
-{% set intel_build_number = "963" %}   # [linux]
-{% set intel_build_number = "964" %}   # [win]
+{% set version = "2024.1.2" %}         # [linux]
+{% set version = "2024.1.2" %}         # [win]
+{% set intel_build_number = "995" %}   # [linux]
+{% set intel_build_number = "978" %}   # [win]
 
 {% set oneccl_version = "2021.12.0" %}
 {% set oneccl_build_number = "309" %}
@@ -10,7 +10,7 @@
 {% set intel_ch = "https://anaconda.org/intel" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
-{% set dst_build_number = '2' %}
+{% set dst_build_number = '0' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
 package:
@@ -21,28 +21,31 @@ source:
   # Is there a better way to specify skipping the source if it does not exist? (so it matches 'skip: True' selectors)
   - url: {{ intel_ch }}/intel-cmplr-lic-rt/{{ version }}/download/{{ target_platform }}/intel-cmplr-lic-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-cmplr-lic-rt
-    sha256: 3794d69ff625403ee002f4836d68a51fa06f68fb32082596b724d075a4af1e14  # [linux64]
-  - url: {{ intel_ch }}/intel-fortran-rt/{{ version }}/download/{{ target_platform }}/intel-fortran-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
-    folder: intel-fortran-rt
-    sha256: afd236cef1a9d9772468fd3e0f545e5135b83823b56305900fd2bcbfa3f40bd3  # [linux64]
-  - url: {{ intel_ch }}/dpcpp-cpp-rt/{{ version }}/download/{{ target_platform }}/dpcpp-cpp-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [not win32]
-    folder: dpcpp-cpp-rt  # [not win32]
-    sha256: ab3ef09509893100233de23d5af8bd3872bfc46c79cc9c9d10e21d5a2003c389  # [linux64]
+    sha256: '1aae58f5da7e65d8a8d28e1402214e24f13bf4e751b3da002c0134c91c8b16a5'  # [linux64]
+  - url: {{ intel_ch }}/intel-sycl-rt/{{ version }}/download/{{ target_platform }}/intel-sycl-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
+    folder: intel-sycl-rt
+    sha256: '4508a9e97cb362bc4244cbe2f65d773f140c6a6070947d59cc5553750db24d8a'  # [linux64]
   - url: {{ intel_ch }}/intel-cmplr-lib-rt/{{ version }}/download/{{ target_platform }}/intel-cmplr-lib-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-cmplr-lib-rt
-    sha256: 7ceb4091d88d792ebb05940dd9bd6f3cc71e0a59cb893f00c4494ee02a9c1ca6  # [linux64]
-  - url: {{ intel_ch }}/dpcpp_impl_{{ target_platform }}/{{ version }}/download/{{ target_platform }}/dpcpp_impl_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
-    folder: dpcpp_impl_{{ target_platform }}  # [linux64 or win64]
-    sha256: 84cccd5d33f93a73d2925e438066f3303f1caf5201cc326beabe46a30f01dd77  # [linux64]
-  - url: {{ intel_ch }}/dpcpp_{{ target_platform }}/{{ version }}/download/{{ target_platform }}/dpcpp_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
-    folder: dpcpp_{{ target_platform }}  # [linux64 or win64]
-    sha256: a11c55e5ecb711c431335923101b3c93dbe5528644a8f94e08b0b734bcd0c6ea  # [linux64]
+    sha256: '0708f201bf8f760229e722c5b0e9583214b63af0f98e85ddba6b2d4dd7a1cd0b'  # [linux64]
+  - url: {{ intel_ch }}/intel-fortran-rt/{{ version }}/download/{{ target_platform }}/intel-fortran-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
+    folder: intel-fortran-rt
+    sha256: '995e8adfbe6f0c6e3708615dd6046e7d0d6908cc9a775cac26f8f42f1cf40de7'  # [linux64]
   - url: {{ intel_ch }}/intel-opencl-rt/{{ version }}/download/{{ target_platform }}/intel-opencl-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
     folder: intel-opencl-rt  # [linux64 or win64]
-    sha256: 4cbc18ea466d0f057f67839689360a51737e26b9add6d687259c460c890cbb57  # [linux64]
+    sha256: '664b94530f3074faa1830734783beaac53cc6b209f07a059f96f72c21355ad70'  # [linux64]
+  - url: {{ intel_ch }}/dpcpp-cpp-rt/{{ version }}/download/{{ target_platform }}/dpcpp-cpp-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [not win32]
+    folder: dpcpp-cpp-rt  # [not win32]
+    sha256: '47aeabfc9ff197185fa3173a0660d9fcfe2d369fa757d40d43953c2ae34ac246'  # [linux64]
+  - url: {{ intel_ch }}/dpcpp_impl_{{ target_platform }}/{{ version }}/download/{{ target_platform }}/dpcpp_impl_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
+    folder: dpcpp_impl_{{ target_platform }}  # [linux64 or win64]
+    sha256: 'd7ab907b5788e0828e34bd487d42ed1f38d0652238bd00bfe8fa26eb7af5e62f'  # [linux64]
+  - url: {{ intel_ch }}/dpcpp_{{ target_platform }}/{{ version }}/download/{{ target_platform }}/dpcpp_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
+    folder: dpcpp_{{ target_platform }}  # [linux64 or win64]
+    sha256: '23bb4f7e0f7035c301f487e83597a79b2fe3082e1c0af94c8b48b727e42c16c0'  # [linux64]
   - url: {{ intel_ch }}/oneccl-devel/{{ oneccl_version }}/download/{{ target_platform }}/oneccl-devel-{{ oneccl_version }}-intel_{{ oneccl_build_number }}.tar.bz2  # [linux64]
     folder: oneccl-devel  # [linux64]
-    sha256: 8f9953612b121fdd9a65aabcc554f3333b54be781e9d509544305b774d50516a  # [linux64]
+    sha256: '8f9953612b121fdd9a65aabcc554f3333b54be781e9d509544305b774d50516a'  # [linux64]
 
 build:
   number: {{ build_number }}
@@ -84,6 +87,10 @@ outputs:
         # Pin to year for now, similar to MKL.
         - {{ pin_subpackage("intel-cmplr-lib-rt", max_pin="x") }}
     requirements:
+      # Since it is repack, we do not need these packages in the build and host
+      # sections. However it is limitation of conda-build to check for library
+      # linking only for the packages that are presented in build and host and
+      # have run_export section.
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
@@ -111,6 +118,43 @@ outputs:
         - ls -A1 ${PREFIX}/lib/*  # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
 
+  - name: intel-sycl-rt
+    script: repack.sh   # [unix]
+    script: repack.bat  # [win]
+    build:
+      run_exports:
+        # Pin to year for now, similar to MKL.
+        - {{ pin_subpackage("intel-sycl-rt", max_pin="x") }}
+    requirements:
+      build:
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
+      host:
+        - level-zero-devel
+        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
+        - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
+      run:
+        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
+        - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
+    about:
+      home: https://software.intel.com/content/www/us/en/develop/tools.html
+      doc_url: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html
+      dev_url: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html
+      summary: Intel End User License Agreement for Developer Tools
+      license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+      license_family: Proprietary
+      license_file:
+        - intel-sycl-rt/info/licenses/license.txt
+        - intel-sycl-rt/info/licenses/tpp.txt
+      description: |
+        Intel End User License Agreement for Developer Tools.
+        This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+    test:
+      commands:
+        - ls -A1 ${PREFIX}/licensing/compiler/*  # [unix]
+        - dir %PREFIX%\licensing\compiler\*  # [win]
+
   - name: intel-fortran-rt
     script: repack.sh   # [unix]
     script: repack.bat  # [win]
@@ -124,6 +168,7 @@ outputs:
         - {{ stdlib('c') }}
         - patchelf                 # [linux]
       host:
+        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
       run:
         - _openmp_mutex * *_llvm   # [linux]
@@ -168,16 +213,20 @@ outputs:
         - patchelf               # [linux]
       host:
         - tbb-devel {{ tbb_version.split('.')[0] }}.*
+        # OpenCL loader is not in dependency of this package, but without it
+        # the library is useless. Should user request OpenCL loader explicitly
+        # in downstream recipes?
         - ocl-icd  # [linux]
         - khronos-opencl-icd-loader  # [win]
+        # TODO: do we need zlib and libxml2 here?
         - zlib
         - libxml2
+        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
         - python  # [win]
       run:
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
-        # TODO figure out why pin_subpackage does not work for below
-        - intel-cmplr-lib-rt {{ version }}
+        - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
       doc_url: https://software.intel.com/content/www/us/en/develop/tools.html
@@ -217,15 +266,20 @@ outputs:
         - {{ compiler('cxx') }}
         - {{ stdlib('c') }}
       host:
+        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
+        - {{ pin_subpackage('intel-opencl-rt', exact=True) }}
         - ocl-icd   # [linux]
         - khronos-opencl-icd-loader  # [win]
+        # TODO: use level zero dependency only for linux?
+        # - level-zero-devel
       run:
         - _openmp_mutex * *_llvm   # [linux]
         - llvm-openmp              # [not linux]
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
         - {{ pin_subpackage('intel-opencl-rt', exact=True) }}
+        - {{ pin_subpackage('intel-sycl-rt', exact=True) }}
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
       doc_url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
@@ -269,7 +323,8 @@ outputs:
       host:
         - zlib
         - libxml2
-        - ocl-icd  # [linux]
+        - ocl-icd                    # [linux]
+        - khronos-opencl-icd-loader  # [not linux]
         - {{ pin_subpackage('dpcpp-cpp-rt', exact=True) }}
         # FIXME due to a conda-build bug, we need to tell conda-build that dpcpp-cpp-rt depends
         # on llvm openmp instead of gnu
@@ -305,6 +360,8 @@ outputs:
         - ls -A1 ${PREFIX}/lib/*         # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
         - dir %PREFIX%\Library\lib\*  # [win]
+        - icx --version
+        - icpx --version
 
   - name: dpcpp_{{ target_platform }}
     script: install_activate.sh   # [unix]
