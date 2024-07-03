@@ -141,8 +141,6 @@ outputs:
         - {{ compiler('cxx') }}
         - {{ stdlib('c') }}
       host:
-        - ocl-icd  # [linux]
-        - khronos-opencl-icd-loader  # [win]
         - zlib
       run:
     about:
