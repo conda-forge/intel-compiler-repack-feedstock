@@ -24,6 +24,9 @@ source:
   - url: {{ intel_ch }}/{{ target_platform }}/intel-cmplr-lib-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-cmplr-lib-rt
     sha256: a9b1c6fa0547f2c28a5b1b560fd656859af30933259f1c2b3e30f1bec5d9b259  # [linux64]
+  - url: {{ intel_ch }}/{{ target_platform }}/intel-cmplr-lib-ur-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
+    folder: intel-cmplr-lib-ur
+    sha256: 7b39b7446b875408045a3b578ad467060db66be1c71dbbf25e1310c53a0857ea  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/intel-sycl-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-sycl-rt
     sha256: 98a5503a47feb2e72b2fce045d7edc177c333828b5eee3dd337dfd7441c8c11a  # [linux64]
@@ -78,6 +81,49 @@ outputs:
         - ls -A1 ${PREFIX}/licensing/compiler/*  # [unix]
         - dir %PREFIX%\licensing\compiler\*  # [win]
 
+  - name: intel-cmplr-lib-ur
+    script: repack.sh   # [unix]
+    script: repack.bat  # [win]
+    build:
+      run_exports:
+        # Pin to year for now, similar to MKL.
+        - {{ pin_subpackage("intel-cmplr-lib-ur", max_pin="x") }}
+      missing_dso_whitelist:
+        - '**/libze_loader.so.1'
+    requirements:
+      # Since it is repack, we do not need these packages in the build and host
+      # sections. However it is limitation of conda-build to check for library
+      # linking only for the packages that are presented in build and host and
+      # have run_export section.
+      build:
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
+      host:
+        - ocl-icd  # [linux]
+        - khronos-opencl-icd-loader  # [win]
+        - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
+      run:
+        - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
+    about:
+      home: https://software.intel.com/content/www/us/en/develop/tools.html
+      doc_url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
+      dev_url: https://software.intel.com/content/www/us/en/develop/documentation/cpp-compiler-developer-guide-and-reference/top.html
+      summary: Runtime for Intel® C++ Compiler Classic
+      license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+      license_family: Proprietary
+      license_file:
+        - intel-cmplr-lib-ur/info/licenses/license.txt
+        - intel-cmplr-lib-ur/info/licenses/tpp.txt
+      description: |
+        Runtime for Intel® C++ Compiler Classic.
+        This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+    test:
+      commands:
+        - ls -A1 ${PREFIX}/lib/*  # [unix]
+        - dir %PREFIX%\Library\bin\*  # [win]
+        - test -f ${PREFIX}/lib/libur_loader.so
+
   - name: intel-cmplr-lib-rt
     script: repack.sh   # [unix]
     script: repack.bat  # [win]
@@ -116,7 +162,6 @@ outputs:
       commands:
         - ls -A1 ${PREFIX}/lib/*  # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
-        - test -f ${PREFIX}/lib/libur_loader.so
 
   - name: intel-sycl-rt
     script: repack.sh   # [unix]
@@ -134,9 +179,11 @@ outputs:
         - level-zero-devel
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
+        - {{ pin_subpackage('intel-cmplr-lib-ur', exact=True) }}
       run:
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
+        - {{ pin_subpackage('intel-cmplr-lib-ur', exact=True) }}
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
       doc_url: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html

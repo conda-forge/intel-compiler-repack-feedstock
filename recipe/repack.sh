@@ -18,8 +18,8 @@ if [[ "$PKG_NAME" == "dpcpp_impl_linux-64" ]]; then
 fi
 
 # TODO: remove once fixed in the upstream
-# It looks like it was resolved in 2024.2.0, but exist in 2024.1.2. Let's keep
-# it till 2025, in case it repeats.
+# It looks like it was resolved in 2024.2.0 by providing intel-cmplr-lib-ur,
+# but exist in 2024.1.2. Let's keep it till 2025, in case it repeats.
 if [[ "$PKG_NAME" == "intel-cmplr-lib-rt" ]]; then
   # One of the libraries is referencing to libur_loader.so which is part of 
   # intel-sycl-rt that results in cyclic dependency. This change breaks cyclic
