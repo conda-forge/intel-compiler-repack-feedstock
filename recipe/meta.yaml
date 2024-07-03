@@ -1,12 +1,11 @@
-{% set version = "2024.1.2" %}         # [linux]
-{% set version = "2024.1.2" %}         # [win]
-{% set intel_build_number = "995" %}   # [linux]
+{% set version = "2024.2.0" %}
+{% set intel_build_number = "981" %}   # [linux]
 {% set intel_build_number = "978" %}   # [win]
 
-{% set oneccl_version = "2021.12.0" %}
-{% set oneccl_build_number = "309" %}
+{% set oneccl_version = "2021.13.0" %}
+{% set oneccl_build_number = "299" %}
 
-{% set tbb_version = "2021.12.0" %}
+{% set tbb_version = "2021.13.0" %}
 {% set intel_ch = "https://software.repos.intel.com/intel-conda" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
@@ -19,33 +18,33 @@ package:
 
 source:
   # Is there a better way to specify skipping the source if it does not exist? (so it matches 'skip: True' selectors)
-  - url: {{ intel_ch }}/intel-cmplr-lic-rt/{{ version }}/download/{{ target_platform }}/intel-cmplr-lic-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
+  - url: {{ intel_ch }}/{{ target_platform }}/intel-cmplr-lic-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-cmplr-lic-rt
-    sha256: '1aae58f5da7e65d8a8d28e1402214e24f13bf4e751b3da002c0134c91c8b16a5'  # [linux64]
-  - url: {{ intel_ch }}/intel-sycl-rt/{{ version }}/download/{{ target_platform }}/intel-sycl-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
-    folder: intel-sycl-rt
-    sha256: '4508a9e97cb362bc4244cbe2f65d773f140c6a6070947d59cc5553750db24d8a'  # [linux64]
-  - url: {{ intel_ch }}/intel-cmplr-lib-rt/{{ version }}/download/{{ target_platform }}/intel-cmplr-lib-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
+    sha256: ab37ae3b142ea2cdd5bfed4389ea3299e66cc6da14e8751d8a609f970ae732ff # [linux64]
+  - url: {{ intel_ch }}/{{ target_platform }}/intel-cmplr-lib-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-cmplr-lib-rt
-    sha256: '0708f201bf8f760229e722c5b0e9583214b63af0f98e85ddba6b2d4dd7a1cd0b'  # [linux64]
-  - url: {{ intel_ch }}/intel-fortran-rt/{{ version }}/download/{{ target_platform }}/intel-fortran-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
+    sha256: a9b1c6fa0547f2c28a5b1b560fd656859af30933259f1c2b3e30f1bec5d9b259  # [linux64]
+  - url: {{ intel_ch }}/{{ target_platform }}/intel-sycl-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
+    folder: intel-sycl-rt
+    sha256: 98a5503a47feb2e72b2fce045d7edc177c333828b5eee3dd337dfd7441c8c11a  # [linux64]
+  - url: {{ intel_ch }}/{{ target_platform }}/intel-fortran-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-fortran-rt
-    sha256: '995e8adfbe6f0c6e3708615dd6046e7d0d6908cc9a775cac26f8f42f1cf40de7'  # [linux64]
-  - url: {{ intel_ch }}/intel-opencl-rt/{{ version }}/download/{{ target_platform }}/intel-opencl-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
+    sha256: f28118cd4029d708f35a8493473f9a24b20b9eb413007ff6fac93cb9f2d3643f  # [linux64]
+  - url: {{ intel_ch }}/{{ target_platform }}/intel-opencl-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
     folder: intel-opencl-rt  # [linux64 or win64]
-    sha256: '664b94530f3074faa1830734783beaac53cc6b209f07a059f96f72c21355ad70'  # [linux64]
-  - url: {{ intel_ch }}/dpcpp-cpp-rt/{{ version }}/download/{{ target_platform }}/dpcpp-cpp-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [not win32]
+    sha256: 1a33749a1696c0c0f2d572b76a98891c032e8e58354d6969036451f0848dff05  # [linux64]
+  - url: {{ intel_ch }}/{{ target_platform }}/dpcpp-cpp-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [not win32]
     folder: dpcpp-cpp-rt  # [not win32]
-    sha256: '47aeabfc9ff197185fa3173a0660d9fcfe2d369fa757d40d43953c2ae34ac246'  # [linux64]
-  - url: {{ intel_ch }}/dpcpp_impl_{{ target_platform }}/{{ version }}/download/{{ target_platform }}/dpcpp_impl_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
+    sha256: bb430763d0ee6029d6befa911605faf514ce83584933f64647c8fff527f5d136  # [linux64]
+  - url: {{ intel_ch }}/{{ target_platform }}/dpcpp_impl_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
     folder: dpcpp_impl_{{ target_platform }}  # [linux64 or win64]
-    sha256: 'd7ab907b5788e0828e34bd487d42ed1f38d0652238bd00bfe8fa26eb7af5e62f'  # [linux64]
-  - url: {{ intel_ch }}/dpcpp_{{ target_platform }}/{{ version }}/download/{{ target_platform }}/dpcpp_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
+    sha256: 958dc668d49d2ae9dbe0f0e55f8f5025b3e280be0a5b294a3898bc6efbc74627  # [linux64]
+  - url: {{ intel_ch }}/{{ target_platform }}/dpcpp_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
     folder: dpcpp_{{ target_platform }}  # [linux64 or win64]
-    sha256: '23bb4f7e0f7035c301f487e83597a79b2fe3082e1c0af94c8b48b727e42c16c0'  # [linux64]
-  - url: {{ intel_ch }}/oneccl-devel/{{ oneccl_version }}/download/{{ target_platform }}/oneccl-devel-{{ oneccl_version }}-intel_{{ oneccl_build_number }}.tar.bz2  # [linux64]
+    sha256: 7bfef6c455ae87a034e6efef1bbbbd7079875fcb4bdb3d5edbda950d1a1f0ee7  # [linux64]
+  - url: {{ intel_ch }}/{{ target_platform }}/oneccl-devel-{{ oneccl_version }}-intel_{{ oneccl_build_number }}.tar.bz2  # [linux64]
     folder: oneccl-devel  # [linux64]
-    sha256: '8f9953612b121fdd9a65aabcc554f3333b54be781e9d509544305b774d50516a'  # [linux64]
+    sha256: 1734013a1238bff9eede84adb37290a0ef2d9a9d7057ab46bef95779089f2ab0  # [linux64]
 
 build:
   number: {{ build_number }}
@@ -117,6 +116,7 @@ outputs:
       commands:
         - ls -A1 ${PREFIX}/lib/*  # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
+        - test -f ${PREFIX}/lib/libur_loader.so
 
   - name: intel-sycl-rt
     script: repack.sh   # [unix]
@@ -358,6 +358,7 @@ outputs:
         - ls -A1 ${PREFIX}/bin/*         # [unix]
         - ls -A1 ${PREFIX}/include/*     # [unix]
         - ls -A1 ${PREFIX}/lib/*         # [unix]
+        - test -f ${PREFIX}/include/sycl/CL/sycl.hpp # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
         - dir %PREFIX%\Library\lib\*  # [win]
         - icx --version
