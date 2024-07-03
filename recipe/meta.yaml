@@ -81,6 +81,43 @@ outputs:
         - ls -A1 ${PREFIX}/licensing/compiler/*  # [unix]
         - dir %PREFIX%\licensing\compiler\*  # [win]
 
+- name: intel-cmplr-lib-rt
+    script: repack.sh   # [unix]
+    script: repack.bat  # [win]
+    build:
+      run_exports:
+        # Pin to year for now, similar to MKL.
+        - {{ pin_subpackage("intel-cmplr-lib-rt", max_pin="x") }}
+    requirements:
+      # Since it is repack, we do not need these packages in the build and host
+      # sections. However it is limitation of conda-build to check for library
+      # linking only for the packages that are presented in build and host and
+      # have run_export section.
+      build:
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
+      host:
+        - zlib
+      run:
+    about:
+      home: https://software.intel.com/content/www/us/en/develop/tools.html
+      doc_url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
+      dev_url: https://software.intel.com/content/www/us/en/develop/documentation/cpp-compiler-developer-guide-and-reference/top.html
+      summary: Runtime for Intel® C++ Compiler Classic
+      license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+      license_family: Proprietary
+      license_file:
+        - intel-cmplr-lib-rt/info/licenses/license.txt
+        - intel-cmplr-lib-rt/info/licenses/tpp.txt
+      description: |
+        Runtime for Intel® C++ Compiler Classic.
+        This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+    test:
+      commands:
+        - ls -A1 ${PREFIX}/lib/*  # [unix]
+        - dir %PREFIX%\Library\bin\*  # [win]
+
   - name: intel-cmplr-lib-ur
     script: repack.sh   # [unix]
     script: repack.bat  # [win]
@@ -123,43 +160,6 @@ outputs:
         - ls -A1 ${PREFIX}/lib/*  # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
         - test -f ${PREFIX}/lib/libur_loader.so
-
-  - name: intel-cmplr-lib-rt
-    script: repack.sh   # [unix]
-    script: repack.bat  # [win]
-    build:
-      run_exports:
-        # Pin to year for now, similar to MKL.
-        - {{ pin_subpackage("intel-cmplr-lib-rt", max_pin="x") }}
-    requirements:
-      # Since it is repack, we do not need these packages in the build and host
-      # sections. However it is limitation of conda-build to check for library
-      # linking only for the packages that are presented in build and host and
-      # have run_export section.
-      build:
-        - {{ compiler('c') }}
-        - {{ compiler('cxx') }}
-        - {{ stdlib('c') }}
-      host:
-        - zlib
-      run:
-    about:
-      home: https://software.intel.com/content/www/us/en/develop/tools.html
-      doc_url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
-      dev_url: https://software.intel.com/content/www/us/en/develop/documentation/cpp-compiler-developer-guide-and-reference/top.html
-      summary: Runtime for Intel® C++ Compiler Classic
-      license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
-      license_family: Proprietary
-      license_file:
-        - intel-cmplr-lib-rt/info/licenses/license.txt
-        - intel-cmplr-lib-rt/info/licenses/tpp.txt
-      description: |
-        Runtime for Intel® C++ Compiler Classic.
-        This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
-    test:
-      commands:
-        - ls -A1 ${PREFIX}/lib/*  # [unix]
-        - dir %PREFIX%\Library\bin\*  # [win]
 
   - name: intel-sycl-rt
     script: repack.sh   # [unix]
