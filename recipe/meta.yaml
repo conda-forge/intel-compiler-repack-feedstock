@@ -403,7 +403,7 @@ outputs:
         - ls -A1 ${PREFIX}/bin/*         # [unix]
         - ls -A1 ${PREFIX}/include/*     # [unix]
         - ls -A1 ${PREFIX}/lib/*         # [unix]
-        - test -f ${PREFIX}/include/sycl/CL/sycl.hpp # [unix]
+        - test -f ${PREFIX}/include/sycl/CL/sycl.hpp  # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
         - dir %PREFIX%\Library\lib\*  # [win]
         - icx --version
