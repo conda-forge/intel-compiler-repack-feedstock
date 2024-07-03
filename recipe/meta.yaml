@@ -20,7 +20,7 @@ source:
   # Is there a better way to specify skipping the source if it does not exist? (so it matches 'skip: True' selectors)
   - url: {{ intel_ch }}/{{ target_platform }}/intel-cmplr-lic-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-cmplr-lic-rt
-    sha256: ab37ae3b142ea2cdd5bfed4389ea3299e66cc6da14e8751d8a609f970ae732ff # [linux64]
+    sha256: ab37ae3b142ea2cdd5bfed4389ea3299e66cc6da14e8751d8a609f970ae732ff  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/intel-cmplr-lib-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-cmplr-lib-rt
     sha256: a9b1c6fa0547f2c28a5b1b560fd656859af30933259f1c2b3e30f1bec5d9b259  # [linux64]
