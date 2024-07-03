@@ -47,6 +47,23 @@ Intel End User License Agreement for Developer Tools.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
 
+About intel-cmplr-lib-ur
+------------------------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: Runtime for Intel® C++ Compiler Classic
+
+Development: https://software.intel.com/content/www/us/en/develop/documentation/cpp-compiler-developer-guide-and-reference/top.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
+
+Runtime for Intel® C++ Compiler Classic.
+This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
+
 About intel-fortran-rt
 ----------------------
 
@@ -78,6 +95,23 @@ Development: https://software.intel.com/content/www/us/en/develop/tools.html
 Documentation: https://software.intel.com/content/www/us/en/develop/tools.html
 
 Intel® CPU Runtime for OpenCL(TM) Applications
+This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
+
+About intel-sycl-rt
+-------------------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: Intel End User License Agreement for Developer Tools
+
+Development: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html
+
+Intel End User License Agreement for Developer Tools.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
 
@@ -233,9 +267,11 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-dpcpp_linux--64-green.svg)](https://anaconda.org/conda-forge/dpcpp_linux-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dpcpp_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_linux-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dpcpp_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_linux-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dpcpp_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_linux-64) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-dpcpp_win--64-green.svg)](https://anaconda.org/conda-forge/dpcpp_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dpcpp_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dpcpp_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dpcpp_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_win-64) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-intel--cmplr--lib--rt-green.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-rt) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/intel-cmplr-lib-rt.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-rt) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/intel-cmplr-lib-rt.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-rt) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/intel-cmplr-lib-rt.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-rt) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-intel--cmplr--lib--ur-green.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-ur) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/intel-cmplr-lib-ur.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-ur) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/intel-cmplr-lib-ur.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-ur) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/intel-cmplr-lib-ur.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-ur) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-intel--cmplr--lic--rt-green.svg)](https://anaconda.org/conda-forge/intel-cmplr-lic-rt) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/intel-cmplr-lic-rt.svg)](https://anaconda.org/conda-forge/intel-cmplr-lic-rt) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/intel-cmplr-lic-rt.svg)](https://anaconda.org/conda-forge/intel-cmplr-lic-rt) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/intel-cmplr-lic-rt.svg)](https://anaconda.org/conda-forge/intel-cmplr-lic-rt) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-intel--fortran--rt-green.svg)](https://anaconda.org/conda-forge/intel-fortran-rt) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/intel-fortran-rt.svg)](https://anaconda.org/conda-forge/intel-fortran-rt) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/intel-fortran-rt.svg)](https://anaconda.org/conda-forge/intel-fortran-rt) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/intel-fortran-rt.svg)](https://anaconda.org/conda-forge/intel-fortran-rt) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-intel--opencl--rt-green.svg)](https://anaconda.org/conda-forge/intel-opencl-rt) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/intel-opencl-rt.svg)](https://anaconda.org/conda-forge/intel-opencl-rt) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/intel-opencl-rt.svg)](https://anaconda.org/conda-forge/intel-opencl-rt) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/intel-opencl-rt.svg)](https://anaconda.org/conda-forge/intel-opencl-rt) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-intel--sycl--rt-green.svg)](https://anaconda.org/conda-forge/intel-sycl-rt) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/intel-sycl-rt.svg)](https://anaconda.org/conda-forge/intel-sycl-rt) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/intel-sycl-rt.svg)](https://anaconda.org/conda-forge/intel-sycl-rt) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/intel-sycl-rt.svg)](https://anaconda.org/conda-forge/intel-sycl-rt) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-oneccl--devel-green.svg)](https://anaconda.org/conda-forge/oneccl-devel) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/oneccl-devel.svg)](https://anaconda.org/conda-forge/oneccl-devel) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/oneccl-devel.svg)](https://anaconda.org/conda-forge/oneccl-devel) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/oneccl-devel.svg)](https://anaconda.org/conda-forge/oneccl-devel) |
 
 Installing intel-compiler-repack
@@ -248,16 +284,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `dpcpp-cpp-rt, dpcpp_impl_linux-64, dpcpp_impl_win-64, dpcpp_linux-64, dpcpp_win-64, intel-cmplr-lib-rt, intel-cmplr-lic-rt, intel-fortran-rt, intel-opencl-rt, oneccl-devel` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `dpcpp-cpp-rt, dpcpp_impl_linux-64, dpcpp_impl_win-64, dpcpp_linux-64, dpcpp_win-64, intel-cmplr-lib-rt, intel-cmplr-lib-ur, intel-cmplr-lic-rt, intel-fortran-rt, intel-opencl-rt, intel-sycl-rt, oneccl-devel` can be installed with `conda`:
 
 ```
-conda install dpcpp-cpp-rt dpcpp_impl_linux-64 dpcpp_impl_win-64 dpcpp_linux-64 dpcpp_win-64 intel-cmplr-lib-rt intel-cmplr-lic-rt intel-fortran-rt intel-opencl-rt oneccl-devel
+conda install dpcpp-cpp-rt dpcpp_impl_linux-64 dpcpp_impl_win-64 dpcpp_linux-64 dpcpp_win-64 intel-cmplr-lib-rt intel-cmplr-lib-ur intel-cmplr-lic-rt intel-fortran-rt intel-opencl-rt intel-sycl-rt oneccl-devel
 ```
 
 or with `mamba`:
 
 ```
-mamba install dpcpp-cpp-rt dpcpp_impl_linux-64 dpcpp_impl_win-64 dpcpp_linux-64 dpcpp_win-64 intel-cmplr-lib-rt intel-cmplr-lic-rt intel-fortran-rt intel-opencl-rt oneccl-devel
+mamba install dpcpp-cpp-rt dpcpp_impl_linux-64 dpcpp_impl_win-64 dpcpp_linux-64 dpcpp_win-64 intel-cmplr-lib-rt intel-cmplr-lib-ur intel-cmplr-lic-rt intel-fortran-rt intel-opencl-rt intel-sycl-rt oneccl-devel
 ```
 
 It is possible to list all of the versions of `dpcpp-cpp-rt` available on your platform with `conda`:
