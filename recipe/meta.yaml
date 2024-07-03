@@ -168,7 +168,7 @@ outputs:
       commands:
         - ls -A1 ${PREFIX}/lib/*  # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
-        - test -f ${PREFIX}/lib/libur_loader.so  #[linux]
+        - test -f ${PREFIX}/lib/libur_loader.so  # [linux]
 
   - name: intel-sycl-rt
     script: repack.sh   # [unix]
