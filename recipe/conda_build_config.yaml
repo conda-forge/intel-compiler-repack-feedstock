@@ -6,3 +6,7 @@ cxx_compiler_version:   # [linux]
   - 7.5.0               # [linux]
 binutils_version:       # [linux]
   - 2.30                # [linux]
+# We want to relax it as much as possible, but opencl runtime is referencing to
+# 2.18 symbols
+c_stdlib_version:       # [linux]
+  - 2.28                # [linux]
