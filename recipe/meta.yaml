@@ -81,7 +81,7 @@ outputs:
         - ls -A1 ${PREFIX}/licensing/compiler/*  # [unix]
         - dir %PREFIX%\licensing\compiler\*  # [win]
 
-- name: intel-cmplr-lib-rt
+  - name: intel-cmplr-lib-rt
     script: repack.sh   # [unix]
     script: repack.bat  # [win]
     build:
