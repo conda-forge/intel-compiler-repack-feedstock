@@ -13,23 +13,6 @@ Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Dev
 
 Summary: Repackaged Intel® compilers and runtimes.
 
-About intel-cmplr-lib-rt
-------------------------
-
-Home: https://software.intel.com/content/www/us/en/develop/tools.html
-
-Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
-
-Summary: Runtime for Intel® C++ Compiler Classic
-
-Development: https://software.intel.com/content/www/us/en/develop/documentation/cpp-compiler-developer-guide-and-reference/top.html
-
-Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
-
-Runtime for Intel® C++ Compiler Classic.
-This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
-
-
 About intel-cmplr-lic-rt
 ------------------------
 
@@ -44,6 +27,23 @@ Development: https://software.intel.com/content/www/us/en/develop/articles/end-u
 Documentation: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html
 
 Intel End User License Agreement for Developer Tools.
+This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
+
+About intel-cmplr-lib-rt
+------------------------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: Runtime for Intel® C++ Compiler Classic
+
+Development: https://software.intel.com/content/www/us/en/develop/documentation/cpp-compiler-developer-guide-and-reference/top.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
+
+Runtime for Intel® C++ Compiler Classic.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
 
