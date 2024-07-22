@@ -21,6 +21,11 @@ if [ "${CONDA_BUILD:-0}" = "1" ]; then
   env > /tmp/old-env-$$.txt
 fi
 
+if [ "${CC:-}" = "" ] && [ "${CONDA_BUILD:-}" = "1" ]; then
+  echo "Need to use C/C++ compiler activation package"
+  exit 1
+fi
+
 export CC=icx
 export CXX=icpx
 export ICPXCFG="$CONDA_PREFIX/bin/@HOST@-icpx.cfg"
