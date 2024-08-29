@@ -9,7 +9,7 @@
 {% set intel_ch = "https://software.repos.intel.com/python/conda" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
-{% set dst_build_number = '0' %}
+{% set dst_build_number = '1' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
 package:
@@ -282,7 +282,7 @@ outputs:
         - libxml2
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
-        - python  # [win]
+        - python *  # [win]
       run:
         # intel-cmplr-lic-rt is a license file, please do not remove.
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
