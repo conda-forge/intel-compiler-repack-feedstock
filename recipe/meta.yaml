@@ -1,4 +1,6 @@
 {% set version = "2024.2.0" %}
+# work-around for https://github.com/conda/conda-build/issues/5443
+{% set intel_build_number = "dummy" %}
 {% set intel_build_number = "981" %}   # [linux]
 {% set intel_build_number = "978" %}   # [win]
 
