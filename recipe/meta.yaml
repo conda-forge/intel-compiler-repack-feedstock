@@ -14,6 +14,13 @@
 {% set dst_build_number = '1' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
+# this recipe does not build against the python C API, so we use `python *` for
+# "any python version" in the host environment where necessary, but want to ignore
+# the run-exports that result from that. However, conda smithy wrongly concludes
+# from the `- python` string under `ignore_run_exports_from` that this recipe needs
+# to be built for all our various python versions, which we want to suppress.
+{% set cannot_be_named = "python" %}
+
 package:
   name: intel-compiler-repack
   version: {{ version }}
@@ -259,9 +266,9 @@ outputs:
     build:
       skip: True  # [win32]
       binary_relocation: False   # [win]
-      ignore_run_exports:        # [win]
-        - python_abi             # [win]
-        - python                 # [win]
+      ignore_run_exports_from:   # [win]
+        # see comment where cannot_be_named is defined
+        - {{ cannot_be_named }}  # [win]
       run_exports:
         # Pin to year for now, similar to MKL.
         - {{ pin_subpackage("intel-opencl-rt", max_pin="x") }}
