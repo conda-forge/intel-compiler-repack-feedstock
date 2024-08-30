@@ -1,9 +1,12 @@
+azure:
+  settings_win:
+    variables:
+      CONDA_BLD_PATH: C:\\bld\\
+      SET_PAGEFILE: "True"
 conda_forge_output_validation: true
 conda_build_tool: conda-build
 github:
   branch_name: main
   tooling_branch_name: main
-os_version:
-  linux_64: cos7
 conda_build:
   pkg_format: '2'

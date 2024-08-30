@@ -1,4 +1,6 @@
 {% set version = "2024.2.0" %}
+# work-around for https://github.com/conda/conda-build/issues/5443
+{% set intel_build_number = "dummy" %}
 {% set intel_build_number = "981" %}   # [linux]
 {% set intel_build_number = "978" %}   # [win]
 
@@ -9,7 +11,7 @@
 {% set intel_ch = "https://software.repos.intel.com/python/conda" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
-{% set dst_build_number = '0' %}
+{% set dst_build_number = '1' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
 package:
@@ -257,9 +259,6 @@ outputs:
     build:
       skip: True  # [win32]
       binary_relocation: False   # [win]
-      ignore_run_exports:        # [win]
-        - python_abi             # [win]
-        - python                 # [win]
       run_exports:
         # Pin to year for now, similar to MKL.
         - {{ pin_subpackage("intel-opencl-rt", max_pin="x") }}
@@ -268,6 +267,7 @@ outputs:
         - {{ compiler('c') }}
         - {{ stdlib('c') }}
         - patchelf               # [linux]
+        - python *  # [win]
       host:
         # We don't dynamically link to tbb, ocl loader and zlib, libxml2 the way
         # conda can detect, but we need to add them anyway to make it run.
@@ -282,7 +282,6 @@ outputs:
         - libxml2
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
-        - python  # [win]
       run:
         # intel-cmplr-lic-rt is a license file, please do not remove.
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
