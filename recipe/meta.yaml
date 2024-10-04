@@ -11,7 +11,7 @@
 {% set intel_ch = "https://software.repos.intel.com/python/conda" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
-{% set dst_build_number = '0' %}
+{% set dst_build_number = '1' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
 package:
@@ -398,7 +398,10 @@ outputs:
         # also appears that sysroot version must be aligned with host system,
         # e.g.:
         # https://github.com/conda-forge/ctng-compiler-activation-feedstock/issues/108
-        - {{ c_stdlib }}_{{ target_platform }}
+        - {{ c_stdlib }}_{{ target_platform }}  # [not linux]
+        # We setting up minimal version for sysroot cause it is a requirement
+        # of dpcpp compiler
+        - {{ c_stdlib }}_{{ target_platform }} >={{ c_stdlib_version }}  # [linux]
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
       doc_url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
