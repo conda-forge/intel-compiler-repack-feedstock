@@ -1,17 +1,22 @@
-{% set version = "2024.2.1" %}
+{% set version = "2025.0.0" %}
 # work-around for https://github.com/conda/conda-build/issues/5443
 {% set intel_build_number = "dummy" %}
-{% set intel_build_number = "1079" %}   # [linux]
-{% set intel_build_number = "1083" %}   # [win]
+{% set intel_build_number = "1169" %}   # [linux]
+{% set intel_build_number = "1162" %}   # [win]
 
-{% set oneccl_version = "2021.13.1" %}
-{% set oneccl_build_number = "31" %}
+{% set oneccl_version = "2021.14.0" %}
+{% set oneccl_build_number = "505" %}
 
-{% set tbb_version = "2021.13.1" %}
+{% set tbb_version = "2022.0.0" %}
+
+{% set umf_version = "0.9.0" %}
+{% set umf_build_number = "590" %}   # [linux]
+{% set umf_build_number = "584" %}   # [win]
+
 {% set intel_ch = "https://software.repos.intel.com/python/conda" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
-{% set dst_build_number = '1' %}
+{% set dst_build_number = '0' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
 package:
@@ -50,6 +55,9 @@ source:
   - url: {{ intel_ch }}/{{ target_platform }}/oneccl-devel-{{ oneccl_version }}-intel_{{ oneccl_build_number }}.tar.bz2  # [linux64]
     folder: oneccl-devel  # [linux64]
     sha256: c61b156b9abfc751efa49a158811b0761a047033f5554ec8060ed106f9e6a4f5  # [linux64]
+  - url: {{ intel_ch }}/{{ target_platform }}/umf-{{ umf_version }}-intel_{{ umf_build_number }}.tar.bz2  # [linux64 or win64]
+    folder: umf  # [linux64 or win64]
+    sha256: 16a384288a8d2b66320aae06201eeecae2a424a7c6c3e5066ff97fe441cef7f9  # [linux64]
 
 build:
   number: {{ build_number }}
@@ -149,6 +157,7 @@ outputs:
         - level-zero-devel  # [linux]
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
+        - {{ pin_subpackage('umf', exact=True) }}
       run:
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
         # intel-cmplr-lic-rt is a license file, please do not remove.
@@ -512,6 +521,38 @@ outputs:
     test:
       commands:
         - ls -A1 $PREFIX/lib/*  # [unix]
+
+  - name: umf
+    script: repack.sh   # [unix]
+    script: repack.bat  # [win]
+    requirements:
+      build:
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
+      host:
+      run:
+        # intel-cmplr-lic-rt is a license file, please do not remove.
+        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
+        - libhwloc
+    about:
+      home: https://software.intel.com/content/www/us/en/develop/tools.html
+      doc_url: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html
+      dev_url: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html
+      summary: Intel End User License Agreement for Developer Tools
+      license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+      license_family: Proprietary
+      license_file:
+        - intel-sycl-rt/info/licenses/license.txt
+        - intel-sycl-rt/info/licenses/tpp.txt
+      description: |
+        Intel End User License Agreement for Developer Tools.
+        This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+    test:
+      commands:
+        - ls -A1 ${PREFIX}/licensing/compiler/*  # [unix]
+        - ls -A1 ${PREFIX}/lib/libumf.so*  # [unix]
+        - dir %PREFIX%\licensing\compiler\*  # [win]
 
 about:
   home: https://github.com/AnacondaRecipes/intel-compilers-repack-feedstock
