@@ -525,6 +525,8 @@ outputs:
   - name: umf
     script: repack.sh   # [unix]
     script: repack.bat  # [win]
+    build:
+      number: {{ umf_build_number|int + dst_build_number|int }}
     requirements:
       build:
         - {{ compiler('c') }}
