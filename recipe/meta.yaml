@@ -58,6 +58,9 @@ source:
   - url: {{ intel_ch }}/{{ target_platform }}/umf-{{ umf_version }}-intel_{{ umf_build_number }}.tar.bz2  # [linux64 or win64]
     folder: umf  # [linux64 or win64]
     sha256: 16a384288a8d2b66320aae06201eeecae2a424a7c6c3e5066ff97fe441cef7f9  # [linux64]
+  - url: {{ intel_ch }}/{{ target_platform }}/compiler_shared-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
+    folder: compiler_shared  # [linux64 or win64]
+    sha256: d31c89f3ffcc5b45366f7465b5a3411a3a2c529ecf72eebcc4c3a244f713d3eb  # [linux64]
 
 build:
   number: {{ build_number }}
@@ -148,6 +151,7 @@ outputs:
         - {{ compiler('cxx') }}
         - {{ stdlib('c') }}
       host:
+        - zlib
         - ocl-icd  # [linux]
         - khronos-opencl-icd-loader  # [win]
         # Pinning it on linux for now, because on windows it should be
@@ -162,6 +166,7 @@ outputs:
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
         # intel-cmplr-lic-rt is a license file, please do not remove.
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
+        - {{ pin_subpackage('umf', exact=True) }}
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
       doc_url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
@@ -327,10 +332,6 @@ outputs:
     build:
       skip: True  # [win32]
     requirements:
-      build:
-        - {{ compiler('c') }}
-        - {{ compiler('cxx') }}
-        - {{ stdlib('c') }}
       host:
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
@@ -533,10 +534,10 @@ outputs:
         - {{ compiler('cxx') }}
         - {{ stdlib('c') }}
       host:
+        - libhwloc
       run:
         # intel-cmplr-lic-rt is a license file, please do not remove.
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
-        - libhwloc
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
       doc_url: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html

@@ -9,6 +9,6 @@ robocopy /E "%src2%" "%LIBRARY_LIB%"
 if %ERRORLEVEL% GEQ 8 exit 1
 
 :: populate CL_CONFIG_TBB_DLL_PATH = entry in cl.cfg setting it to %LIBRARY_BIN%
-python %RECIPE_DIR%\set_tbb_dll_path.py %LIBRARY_BIN%\intel-ocl-cpu\cl.cfg
+%PYTHON% %RECIPE_DIR%\set_tbb_dll_path.py %LIBRARY_BIN%\intel-ocl-cpu\cl.cfg
 mkdir "%LIBRARY_PREFIX%\etc\OpenCL\vendors\"
 echo %LIBRARY_BIN%\intel-ocl-cpu\intelocl64.dll> %LIBRARY_PREFIX%\etc\OpenCL\vendors\intel-ocl-cpu.icd
