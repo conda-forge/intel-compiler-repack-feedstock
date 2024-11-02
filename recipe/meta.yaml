@@ -7,7 +7,7 @@
 {% set oneccl_version = "2021.14.0" %}
 {% set oneccl_build_number = "505" %}
 
-{% set tbb_version = "2022.0.0" %}
+{% set tbb_version_major = "2022" %}
 
 {% set umf_version = "0.9.0" %}
 {% set umf_build_number = "590" %}   # [linux]
@@ -285,7 +285,7 @@ outputs:
       host:
         # We don't dynamically link to tbb, ocl loader and zlib, libxml2 the way
         # conda can detect, but we need to add them anyway to make it run.
-        - tbb-devel {{ tbb_version.split('.')[0] }}.*
+        - tbb-devel {{ tbb_version_major }}.*
         # OpenCL loader is not in dependency of this package, but without it
         # the library is useless. Should user request OpenCL loader explicitly
         # in downstream recipes?
