@@ -47,6 +47,23 @@ Runtime for Intel® C++ Compiler Classic.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
 
+About umf
+---------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: Intel End User License Agreement for Developer Tools
+
+Development: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html
+
+Intel End User License Agreement for Developer Tools.
+This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
+
 About intel-cmplr-lib-ur
 ------------------------
 
@@ -315,6 +332,7 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-intel--opencl--rt-green.svg)](https://anaconda.org/conda-forge/intel-opencl-rt) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/intel-opencl-rt.svg)](https://anaconda.org/conda-forge/intel-opencl-rt) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/intel-opencl-rt.svg)](https://anaconda.org/conda-forge/intel-opencl-rt) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/intel-opencl-rt.svg)](https://anaconda.org/conda-forge/intel-opencl-rt) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-intel--sycl--rt-green.svg)](https://anaconda.org/conda-forge/intel-sycl-rt) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/intel-sycl-rt.svg)](https://anaconda.org/conda-forge/intel-sycl-rt) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/intel-sycl-rt.svg)](https://anaconda.org/conda-forge/intel-sycl-rt) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/intel-sycl-rt.svg)](https://anaconda.org/conda-forge/intel-sycl-rt) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-oneccl--devel-green.svg)](https://anaconda.org/conda-forge/oneccl-devel) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/oneccl-devel.svg)](https://anaconda.org/conda-forge/oneccl-devel) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/oneccl-devel.svg)](https://anaconda.org/conda-forge/oneccl-devel) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/oneccl-devel.svg)](https://anaconda.org/conda-forge/oneccl-devel) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-umf-green.svg)](https://anaconda.org/conda-forge/umf) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/umf.svg)](https://anaconda.org/conda-forge/umf) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/umf.svg)](https://anaconda.org/conda-forge/umf) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/umf.svg)](https://anaconda.org/conda-forge/umf) |
 
 Installing intel-compiler-repack
 ================================
@@ -326,16 +344,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `dpcpp-cpp-rt, dpcpp_impl_linux-64, dpcpp_impl_win-64, dpcpp_linux-64, dpcpp_win-64, intel-cmplr-lib-rt, intel-cmplr-lib-ur, intel-cmplr-lic-rt, intel-fortran-rt, intel-opencl-rt, intel-sycl-rt, oneccl-devel` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `dpcpp-cpp-rt, dpcpp_impl_linux-64, dpcpp_impl_win-64, dpcpp_linux-64, dpcpp_win-64, intel-cmplr-lib-rt, intel-cmplr-lib-ur, intel-cmplr-lic-rt, intel-fortran-rt, intel-opencl-rt, intel-sycl-rt, oneccl-devel, umf` can be installed with `conda`:
 
 ```
-conda install dpcpp-cpp-rt dpcpp_impl_linux-64 dpcpp_impl_win-64 dpcpp_linux-64 dpcpp_win-64 intel-cmplr-lib-rt intel-cmplr-lib-ur intel-cmplr-lic-rt intel-fortran-rt intel-opencl-rt intel-sycl-rt oneccl-devel
+conda install dpcpp-cpp-rt dpcpp_impl_linux-64 dpcpp_impl_win-64 dpcpp_linux-64 dpcpp_win-64 intel-cmplr-lib-rt intel-cmplr-lib-ur intel-cmplr-lic-rt intel-fortran-rt intel-opencl-rt intel-sycl-rt oneccl-devel umf
 ```
 
 or with `mamba`:
 
 ```
-mamba install dpcpp-cpp-rt dpcpp_impl_linux-64 dpcpp_impl_win-64 dpcpp_linux-64 dpcpp_win-64 intel-cmplr-lib-rt intel-cmplr-lib-ur intel-cmplr-lic-rt intel-fortran-rt intel-opencl-rt intel-sycl-rt oneccl-devel
+mamba install dpcpp-cpp-rt dpcpp_impl_linux-64 dpcpp_impl_win-64 dpcpp_linux-64 dpcpp_win-64 intel-cmplr-lib-rt intel-cmplr-lib-ur intel-cmplr-lic-rt intel-fortran-rt intel-opencl-rt intel-sycl-rt oneccl-devel umf
 ```
 
 It is possible to list all of the versions of `dpcpp-cpp-rt` available on your platform with `conda`:
