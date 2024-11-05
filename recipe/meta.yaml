@@ -452,8 +452,8 @@ outputs:
         # from there. Ideally we need to create (d)activate-icpx(.sh|.bat) based
         # on gcc, the same way clang does it:
         # https://github.com/conda-forge/ctng-compiler-activation-feedstock/blob/9833f5976847c62d43f8058945ac9e5d440806c9/recipe/build.sh#L109-L126
-        - gcc_{{ target_platform }} >={{ c_compiler_version }} # [linux]
-        - gxx_{{ target_platform }} >={{ c_compiler_version }} # [linux]
+        - gcc_{{ target_platform }} >={{ c_compiler_version }}  # [linux]
+        - gxx_{{ target_platform }} >={{ c_compiler_version }}  # [linux]
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
       doc_url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
