@@ -110,12 +110,13 @@ outputs:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         - {{ stdlib('c') }}
-        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
       host:
         - zlib
         # intel-cmplr-lic-rt is a license file, please do not remove.
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
       run:
+        # intel-cmplr-lic-rt is a license file, please do not remove.
+        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
       doc_url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
@@ -138,6 +139,8 @@ outputs:
     script: repack.sh   # [unix]
     script: repack.bat  # [win]
     build:
+      ignore_run_exports_from:
+        - level-zero-devel  # [linux]
       run_exports:
         # Pin to year for now, similar to MKL.
         - {{ pin_subpackage("intel-cmplr-lib-ur", max_pin="x") }}
@@ -160,13 +163,16 @@ outputs:
         # TODO: check if windows libraries may be loaded from conda environment.
         - level-zero-devel  # [linux]
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
-        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('umf', exact=True) }}
       run:
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
-        # intel-cmplr-lic-rt is a license file, please do not remove.
-        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('umf', exact=True) }}
+      run_constrained:
+        # Pinning it on linux for now, because on windows it should be
+        # distributed with driver and because of the specific of the system
+        # level zero loader may be searched only in the system directories.
+        # TODO: check if windows libraries may be loaded from conda environment.
+        - {{ pin_compatible("level-zero") }}     # [linux]
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
       doc_url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
@@ -199,14 +205,9 @@ outputs:
         - {{ compiler('cxx') }}
         - {{ stdlib('c') }}
       host:
-        - ocl-icd                    # [linux]
-        - khronos-opencl-icd-loader  # [not linux]
-        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-ur', exact=True) }}
       run:
-        # intel-cmplr-lic-rt is a license file, please do not remove.
-        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-ur', exact=True) }}
     about:
@@ -241,13 +242,10 @@ outputs:
         - patchelf                 # [linux]
       host:
         - mpich                    # [linux]
-        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
       run:
         - _openmp_mutex * *_llvm   # [linux]
         - llvm-openmp              # [not linux]
-        # intel-cmplr-lic-rt is a license file, please do not remove.
-        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
@@ -294,11 +292,8 @@ outputs:
         # TODO: do we need zlib and libxml2 here?
         - zlib
         - libxml2
-        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
       run:
-        # intel-cmplr-lic-rt is a license file, please do not remove.
-        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
@@ -333,18 +328,13 @@ outputs:
       skip: True  # [win32]
     requirements:
       host:
-        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-ur', exact=True) }}
         - {{ pin_subpackage('intel-opencl-rt', exact=True) }}
         - {{ pin_subpackage('intel-sycl-rt', exact=True) }}
-        - ocl-icd   # [linux]
-        - khronos-opencl-icd-loader  # [win]
       run:
         - _openmp_mutex * *_llvm   # [linux]
         - llvm-openmp              # [not linux]
-        # intel-cmplr-lic-rt is a license file, please do not remove.
-        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-ur', exact=True) }}
         - {{ pin_subpackage('intel-opencl-rt', exact=True) }}
@@ -373,15 +363,16 @@ outputs:
     build:
       skip: True  # [not (linux64 or win64)]
       binary_relocation: False
-      overlinking_ignore_patterns:
-        - "**"
       ignore_run_exports_from:
         - {{ c_stdlib }}_{{ target_platform }}
       run_exports:
         # 1. strong so it gets added if this package is in the build requirement section.
         # 2. Pin to year for now, similar to MKL.
         strong:
-          - {{ pin_subpackage("dpcpp-cpp-rt", max_pin="x") }}
+          - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
+          # TODO: this is CPU runtime, do we want to strongly link it?
+          - {{ pin_subpackage('intel-opencl-rt', exact=True) }}
+          - {{ pin_subpackage('intel-sycl-rt', exact=True) }}
           - {{ pin_compatible("libgcc-ng") }}     # [linux64]
           - {{ pin_compatible("libstdcxx-ng") }}  # [linux64] 
     requirements:
@@ -391,16 +382,23 @@ outputs:
         - {{ stdlib('c') }}
       host:
         - zlib
-        - libxml2
-        - ocl-icd                    # [linux]
-        - khronos-opencl-icd-loader  # [not linux]
-        - {{ pin_subpackage('dpcpp-cpp-rt', exact=True) }}
+        - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
+        # TODO: this is CPU runtime, do we want to strongly link it?
+        - {{ pin_subpackage('intel-opencl-rt', exact=True) }}
+        - {{ pin_subpackage('intel-sycl-rt', exact=True) }}
+        - ocl-icd  # [linux]
+        - khronos-opencl-icd-loader  # [win]
         # FIXME due to a conda-build bug, we need to tell conda-build that dpcpp-cpp-rt depends
         # on llvm openmp instead of gnu
         - _openmp_mutex * *_llvm   # [linux]
         - llvm-openmp              # [not linux]
       run:
-        - {{ pin_subpackage('dpcpp-cpp-rt', exact=True) }}
+        - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
+        - {{ pin_subpackage('intel-sycl-rt', exact=True) }}
+        # TODO: this is CPU runtime, do we want to strongly link it?
+        - {{ pin_subpackage('intel-opencl-rt', exact=True) }}
+        - ocl-icd  # [linux]
+        - khronos-opencl-icd-loader  # [win]
         - binutils_impl_{{ target_platform }} >={{ binutils_version }}        # [linux]
         - libgcc-devel_{{ target_platform }} >={{ c_compiler_version }}       # [linux]
         - libstdcxx-devel_{{ target_platform }} >={{ cxx_compiler_version }}  # [linux]
@@ -412,6 +410,9 @@ outputs:
         # We setting up minimal version for sysroot cause it is a requirement
         # of dpcpp compiler
         - {{ c_stdlib }}_{{ target_platform }} >={{ c_stdlib_version }}  # [linux]
+      run_constrained:
+        # prevent clobbering if user have mixed environment with intel's channel
+        - compiler_shared <0a0
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
       doc_url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
@@ -496,7 +497,6 @@ outputs:
         - {{ stdlib('c') }}
       host:
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
-        - {{ pin_subpackage('dpcpp-cpp-rt', exact=True) }}
         - {{ pin_subpackage('intel-sycl-rt', exact=True) }}
         # FIXME due to a conda-build bug, we need to tell conda-build that dpcpp-cpp-rt depends
         # on llvm openmp instead of gnu
@@ -505,7 +505,6 @@ outputs:
       run:
         - {{ pin_subpackage('intel-sycl-rt', exact=True) }}
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
-        - {{ pin_subpackage('dpcpp-cpp-rt', exact=True) }}
     about:
       home: https://software.intel.com/content/www/us/en/develop/tools.html
       doc_url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/oneccl.htm
@@ -531,10 +530,11 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
-        - {{ compiler('cxx') }}
         - {{ stdlib('c') }}
       host:
         - libhwloc
+        # intel-cmplr-lic-rt is a license file, please do not remove.
+        - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
       run:
         # intel-cmplr-lic-rt is a license file, please do not remove.
         - {{ pin_subpackage('intel-cmplr-lic-rt', exact=True) }}
@@ -546,8 +546,8 @@ outputs:
       license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
       license_family: Proprietary
       license_file:
-        - intel-sycl-rt/info/licenses/license.txt
-        - intel-sycl-rt/info/licenses/tpp.txt
+        - umf/info/licenses/license.txt
+        - umf/info/licenses/tpp.txt
       description: |
         Intel End User License Agreement for Developer Tools.
         This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
