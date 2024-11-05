@@ -4,8 +4,8 @@ set "src=%SRC_DIR%\%PKG_NAME%"
 :: except dpcpp_impl_linux-64 ? May be there are some conda forge pacakges we can
 :: link to.
 if "%PKG_NAME%" == "dpcpp_impl_win-64" (
-  rmdir /s %SRC_DIR%/compiler_shared/info
-  xcopy /E %SRC_DIR%/compiler_shared/. %src%
+  rmdir /s /q %SRC_DIR%\compiler_shared\info
+  xcopy /E %SRC_DIR%\compiler_shared %src%
 )
 
 robocopy /E "%src%" "%PREFIX%"
