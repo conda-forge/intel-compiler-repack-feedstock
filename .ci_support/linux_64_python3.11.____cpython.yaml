@@ -22,6 +22,8 @@ cxx_compiler_version:
 - 7.5.0
 docker_image:
 - quay.io/condaforge/linux-anvil-alma-x86_64:8
+libhwloc:
+- 2.11.2
 libxml2:
 - '2'
 mpich:
@@ -34,6 +36,8 @@ python:
 - 3.11.* *_cpython
 target_platform:
 - linux-64
+tbb:
+- '2021'
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version

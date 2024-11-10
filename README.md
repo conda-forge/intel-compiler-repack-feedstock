@@ -50,18 +50,22 @@ This package is a repackaged set of binaries obtained directly from Intel's Anac
 About umf
 ---------
 
-Home: https://software.intel.com/content/www/us/en/develop/tools.html
+Home: https://github.com/oneapi-src/unified-memory-framework
 
 Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
 
-Summary: Intel End User License Agreement for Developer Tools
+Summary: A library for constructing allocators and memory pools
 
-Development: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html
+Development: https://github.com/oneapi-src/unified-memory-framework
 
-Documentation: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html
+Documentation: https://oneapi-src.github.io/unified-memory-framework/
 
-Intel End User License Agreement for Developer Tools.
-This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+The Unified Memory Framework (UMF) is a library for constructing
+allocators and memory pools. It also contains broadly useful
+abstractions and utilities for memory management. UMF allows users to
+manage multiple memory pools characterized by different attributes,
+allowing certain allocation types to be isolated from others and
+allocated using different hardware resources as required.
 
 
 About intel-cmplr-lib-ur
