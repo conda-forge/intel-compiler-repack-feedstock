@@ -27,40 +27,40 @@ source:
   # Is there a better way to specify skipping the source if it does not exist? (so it matches 'skip: True' selectors)
   - url: {{ intel_ch }}/{{ target_platform }}/intel-cmplr-lic-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-cmplr-lic-rt
-    sha256: 865288f5b133f205692f88e38af5b1928f8e7ce0c99f9068be2a5d247c540067  # [linux64]
+    sha256: 61fc4e231dafea5d3c1bf6da8c4651f22f94c82605969a73a9dc08069683529f  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/intel-cmplr-lib-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-cmplr-lib-rt
-    sha256: 9a6a149681d2cc87e0e818140c13af04c82fbfc0760a451db70cbbf07c560bde  # [linux64]
+    sha256: 22c74d6f81205dddba45791047e6fa77659407b4ef28c336198c62d86a23bdb3  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/intel-cmplr-lib-ur-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-cmplr-lib-ur
-    sha256: 95ec7e7014adfc2dda389008975e63a66338a235dbdef4a694989ed41ee5db75  # [linux64]
+    sha256: 243a40ffcfa1b7814d56b0e9c60ebe2d5e9906086373bca978c9924de0fd8066  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/intel-sycl-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-sycl-rt
-    sha256: 696aeb88832c8836d202bb4a434c5aa7ec145f92d62cc0a2d36fe10e77494a62  # [linux64]
+    sha256: 185e217c40e89cad85404b0a340ed2ba3c6d5d040c2ae3eb7758e37ff034acdc  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/intel-fortran-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2
     folder: intel-fortran-rt
-    sha256: c33a492ae252ede2e4998e87d21bb7b27d8eae38ba489c83996bfdf3c840328a  # [linux64]
+    sha256: 15c08e8909b9bd7488ca20a8b221ea486cde66e86e66a1d6a3276c89e320f649  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/intel-opencl-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
     folder: intel-opencl-rt  # [linux64 or win64]
-    sha256: fe38bfd3fcc01068aced409d34d64ee44e39831d2c4f1fcbf93bd0dee63f48ad  # [linux64]
+    sha256: f29ca2457ff5e1328fec63db1d242ecbbe0cc82be8a829b7197ca26159889b58  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/dpcpp-cpp-rt-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [not win32]
     folder: dpcpp-cpp-rt  # [not win32]
-    sha256: 2e74407b49fbf865462be995806aad4411ed992e1bee8404d2c75616db9c4ac6  # [linux64]
+    sha256: 1852ac2f74abc651c13aac254f7d9ed37aec99e45a238994b7dd28aaca1e408c  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/dpcpp_impl_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
     folder: dpcpp_impl_{{ target_platform }}  # [linux64 or win64]
-    sha256: 926f17c28168db9cb110d9803fc6037c0ea0b2bd37074ff4b21a1543f9e37777  # [linux64]
+    sha256: 6da99b1d8dfc456a55fece777ad9a2899ebc0e90026dfa814cc478694a94c447  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/dpcpp_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
     folder: dpcpp_{{ target_platform }}  # [linux64 or win64]
-    sha256: fc652956fb8315ce23cb677678e788c519c817c1f82d1548a37bc8b90fab4994  # [linux64]
+    sha256: a96cbcd528444bb61ae41d8cfc98b6cb525e48db0c1da7d52c1d5b01395c161e  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/oneccl-devel-{{ oneccl_version }}-intel_{{ oneccl_build_number }}.tar.bz2  # [linux64]
     folder: oneccl-devel  # [linux64]
     sha256: 66c3f6fc077042b60a92840242732aa06085d3eb943c83659dd54c66867c289f  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/umf-{{ umf_version }}-intel_{{ umf_build_number }}.tar.bz2  # [linux64 or win64]
     folder: umf  # [linux64 or win64]
-    sha256: 16a384288a8d2b66320aae06201eeecae2a424a7c6c3e5066ff97fe441cef7f9  # [linux64]
+    sha256: f0fcd30adf44e9b85b57412b196938b07aa4caebedaf7e62c4e9b6ebb133f83d  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/compiler_shared-{{ version }}-intel_{{ intel_build_number }}.tar.bz2  # [linux64 or win64]
     folder: compiler_shared  # [linux64 or win64]
-    sha256: d31c89f3ffcc5b45366f7465b5a3411a3a2c529ecf72eebcc4c3a244f713d3eb  # [linux64]
+    sha256: 2fa7239075531274f783da8b903c8293128fc0427124c63466ab39301d775856  # [linux64]
 
 build:
   number: {{ build_number }}
