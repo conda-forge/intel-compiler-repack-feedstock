@@ -22,7 +22,5 @@ python:
 - 3.12.* *_cpython
 target_platform:
 - win-64
-tbb:
-- '2021'
 zlib:
 - '1'
