@@ -519,7 +519,7 @@ outputs:
           - {{ pin_subpackage("dpcpp-cpp-rt", max_pin="x") }}
     requirements:
       run:
-        - {{ subpackage_pin('dpcpp_impl_' ~ target_platform, exact=True) }}
+        - {{ pin_subpackage('dpcpp_impl_' ~ target_platform, exact=True) }}
         - binutils_{{ target_platform }} >={{ binutils_version }}  # [linux]
         - {{ c_stdlib }}_{{ target_platform }}
         # We don't need actual compiler, we are just using activation script
@@ -564,7 +564,7 @@ outputs:
       skip: True  # [not (linux64 or win64)]
     requirements:
       run:
-        - {{ subpackage_pin('ifx_impl_' ~ target_platform, exact=True) }}
+        - {{ pin_subpackage('ifx_impl_' ~ target_platform, exact=True) }}
         - binutils_{{ target_platform }} >={{ binutils_version }}  # [linux]
         - {{ c_stdlib }}_{{ target_platform }}
         # We don't need actual compiler, we are just using activation script
