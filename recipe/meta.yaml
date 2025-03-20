@@ -464,8 +464,6 @@ outputs:
         - zlib
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
         - {{ pin_subpackage('intel-fortran-rt', exact=True) }}
-        # FIXME due to a conda-build bug, we need to tell conda-build that dpcpp-cpp-rt depends
-        # on llvm openmp instead of gnu
         - _openmp_mutex * *_llvm   # [linux]
         - llvm-openmp              # [not linux]
       run:
@@ -519,7 +517,7 @@ outputs:
           - {{ pin_subpackage("dpcpp-cpp-rt", max_pin="x") }}
     requirements:
       run:
-        - {{ subpackage_pin('dpcpp_impl_' ~ target_platform, exact=True) }}
+        - {{ pin_subpackage('dpcpp_impl_' ~ target_platform, exact=True) }}
         - binutils_{{ target_platform }} >={{ binutils_version }}  # [linux]
         - {{ c_stdlib }}_{{ target_platform }}
         # We don't need actual compiler, we are just using activation script
@@ -564,7 +562,7 @@ outputs:
       skip: True  # [not (linux64 or win64)]
     requirements:
       run:
-        - {{ subpackage_pin('ifx_impl_' ~ target_platform, exact=True) }}
+        - {{ pin_subpackage('ifx_impl_' ~ target_platform, exact=True) }}
         - binutils_{{ target_platform }} >={{ binutils_version }}  # [linux]
         - {{ c_stdlib }}_{{ target_platform }}
         # We don't need actual compiler, we are just using activation script
@@ -588,10 +586,7 @@ outputs:
         This package is a repackaged set of binaries obtained directly from Intel channel.
     test:
       requires:
-        - {{ compiler('c') }}
-        - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
-        - {{ stdlib('c') }}
       files:
         - simple.f90
       commands:
