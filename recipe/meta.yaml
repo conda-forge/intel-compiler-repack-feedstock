@@ -452,8 +452,6 @@ outputs:
         # 2. Pin to year for now, similar to MKL.
         strong:
           - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
-          # TODO: this is CPU runtime, do we want to strongly link it?
-          - {{ pin_subpackage('intel-opencl-rt', exact=True) }}
           - {{ pin_subpackage('intel-fortran-rt', exact=True) }}
           - {{ pin_compatible("libgcc-ng") }}     # [linux64]
           - {{ pin_compatible("libstdcxx-ng") }}  # [linux64] 
@@ -465,11 +463,7 @@ outputs:
       host:
         - zlib
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
-        # TODO: this is CPU runtime, do we want to strongly link it?
-        - {{ pin_subpackage('intel-opencl-rt', exact=True) }}
         - {{ pin_subpackage('intel-fortran-rt', exact=True) }}
-        - ocl-icd  # [linux]
-        - khronos-opencl-icd-loader  # [win]
         # FIXME due to a conda-build bug, we need to tell conda-build that dpcpp-cpp-rt depends
         # on llvm openmp instead of gnu
         - _openmp_mutex * *_llvm   # [linux]
@@ -477,8 +471,6 @@ outputs:
       run:
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
         - {{ pin_subpackage('intel-fortran-rt', exact=True) }}
-        # TODO: this is CPU runtime, do we want to strongly link it?
-        - {{ pin_subpackage('intel-opencl-rt', exact=True) }}
         - binutils_impl_{{ target_platform }} >={{ binutils_version }}        # [linux]
         - libgcc-devel_{{ target_platform }} >={{ c_compiler_version }}       # [linux]
         - libstdcxx-devel_{{ target_platform }} >={{ cxx_compiler_version }}  # [linux]
@@ -527,7 +519,7 @@ outputs:
           - {{ pin_subpackage("dpcpp-cpp-rt", max_pin="x") }}
     requirements:
       run:
-        - {{ pin_subpackage('dpcpp_impl_' ~ target_platform, exact=True) }}
+        - {{ subpackage_pin('dpcpp_impl_' ~ target_platform, exact=True) }}
         - binutils_{{ target_platform }} >={{ binutils_version }}  # [linux]
         - {{ c_stdlib }}_{{ target_platform }}
         # We don't need actual compiler, we are just using activation script
@@ -572,7 +564,7 @@ outputs:
       skip: True  # [not (linux64 or win64)]
     requirements:
       run:
-        - {{ pin_subpackage('ifx_impl_' ~ target_platform, exact=True) }}
+        - {{ subpackage_pin('ifx_impl_' ~ target_platform, exact=True) }}
         - binutils_{{ target_platform }} >={{ binutils_version }}  # [linux]
         - {{ c_stdlib }}_{{ target_platform }}
         # We don't need actual compiler, we are just using activation script
