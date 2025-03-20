@@ -9,7 +9,7 @@ src="${SRC_DIR}/${PKG_NAME}"
 # TODO: do we need compiler_shared as a separate package? Is there any other use
 # except dpcpp_impl_linux-64 ? May be there are some conda forge pacakges we can
 # link to.
-if [[ "$PKG_NAME" == "dpcpp_impl_linux-64" ]]; then
+if [[ "$PKG_NAME" == "dpcpp_impl_linux-64" || "$PKG_NAME" == "ifx_impl_linux-64" ]]; then
   rm -rf ${SRC_DIR}/compiler_shared/info
   cp -av ${SRC_DIR}/compiler_shared/. ${src}
 fi
@@ -32,4 +32,9 @@ if [[ "$PKG_NAME" == "dpcpp_impl_linux-64" ]]; then
   HOST=x86_64-conda-linux-gnu
   echo "--gcc-toolchain=${PREFIX} --sysroot=${PREFIX}/${HOST}/sysroot -target ${HOST}" > ${PREFIX}/bin/$HOST-icpx.cfg
   echo "--gcc-toolchain=${PREFIX} --sysroot=${PREFIX}/${HOST}/sysroot -target ${HOST}" > ${PREFIX}/bin/$HOST-icx.cfg
+fi
+
+if [[ "$PKG_NAME" == "ifx_impl_linux-64" ]]; then
+  HOST=x86_64-conda-linux-gnu
+  echo "--gcc-toolchain=${PREFIX} --sysroot=${PREFIX}/${HOST}/sysroot -target ${HOST}" > ${PREFIX}/bin/$HOST-ifx.cfg
 fi
