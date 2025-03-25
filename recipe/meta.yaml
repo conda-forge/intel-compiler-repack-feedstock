@@ -497,13 +497,17 @@ outputs:
         Implementation for Intel® Fortran Compiler.
         This package is a repackaged set of binaries obtained directly from Intel channel.
     test:
+      files:
+        - simple.f90
       commands:
         - ls -A1 ${PREFIX}/bin/*         # [unix]
         - ls -A1 ${PREFIX}/include/*     # [unix]
         - ls -A1 ${PREFIX}/lib/*         # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
         - dir %PREFIX%\Library\lib\*  # [win]
-        - ifx --version
+        - cat ${PREFIX}/bin/x86_64-conda-linux-gnu-ifx.cfg  # [unix]
+        - ifx --version  # [unix]
+        - ifx simple.f90 -o simple.exe && simple.exe  # [win]
 
   - name: dpcpp_{{ target_platform }}
     script: install_activate.sh   # [unix]
@@ -585,8 +589,6 @@ outputs:
         Activation for Intel® Fortran Compiler.
         This package is a repackaged set of binaries obtained directly from Intel channel.
     test:
-      requires:
-        - {{ compiler('fortran') }}
       files:
         - simple.f90
       commands:
