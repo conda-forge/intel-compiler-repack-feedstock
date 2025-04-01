@@ -500,12 +500,13 @@ outputs:
       files:
         - simple.f90
       commands:
-        - ls -A1 ${PREFIX}/bin/*         # [unix]
-        - ls -A1 ${PREFIX}/include/*     # [unix]
-        - ls -A1 ${PREFIX}/lib/*         # [unix]
+        #- ls -A1 ${PREFIX}/bin/*         # [unix]
+        #- ls -A1 ${PREFIX}/include/*     # [unix]
+        #- ls -A1 ${PREFIX}/lib/*         # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
         - dir %PREFIX%\Library\lib\*  # [win]
         - cat ${PREFIX}/bin/x86_64-conda-linux-gnu-ifx.cfg  # [unix]
+        - find ${PREFIX}  # [unix]
         - ifx --version  # [unix]
         - ifx simple.f90 -o simple.exe && simple.exe  # [win]
 
