@@ -469,6 +469,7 @@ outputs:
       run:
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
         - {{ pin_subpackage('intel-fortran-rt', exact=True) }}
+        - {{ pin_subpackage('intel-opencl-rt', exact=True) }}
         - binutils_impl_{{ target_platform }} >={{ binutils_version }}        # [linux]
         - libgcc-devel_{{ target_platform }} >={{ c_compiler_version }}       # [linux]
         - libstdcxx-devel_{{ target_platform }} >={{ cxx_compiler_version }}  # [linux]
@@ -502,14 +503,13 @@ outputs:
       files:
         - simple.f90
       commands:
-        #- ls -A1 ${PREFIX}/bin/*         # [unix]
-        #- ls -A1 ${PREFIX}/include/*     # [unix]
-        #- ls -A1 ${PREFIX}/lib/*         # [unix]
+        - ls -A1 ${PREFIX}/bin/*         # [unix]
+        - ls -A1 ${PREFIX}/include/*     # [unix]
+        - ls -A1 ${PREFIX}/lib/*         # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
         - dir %PREFIX%\Library\lib\*  # [win]
         - cat ${PREFIX}/bin/x86_64-conda-linux-gnu-ifx.cfg  # [unix]
         - find ${PREFIX}  # [unix]
-        - ifx -### simple.f90 -o simple # [unix]
         - ifx --version  # [unix]
         - ifx simple.f90 -o simple.exe && simple.exe  # [win]
 
