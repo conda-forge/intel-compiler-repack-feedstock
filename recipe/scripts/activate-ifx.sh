@@ -21,8 +21,8 @@ if [ "${CONDA_BUILD:-0}" = "1" ]; then
   env > /tmp/old-env-$$.txt
 fi
 
-if [ "${FC:-}" = "" ] && [ "${CONDA_BUILD:-}" = "1" ]; then
-  echo "Need to use Fortran compiler activation package"
+if [ "${CC:-}" = "" ] && [ "${CONDA_BUILD:-}" = "1" ]; then
+  echo "Need to use C/C++ compiler activation package"
   exit 1
 fi
 
