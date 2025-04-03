@@ -500,6 +500,10 @@ outputs:
         Implementation for Intel® Fortran Compiler.
         This package is a repackaged set of binaries obtained directly from Intel channel.
     test:
+      requires:
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
       files:
         - simple.f90
       commands:
