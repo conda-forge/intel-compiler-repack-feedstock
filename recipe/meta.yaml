@@ -473,8 +473,8 @@ outputs:
         - binutils_impl_{{ target_platform }} >={{ binutils_version }}        # [linux]
         - libgcc-devel_{{ target_platform }} >={{ c_compiler_version }}       # [linux]
         - libstdcxx-devel_{{ target_platform }} >={{ cxx_compiler_version }}  # [linux]
-        - gcc_impl_{{ target_platform }} >={{ c_compiler_version }}           # [linux]
-        - gxx_impl_{{ target_platform }} >={{ c_compiler_version }}           # [linux]
+        - gcc_{{ target_platform }} >={{ c_compiler_version }}                # [linux]
+        - gxx_{{ target_platform }} >={{ c_compiler_version }}                # [linux]
         # None of the other compilers pin to sysroot, so we don't either. It
         # also appears that sysroot version must be aligned with host system,
         # e.g.:
