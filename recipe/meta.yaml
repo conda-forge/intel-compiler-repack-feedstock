@@ -443,7 +443,7 @@ outputs:
     script: repack.sh   # [unix]
     script: repack.bat  # [win]
     build:
-      skip: True  # [not win]
+      skip: True  # [not (linux64 or win64)]
       binary_relocation: False
       ignore_run_exports_from:
         - {{ c_stdlib }}_{{ target_platform }}
@@ -567,7 +567,7 @@ outputs:
     script: install_activate.sh   # [unix]
     script: install_activate.bat  # [win]
     build:
-      skip: True  # [not win]
+      skip: True  # [not (linux64 or win64)]
     requirements:
       run:
         - {{ pin_subpackage('ifx_impl_' ~ target_platform, exact=True) }}
