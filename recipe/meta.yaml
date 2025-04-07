@@ -437,14 +437,13 @@ outputs:
         - dir %PREFIX%\Library\bin\*  # [win]
         - dir %PREFIX%\Library\lib\*  # [win]
         - icx --version
-        - ldd $(which icx)  # [unix]
         - icpx --version
 
   - name: ifx_impl_{{ target_platform }}
     script: repack.sh   # [unix]
     script: repack.bat  # [win]
     build:
-      skip: True  # [not (linux64 or win64)]
+      skip: True  # [not win]
       binary_relocation: False
       ignore_run_exports_from:
         - {{ c_stdlib }}_{{ target_platform }}
@@ -511,7 +510,6 @@ outputs:
         - dir %PREFIX%\Library\lib\*  # [win]
         - cat ${PREFIX}/bin/x86_64-conda-linux-gnu-ifx.cfg  # [unix]
         - find ${PREFIX}  # [unix]
-        - ldd $(which ifx)  # [unix]
         - ifx --version  # [unix]
         - ifx simple.f90 -o simple.exe && simple.exe  # [win]
 
@@ -569,7 +567,7 @@ outputs:
     script: install_activate.sh   # [unix]
     script: install_activate.bat  # [win]
     build:
-      skip: True  # [not (linux64 or win64)]
+      skip: True  # [not win]
     requirements:
       run:
         - {{ pin_subpackage('ifx_impl_' ~ target_platform, exact=True) }}
