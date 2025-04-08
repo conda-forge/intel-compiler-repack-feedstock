@@ -22,14 +22,10 @@ cxx_compiler_version:
 - 7.5.0
 docker_image:
 - quay.io/condaforge/linux-anvil-alma-x86_64:8
-fortran_compiler:
-- gfortran
-fortran_compiler_version:
-- '13'
 libhwloc:
 - 2.11.2
 libxml2:
-- '2'
+- '2.13'
 mpich:
 - '4'
 pin_run_as_build:
@@ -43,6 +39,5 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-  - fortran_compiler_version
 zlib:
 - '1'
