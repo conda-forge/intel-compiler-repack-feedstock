@@ -7,7 +7,7 @@ mkdir -p $PREFIX/lib/intel-ocl-cpu
 # Move to intel-ocl-cpu to avoid clashes with intel-opencl-clang
 cp -rv "$src/lib/"* "$PREFIX/lib/intel-ocl-cpu/"
 
-for f in $PREFIX/lib/intel-ocl-cpu/*.so.*; do
+for f in $PREFIX/lib/intel-ocl-cpu/*.so.*[0-9]; do
   if [[ ! -L $f ]]; then
     patchelf --force-rpath --set-rpath '$ORIGIN/:$ORIGIN/../' $f
   fi
