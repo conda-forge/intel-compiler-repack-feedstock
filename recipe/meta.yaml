@@ -648,6 +648,7 @@ outputs:
         - ls -A1 $PREFIX/lib/*  # [unix]
 
   - name: umf
+    version: {{ umf_version }}
     script: repack.sh   # [unix]
     script: repack.bat  # [win]
     build:
