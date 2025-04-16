@@ -444,7 +444,7 @@ outputs:
     script: repack.sh   # [unix]
     script: repack.bat  # [win]
     build:
-      skip: True  # [not win]
+      skip: True  # [not (linux64 or win64)]
       binary_relocation: False
       ignore_run_exports_from:
         - {{ c_stdlib }}_{{ target_platform }}
@@ -509,7 +509,7 @@ outputs:
         - ls -A1 ${PREFIX}/lib/*         # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
         - dir %PREFIX%\Library\lib\*  # [win]
-        - cat ${PREFIX}/bin/x86_64-conda-linux-gnu-ifx.cfg  # [unix]
+        - cat ${PREFIX}/bin/ifx.cfg  # [unix]
         - find ${PREFIX}  # [unix]
         - ifx --version  # [unix]
         - ifx simple.f90 -o simple.exe && simple.exe  # [win]
@@ -568,7 +568,7 @@ outputs:
     script: install_activate.sh   # [unix]
     script: install_activate.bat  # [win]
     build:
-      skip: True  # [not win]
+      skip: True  # [not (linux64 or win64)]
     requirements:
       run:
         - {{ pin_subpackage('ifx_impl_' ~ target_platform, exact=True) }}

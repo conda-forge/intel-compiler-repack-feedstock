@@ -47,5 +47,5 @@ fi
 
 if [[ "$PKG_NAME" == "ifx_impl_linux-64" ]]; then
   HOST=x86_64-conda-linux-gnu
-  echo "--gcc-toolchain=${PREFIX} --sysroot=${PREFIX}/${HOST}/sysroot -target ${HOST}" > ${PREFIX}/bin/$HOST-ifx.cfg
+  echo "-gcc-name=${PREFIX}/bin/${HOST}-gcc" > ${PREFIX}/bin/ifx.cfg
 fi
