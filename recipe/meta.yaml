@@ -508,7 +508,7 @@ outputs:
         - ls -A1 ${PREFIX}/lib/*         # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
         - dir %PREFIX%\Library\lib\*  # [win]
-        - cat ${PREFIX}/bin/x86_64-conda-linux-gnu-ifx.cfg  # [unix]
+        - cat ${PREFIX}/bin/ifx.cfg  # [unix]
         - find ${PREFIX}  # [unix]
         - ifx --version  # [unix]
         - ifx simple.f90 -o simple.exe && simple.exe  # [win]
