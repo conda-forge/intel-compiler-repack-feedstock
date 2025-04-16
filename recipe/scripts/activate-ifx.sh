@@ -27,7 +27,6 @@ if [ "${CC:-}" = "" ] && [ "${CONDA_BUILD:-}" = "1" ]; then
 fi
 
 export FC=ifx
-export IFXCFG="$CONDA_PREFIX/bin/@HOST@-ifx.cfg"
 
 if [ $? -ne 0 ]; then
   echo "ERROR: $(_get_sourced_filename) failed, see above for details"
