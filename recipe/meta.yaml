@@ -1,8 +1,8 @@
 {% set version = "2025.1.0" %}
 # work-around for https://github.com/conda/conda-build/issues/5443
 {% set intel_build_number = "dummy" %}
-{% set intel_build_number = "974" %}   # [linux]
-{% set intel_build_number = "973" %}   # [win]
+{% set intel_build_number = "973" %}   # [linux]
+{% set intel_build_number = "972" %}   # [win]
 
 {% set oneccl_version = "2021.15.0" %}
 {% set oneccl_build_number = "397" %}
@@ -16,7 +16,7 @@
 {% set intel_ch = "https://software.repos.intel.com/python/conda" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
-{% set dst_build_number = '0' %}
+{% set dst_build_number = '1' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
 package:
