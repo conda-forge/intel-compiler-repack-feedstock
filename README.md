@@ -13,21 +13,89 @@ Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Dev
 
 Summary: Repackaged Intel® compilers and runtimes.
 
-About intel-cmplr-lic-rt
-------------------------
+About dpcpp-cpp-rt
+------------------
 
 Home: https://software.intel.com/content/www/us/en/develop/tools.html
 
 Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
 
-Summary: Intel End User License Agreement for Developer Tools
+Summary: Runtime for Intel® oneAPI DPC++/C++ Compiler
 
-Development: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html
+Development: https://software.intel.com/content/www/us/en/develop/documentation/oneapi-dpcpp-cpp-compiler-dev-guide-and-reference/top.html
 
-Documentation: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html
+Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
 
-Intel End User License Agreement for Developer Tools.
+Runtime for Intel® oneAPI DPC++/C++ Compiler.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
+
+About dpcpp_impl_linux-64
+-------------------------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: Implementation for Intel® oneAPI DPC++/C++ Compiler
+
+Development: https://software.intel.com/content/www/us/en/develop/documentation/oneapi-dpcpp-cpp-compiler-dev-guide-and-reference/top.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
+
+Implementation for Intel® oneAPI DPC++/C++ Compiler.
+This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
+
+About dpcpp_linux-64
+--------------------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: Implementation for Intel® oneAPI DPC++/C++ Compiler
+
+Development: https://software.intel.com/content/www/us/en/develop/documentation/oneapi-dpcpp-cpp-compiler-dev-guide-and-reference/top.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
+
+Activation for Intel® oneAPI DPC++/C++ Compiler.
+This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
+
+About ifx_impl_linux-64
+-----------------------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: Implementation for Intel® Fortran Compiler
+
+Development: https://www.intel.com/content/www/us/en/docs/fortran-compiler/get-started-guide/2025-0/overview.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/fortran-compiler.html
+
+Implementation for Intel® Fortran Compiler.
+This package is a repackaged set of binaries obtained directly from Intel channel.
+
+
+About ifx_linux-64
+------------------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: Implementation for Intel® Fortran Compiler
+
+Development: https://www.intel.com/content/www/us/en/docs/fortran-compiler/get-started-guide/2025-0/overview.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/fortran-compiler.html
+
+Activation for Intel® Fortran Compiler.
+This package is a repackaged set of binaries obtained directly from Intel channel.
 
 
 About intel-cmplr-lib-rt
@@ -47,27 +115,6 @@ Runtime for Intel® C++ Compiler Classic.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
 
-About umf
----------
-
-Home: https://github.com/oneapi-src/unified-memory-framework
-
-Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
-
-Summary: A library for constructing allocators and memory pools
-
-Development: https://github.com/oneapi-src/unified-memory-framework
-
-Documentation: https://oneapi-src.github.io/unified-memory-framework/
-
-The Unified Memory Framework (UMF) is a library for constructing
-allocators and memory pools. It also contains broadly useful
-abstractions and utilities for memory management. UMF allows users to
-manage multiple memory pools characterized by different attributes,
-allowing certain allocation types to be isolated from others and
-allocated using different hardware resources as required.
-
-
 About intel-cmplr-lib-ur
 ------------------------
 
@@ -82,6 +129,23 @@ Development: https://software.intel.com/content/www/us/en/develop/documentation/
 Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
 
 Runtime for Intel® C++ Compiler Classic.
+This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
+
+About intel-cmplr-lic-rt
+------------------------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: Intel End User License Agreement for Developer Tools
+
+Development: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/articles/end-user-license-agreement.html
+
+Intel End User License Agreement for Developer Tools.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
 
@@ -136,40 +200,6 @@ Intel End User License Agreement for Developer Tools.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
 
-About dpcpp-cpp-rt
-------------------
-
-Home: https://software.intel.com/content/www/us/en/develop/tools.html
-
-Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
-
-Summary: Runtime for Intel® oneAPI DPC++/C++ Compiler
-
-Development: https://software.intel.com/content/www/us/en/develop/documentation/oneapi-dpcpp-cpp-compiler-dev-guide-and-reference/top.html
-
-Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
-
-Runtime for Intel® oneAPI DPC++/C++ Compiler.
-This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
-
-
-About dpcpp_impl_linux-64
--------------------------
-
-Home: https://software.intel.com/content/www/us/en/develop/tools.html
-
-Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
-
-Summary: Implementation for Intel® oneAPI DPC++/C++ Compiler
-
-Development: https://software.intel.com/content/www/us/en/develop/documentation/oneapi-dpcpp-cpp-compiler-dev-guide-and-reference/top.html
-
-Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
-
-Implementation for Intel® oneAPI DPC++/C++ Compiler.
-This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
-
-
 About oneccl-devel
 ------------------
 
@@ -187,8 +217,46 @@ Intel® oneAPI Collective Communications Library*.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
 
-About dpcpp_linux-64
---------------------
+About umf
+---------
+
+Home: https://github.com/oneapi-src/unified-memory-framework
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: A library for constructing allocators and memory pools
+
+Development: https://github.com/oneapi-src/unified-memory-framework
+
+Documentation: https://oneapi-src.github.io/unified-memory-framework/
+
+The Unified Memory Framework (UMF) is a library for constructing
+allocators and memory pools. It also contains broadly useful
+abstractions and utilities for memory management. UMF allows users to
+manage multiple memory pools characterized by different attributes,
+allowing certain allocation types to be isolated from others and
+allocated using different hardware resources as required.
+
+
+About dpcpp_impl_win-64
+-----------------------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
+
+Summary: Implementation for Intel® oneAPI DPC++/C++ Compiler
+
+Development: https://software.intel.com/content/www/us/en/develop/documentation/oneapi-dpcpp-cpp-compiler-dev-guide-and-reference/top.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
+
+Implementation for Intel® oneAPI DPC++/C++ Compiler.
+This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
+
+
+About dpcpp_win-64
+------------------
 
 Home: https://software.intel.com/content/www/us/en/develop/tools.html
 
@@ -221,23 +289,6 @@ Implementation for Intel® Fortran Compiler.
 This package is a repackaged set of binaries obtained directly from Intel channel.
 
 
-About dpcpp_impl_win-64
------------------------
-
-Home: https://software.intel.com/content/www/us/en/develop/tools.html
-
-Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
-
-Summary: Implementation for Intel® oneAPI DPC++/C++ Compiler
-
-Development: https://software.intel.com/content/www/us/en/develop/documentation/oneapi-dpcpp-cpp-compiler-dev-guide-and-reference/top.html
-
-Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
-
-Implementation for Intel® oneAPI DPC++/C++ Compiler.
-This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
-
-
 About ifx_win-64
 ----------------
 
@@ -253,23 +304,6 @@ Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi
 
 Activation for Intel® Fortran Compiler.
 This package is a repackaged set of binaries obtained directly from Intel channel.
-
-
-About dpcpp_win-64
-------------------
-
-Home: https://software.intel.com/content/www/us/en/develop/tools.html
-
-Package license: LicenseRef-Proprietary-Intel-End-User-License-Agreement-for-Developer-Tools
-
-Summary: Implementation for Intel® oneAPI DPC++/C++ Compiler
-
-Development: https://software.intel.com/content/www/us/en/develop/documentation/oneapi-dpcpp-cpp-compiler-dev-guide-and-reference/top.html
-
-Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/dpc-compiler.html
-
-Activation for Intel® oneAPI DPC++/C++ Compiler.
-This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
 
 Current build status
@@ -359,12 +393,14 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-dpcpp--cpp--rt-green.svg)](https://anaconda.org/conda-forge/dpcpp-cpp-rt) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dpcpp-cpp-rt.svg)](https://anaconda.org/conda-forge/dpcpp-cpp-rt) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dpcpp-cpp-rt.svg)](https://anaconda.org/conda-forge/dpcpp-cpp-rt) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dpcpp-cpp-rt.svg)](https://anaconda.org/conda-forge/dpcpp-cpp-rt) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-dpcpp_impl_linux--64-green.svg)](https://anaconda.org/conda-forge/dpcpp_impl_linux-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dpcpp_impl_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_impl_linux-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dpcpp_impl_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_impl_linux-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dpcpp_impl_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_impl_linux-64) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-dpcpp_impl_win--64-green.svg)](https://anaconda.org/conda-forge/dpcpp_impl_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dpcpp_impl_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_impl_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dpcpp_impl_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_impl_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dpcpp_impl_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_impl_win-64) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-dpcpp_linux--64-green.svg)](https://anaconda.org/conda-forge/dpcpp_linux-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dpcpp_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_linux-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dpcpp_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_linux-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dpcpp_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_linux-64) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-dpcpp_win--64-green.svg)](https://anaconda.org/conda-forge/dpcpp_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dpcpp_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dpcpp_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dpcpp_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_win-64) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-ifx_impl_win--64-green.svg)](https://anaconda.org/conda-forge/ifx_impl_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/ifx_impl_win-64.svg)](https://anaconda.org/conda-forge/ifx_impl_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/ifx_impl_win-64.svg)](https://anaconda.org/conda-forge/ifx_impl_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/ifx_impl_win-64.svg)](https://anaconda.org/conda-forge/ifx_impl_win-64) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-ifx_win--64-green.svg)](https://anaconda.org/conda-forge/ifx_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/ifx_win-64.svg)](https://anaconda.org/conda-forge/ifx_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/ifx_win-64.svg)](https://anaconda.org/conda-forge/ifx_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/ifx_win-64.svg)](https://anaconda.org/conda-forge/ifx_win-64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-dpcpp__impl__linux--64-green.svg)](https://anaconda.org/conda-forge/dpcpp_impl_linux-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dpcpp_impl_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_impl_linux-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dpcpp_impl_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_impl_linux-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dpcpp_impl_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_impl_linux-64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-dpcpp__impl__win--64-green.svg)](https://anaconda.org/conda-forge/dpcpp_impl_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dpcpp_impl_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_impl_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dpcpp_impl_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_impl_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dpcpp_impl_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_impl_win-64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-dpcpp__linux--64-green.svg)](https://anaconda.org/conda-forge/dpcpp_linux-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dpcpp_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_linux-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dpcpp_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_linux-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dpcpp_linux-64.svg)](https://anaconda.org/conda-forge/dpcpp_linux-64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-dpcpp__win--64-green.svg)](https://anaconda.org/conda-forge/dpcpp_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dpcpp_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dpcpp_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dpcpp_win-64.svg)](https://anaconda.org/conda-forge/dpcpp_win-64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-ifx__impl__linux--64-green.svg)](https://anaconda.org/conda-forge/ifx_impl_linux-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/ifx_impl_linux-64.svg)](https://anaconda.org/conda-forge/ifx_impl_linux-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/ifx_impl_linux-64.svg)](https://anaconda.org/conda-forge/ifx_impl_linux-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/ifx_impl_linux-64.svg)](https://anaconda.org/conda-forge/ifx_impl_linux-64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-ifx__impl__win--64-green.svg)](https://anaconda.org/conda-forge/ifx_impl_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/ifx_impl_win-64.svg)](https://anaconda.org/conda-forge/ifx_impl_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/ifx_impl_win-64.svg)](https://anaconda.org/conda-forge/ifx_impl_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/ifx_impl_win-64.svg)](https://anaconda.org/conda-forge/ifx_impl_win-64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-ifx__linux--64-green.svg)](https://anaconda.org/conda-forge/ifx_linux-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/ifx_linux-64.svg)](https://anaconda.org/conda-forge/ifx_linux-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/ifx_linux-64.svg)](https://anaconda.org/conda-forge/ifx_linux-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/ifx_linux-64.svg)](https://anaconda.org/conda-forge/ifx_linux-64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-ifx__win--64-green.svg)](https://anaconda.org/conda-forge/ifx_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/ifx_win-64.svg)](https://anaconda.org/conda-forge/ifx_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/ifx_win-64.svg)](https://anaconda.org/conda-forge/ifx_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/ifx_win-64.svg)](https://anaconda.org/conda-forge/ifx_win-64) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-intel--cmplr--lib--rt-green.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-rt) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/intel-cmplr-lib-rt.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-rt) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/intel-cmplr-lib-rt.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-rt) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/intel-cmplr-lib-rt.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-rt) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-intel--cmplr--lib--ur-green.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-ur) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/intel-cmplr-lib-ur.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-ur) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/intel-cmplr-lib-ur.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-ur) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/intel-cmplr-lib-ur.svg)](https://anaconda.org/conda-forge/intel-cmplr-lib-ur) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-intel--cmplr--lic--rt-green.svg)](https://anaconda.org/conda-forge/intel-cmplr-lic-rt) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/intel-cmplr-lic-rt.svg)](https://anaconda.org/conda-forge/intel-cmplr-lic-rt) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/intel-cmplr-lic-rt.svg)](https://anaconda.org/conda-forge/intel-cmplr-lic-rt) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/intel-cmplr-lic-rt.svg)](https://anaconda.org/conda-forge/intel-cmplr-lic-rt) |
@@ -384,16 +420,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `dpcpp-cpp-rt, dpcpp_impl_linux-64, dpcpp_impl_win-64, dpcpp_linux-64, dpcpp_win-64, ifx_impl_win-64, ifx_win-64, intel-cmplr-lib-rt, intel-cmplr-lib-ur, intel-cmplr-lic-rt, intel-fortran-rt, intel-opencl-rt, intel-sycl-rt, oneccl-devel, umf` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `dpcpp-cpp-rt, dpcpp_impl_linux-64, dpcpp_impl_win-64, dpcpp_linux-64, dpcpp_win-64, ifx_impl_linux-64, ifx_impl_win-64, ifx_linux-64, ifx_win-64, intel-cmplr-lib-rt, intel-cmplr-lib-ur, intel-cmplr-lic-rt, intel-fortran-rt, intel-opencl-rt, intel-sycl-rt, oneccl-devel, umf` can be installed with `conda`:
 
 ```
-conda install dpcpp-cpp-rt dpcpp_impl_linux-64 dpcpp_impl_win-64 dpcpp_linux-64 dpcpp_win-64 ifx_impl_win-64 ifx_win-64 intel-cmplr-lib-rt intel-cmplr-lib-ur intel-cmplr-lic-rt intel-fortran-rt intel-opencl-rt intel-sycl-rt oneccl-devel umf
+conda install dpcpp-cpp-rt dpcpp_impl_linux-64 dpcpp_impl_win-64 dpcpp_linux-64 dpcpp_win-64 ifx_impl_linux-64 ifx_impl_win-64 ifx_linux-64 ifx_win-64 intel-cmplr-lib-rt intel-cmplr-lib-ur intel-cmplr-lic-rt intel-fortran-rt intel-opencl-rt intel-sycl-rt oneccl-devel umf
 ```
 
 or with `mamba`:
 
 ```
-mamba install dpcpp-cpp-rt dpcpp_impl_linux-64 dpcpp_impl_win-64 dpcpp_linux-64 dpcpp_win-64 ifx_impl_win-64 ifx_win-64 intel-cmplr-lib-rt intel-cmplr-lib-ur intel-cmplr-lic-rt intel-fortran-rt intel-opencl-rt intel-sycl-rt oneccl-devel umf
+mamba install dpcpp-cpp-rt dpcpp_impl_linux-64 dpcpp_impl_win-64 dpcpp_linux-64 dpcpp_win-64 ifx_impl_linux-64 ifx_impl_win-64 ifx_linux-64 ifx_win-64 intel-cmplr-lib-rt intel-cmplr-lib-ur intel-cmplr-lic-rt intel-fortran-rt intel-opencl-rt intel-sycl-rt oneccl-devel umf
 ```
 
 It is possible to list all of the versions of `dpcpp-cpp-rt` available on your platform with `conda`:
