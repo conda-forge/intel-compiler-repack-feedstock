@@ -1,22 +1,22 @@
-{% set version = "2025.1.0" %}
+{% set version = "2025.2.0" %}
 # work-around for https://github.com/conda/conda-build/issues/5443
 {% set intel_build_number = "dummy" %}
-{% set intel_build_number = "973" %}   # [linux]
-{% set intel_build_number = "972" %}   # [win]
+{% set intel_build_number = "766" %}   # [linux]
+{% set intel_build_number = "756" %}   # [win]
 
-{% set oneccl_version = "2021.15.0" %}
-{% set oneccl_build_number = "397" %}
+{% set oneccl_version = "2021.16.0" %}
+{% set oneccl_build_number = "302" %}
 
 {% set tbb_version_major = "2022" %}
 
-{% set umf_version = "0.10.0" %}
-{% set umf_build_number = "355" %}   # [linux]
-{% set umf_build_number = "356" %}   # [win]
+{% set umf_version = "0.11.0" %}
+{% set umf_build_number = "394" %}   # [linux]
+{% set umf_build_number = "398" %}   # [win]
 
 {% set intel_ch = "https://software.repos.intel.com/python/conda" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
-{% set dst_build_number = '1' %}
+{% set dst_build_number = '0' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
 package:
@@ -27,46 +27,46 @@ source:
   # Is there a better way to specify skipping the source if it does not exist? (so it matches 'skip: True' selectors)
   - url: {{ intel_ch }}/{{ target_platform }}/ifx_impl_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.conda  # [linux64 or win64]
     folder: ifx_impl_{{ target_platform }}  # [linux64 or win64]
-    sha256: 2b47486328364711710de6b2605f16dc41f1bd0e9ca7f73925f4a1b3335fd4e3  # [linux64]
+    sha256: 78be90c3f030182e662e7bd5d2147c83d641fc39a022c7395cfdf7b0aa7aa3a8  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/ifx_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.conda  # [linux64 or win64]
     folder: ifx_{{ target_platform }}  # [linux64 or win64]
-    sha256: 9d49ac80f6bc5b4840dcad8a1fa0485189be1563dc19b0451accf6c36de04ad4  # [linux64]
+    sha256: d845473aa4c067c605202ec3814a68976b316fc9749b8e050c9b36d05b197521  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/intel-cmplr-lic-rt-{{ version }}-intel_{{ intel_build_number }}.conda
     folder: intel-cmplr-lic-rt
-    sha256: 31ef4fcfdf8d473aca78332430981d845c73b0e0c85727256ba0ff5180387219  # [linux64]
+    sha256: 09a5b746348997b89573ba5d1fdaa5334d9e097eefb3ad7079d30e54342e6f6b  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/intel-cmplr-lib-rt-{{ version }}-intel_{{ intel_build_number }}.conda
     folder: intel-cmplr-lib-rt
-    sha256: 8c82039d357bc636e4f8c57bd51360924f2d0f0f89a4ec175eb21e9d29c67358  # [linux64]
+    sha256: d93bb638b85773694d8f8d462a3cc81805b01cb1c25b85359874c6d57f555504  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/intel-cmplr-lib-ur-{{ version }}-intel_{{ intel_build_number }}.conda
     folder: intel-cmplr-lib-ur
-    sha256: 8c1520aeef86f4dc2a5fd27f50d2fd5e8667f98cb5381d4d3128e853d0341672  # [linux64]
+    sha256: de1e0f84c2d5e3f9cf3fbb72d6e309c5504ef85633342ebc26c39f01320aa80a  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/intel-sycl-rt-{{ version }}-intel_{{ intel_build_number }}.conda
     folder: intel-sycl-rt
-    sha256: a9eddaa0bff1e7bc1158a2f51edc7d151c2e0e8aa1889fc8685abb960309c80f  # [linux64]
+    sha256: 5183872e85c1ad972ca38d459bc9e294109aca478b9fbc048195e40a5a3d6f0b  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/intel-fortran-rt-{{ version }}-intel_{{ intel_build_number }}.conda
     folder: intel-fortran-rt
-    sha256: 5f2b72276c6c6d4c159fbc93f25432ea8a217d07cc9bf7cb1ff297db4d4a0ef5  # [linux64]
+    sha256: 852aba6e843e4452c13668284b8d4c5cb96b3d2ac4b879385c7731e17c74f3b1  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/intel-opencl-rt-{{ version }}-intel_{{ intel_build_number }}.conda  # [linux64 or win64]
     folder: intel-opencl-rt  # [linux64 or win64]
-    sha256: 29e1c459881dba7395d3e4ac3ad95ee59e5d0312821b5819778493391c2b90bd  # [linux64]
+    sha256: ecdcefe9abb6937a0f070b6398f31aa99b11fed0a4d6910c182e62b97bc11218  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/dpcpp-cpp-rt-{{ version }}-intel_{{ intel_build_number }}.conda  # [not win32]
     folder: dpcpp-cpp-rt  # [not win32]
-    sha256: 4fc84e70d2249d97461883b529311c9e8261c9d53cffeaa2df4bc2a77aba52a0  # [linux64]
+    sha256: 72b0cd92ef6822a6d135cb5918fbd22351f78ef67ded2bbf48e939cc96f09b28  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/dpcpp_impl_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.conda  # [linux64 or win64]
     folder: dpcpp_impl_{{ target_platform }}  # [linux64 or win64]
-    sha256: 316f4f0d5ff5747eae004913a1498ce946ff1e84d4927159136f3468d7d0cc53  # [linux64]
+    sha256: 799c13a0c1da92c8748068746c7433bb3540bce75d58b8cb80a396895a74e683  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/dpcpp_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.conda  # [linux64 or win64]
     folder: dpcpp_{{ target_platform }}  # [linux64 or win64]
-    sha256: 79205c134076987590129315aeab60d45968f1e62213ad2739dec19c87bcffad  # [linux64]
+    sha256: 85ac32ce4cc04e43a823fab651f58d50b88cdac055e54e2ac2979d86ce2ac7bc  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/oneccl-devel-{{ oneccl_version }}-intel_{{ oneccl_build_number }}.conda  # [linux64]
     folder: oneccl-devel  # [linux64]
-    sha256: 23af1253724f2299abf67606e174ab75dbd2f6829f735deaf14897a919f4c3af  # [linux64]
+    sha256: 9ece3bfa9b9ddfc915d2e8e58a0d722ee2a8a1e125f33673eb8ce982733cac0b  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/umf-{{ umf_version }}-intel_{{ umf_build_number }}.conda  # [linux64 or win64]
     folder: umf  # [linux64 or win64]
-    sha256: 3363c4c77b35d8919206f37f5d5c1676c8f868c6689555760b31ededc938f9a3  # [linux64]
+    sha256: 6db8267c1cf39012e8e09a6359fe4641217910fc22483cf07df4b9aea49aa863  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/compiler_shared-{{ version }}-intel_{{ intel_build_number }}.conda  # [linux64 or win64]
     folder: compiler_shared  # [linux64 or win64]
-    sha256: 67ccc86fe050c75998cfc6456fc299fa9d0884acbbc3d11511a48519fead1c1f  # [linux64]
+    sha256: 5adbaa605f2fb1d1abc01b3bb92b15dd3b0a2d17d83e10632267b7c2db81f96d  # [linux64]
 
 build:
   number: {{ build_number }}
