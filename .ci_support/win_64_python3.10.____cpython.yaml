@@ -11,7 +11,7 @@ curl:
 cxx_compiler:
 - vs2022
 libhwloc:
-- 2.11.2
+- 2.12.1
 libxml2:
 - '2.13'
 pin_run_as_build:
