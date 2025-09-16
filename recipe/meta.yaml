@@ -16,7 +16,7 @@
 {% set intel_ch = "https://software.repos.intel.com/python/conda" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
-{% set dst_build_number = '1' %}
+{% set dst_build_number = '2' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
 package:
@@ -289,7 +289,7 @@ outputs:
         - patchelf               # [linux]
         - python *  # [win]
       host:
-        # We don't dynamically link to tbb, ocl loader and zlib, libxml2 the way
+        # We don't dynamically link to tbb, ocl loader and zlib, libxml2-devel the way
         # conda can detect, but we need to add them anyway to make it run.
         - tbb-devel {{ tbb_version_major }}.*
         # OpenCL loader is not in dependency of this package, but without it
@@ -297,9 +297,9 @@ outputs:
         # in downstream recipes?
         - ocl-icd  # [linux]
         - khronos-opencl-icd-loader  # [win]
-        # TODO: do we need zlib and libxml2 here?
+        # TODO: do we need zlib and libxml2-devel here?
         - zlib
-        - libxml2
+        - libxml2-devel
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
       run:
         - {{ pin_subpackage('intel-cmplr-lib-rt', exact=True) }}
