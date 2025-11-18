@@ -695,7 +695,8 @@ about:
 
 extra:
   recipe-maintainers:
-    - ekomarova
     - napetrov
     - xaleryb
     - ZzEeKkAa
+    - jharlow-intel
+    - antonwolfy
