@@ -21,7 +21,7 @@ cxx_compiler_version:
 docker_image:
 - quay.io/condaforge/linux-anvil-alma-x86_64:8
 libhwloc:
-- 2.12.1
+- 2.12.2
 libxml2_devel:
 - '2.14'
 mpich:
