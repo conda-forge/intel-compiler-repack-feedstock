@@ -16,7 +16,7 @@
 {% set intel_ch = "https://software.repos.intel.com/python/conda" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
-{% set dst_build_number = '0' %}
+{% set dst_build_number = '1' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
 package:
@@ -323,6 +323,8 @@ outputs:
       commands:
         - test -f $PREFIX/lib/intel-ocl-cpu/libintelocl.so          # [linux]
         - type %PREFIX%\Library\bin\intel-ocl-cpu\cl.cfg            # [win]
+        - if not exist "%SCRIPTS%\set-intel-ocl-icd-registry.ps1" exit 1    # [win]
+        - if not exist "%SCRIPTS%\unset-intel-ocl-icd-registry.ps1" exit 1  # [win]
         - export OCL_ICD_DEBUG=7                                    # [linux]
         - curl -O https://raw.githubusercontent.com/inducer/pyopencl/v2021.2.13/examples/demo.py
         - export PYOPENCL_CTX=intel  # [unix]
