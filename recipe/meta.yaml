@@ -521,7 +521,7 @@ outputs:
         - cat ${PREFIX}/bin/ifx.cfg  # [unix]
         - find ${PREFIX}  # [unix]
         - ifx --version  # [unix]
-        - ifx simple.f90 -o simple.exe && simple.exe  # [win]
+        - ifx %FFLAGS% simple.f90 -o simple.exe && simple.exe  # [win]
 
   - name: dpcpp_{{ target_platform }}
     script: install_activate.sh   # [unix]
