@@ -1,4 +1,5 @@
 program fortran_test
+  use iso_fortran_env  ! test whether compiler flags are set correctly
   implicit none
   integer, parameter :: n = 16
   integer :: i
