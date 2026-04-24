@@ -30,8 +30,8 @@ Runtime for Intel® oneAPI DPC++/C++ Compiler.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
 
-About dpcpp_impl_linux-64
--------------------------
+About dpcpp_impl_win-64
+-----------------------
 
 Home: https://software.intel.com/content/www/us/en/develop/tools.html
 
@@ -47,8 +47,8 @@ Implementation for Intel® oneAPI DPC++/C++ Compiler.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
 
-About dpcpp_linux-64
---------------------
+About dpcpp_win-64
+------------------
 
 Home: https://software.intel.com/content/www/us/en/develop/tools.html
 
@@ -64,8 +64,8 @@ Activation for Intel® oneAPI DPC++/C++ Compiler.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
 
-About ifx_impl_linux-64
------------------------
+About ifx_impl_win-64
+---------------------
 
 Home: https://software.intel.com/content/www/us/en/develop/tools.html
 
@@ -81,8 +81,8 @@ Implementation for Intel® Fortran Compiler.
 This package is a repackaged set of binaries obtained directly from Intel channel.
 
 
-About ifx_linux-64
-------------------
+About ifx_win-64
+----------------
 
 Home: https://software.intel.com/content/www/us/en/develop/tools.html
 
@@ -200,23 +200,6 @@ Intel End User License Agreement for Developer Tools.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
 
-About oneccl-devel
-------------------
-
-Home: https://software.intel.com/content/www/us/en/develop/tools.html
-
-Package license: LicenseRef-Proprietary-Intel-Simplified-Software-License
-
-Summary: Intel® oneAPI Collective Communications Library*
-
-Development: https://software.intel.com/content/www/us/en/develop/documentation/oneccl-developer-guide-and-reference/top.html
-
-Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/oneccl.htm
-
-Intel® oneAPI Collective Communications Library*.
-This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
-
-
 About umf
 ---------
 
@@ -238,8 +221,8 @@ allowing certain allocation types to be isolated from others and
 allocated using different hardware resources as required.
 
 
-About dpcpp_impl_win-64
------------------------
+About dpcpp_impl_linux-64
+-------------------------
 
 Home: https://software.intel.com/content/www/us/en/develop/tools.html
 
@@ -255,8 +238,8 @@ Implementation for Intel® oneAPI DPC++/C++ Compiler.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
 
-About dpcpp_win-64
-------------------
+About dpcpp_linux-64
+--------------------
 
 Home: https://software.intel.com/content/www/us/en/develop/tools.html
 
@@ -272,8 +255,8 @@ Activation for Intel® oneAPI DPC++/C++ Compiler.
 This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
 
-About ifx_impl_win-64
----------------------
+About ifx_impl_linux-64
+-----------------------
 
 Home: https://software.intel.com/content/www/us/en/develop/tools.html
 
@@ -289,8 +272,8 @@ Implementation for Intel® Fortran Compiler.
 This package is a repackaged set of binaries obtained directly from Intel channel.
 
 
-About ifx_win-64
-----------------
+About ifx_linux-64
+------------------
 
 Home: https://software.intel.com/content/www/us/en/develop/tools.html
 
@@ -304,6 +287,23 @@ Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi
 
 Activation for Intel® Fortran Compiler.
 This package is a repackaged set of binaries obtained directly from Intel channel.
+
+
+About oneccl-devel
+------------------
+
+Home: https://software.intel.com/content/www/us/en/develop/tools.html
+
+Package license: LicenseRef-Proprietary-Intel-Simplified-Software-License
+
+Summary: Intel® oneAPI Collective Communications Library*
+
+Development: https://software.intel.com/content/www/us/en/develop/documentation/oneccl-developer-guide-and-reference/top.html
+
+Documentation: https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/oneccl.htm
+
+Intel® oneAPI Collective Communications Library*.
+This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
 
 
 Current build status
