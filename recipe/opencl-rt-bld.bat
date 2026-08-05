@@ -14,6 +14,12 @@ if %ERRORLEVEL% GEQ 8 exit 1
 :: Make way for using conda-forge's OpenCL loader
 del "%LIBRARY_LIB%\OpenCL.lib"
 
+:: Copy PowerShell scripts for OpenCL ICD registry management (issue #72)
+if exist "%SRC_DIR%\%PKG_NAME%\Scripts" (
+    robocopy /E "%SRC_DIR%\%PKG_NAME%\Scripts" "%SCRIPTS%"
+    if %ERRORLEVEL% GEQ 8 exit 1
+)
+
 :: populate CL_CONFIG_TBB_DLL_PATH = entry in cl.cfg setting it to %LIBRARY_BIN%
 python %RECIPE_DIR%\set_tbb_dll_path.py %LIBRARY_BIN%\intel-ocl-cpu\cl.cfg
 mkdir "%LIBRARY_PREFIX%\etc\OpenCL\vendors\"
