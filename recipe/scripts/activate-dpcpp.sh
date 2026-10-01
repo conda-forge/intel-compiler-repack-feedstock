@@ -31,6 +31,12 @@ export CXX=icpx
 export ICPXCFG="$CONDA_PREFIX/bin/@HOST@-icpx.cfg"
 export ICXCFG="$CONDA_PREFIX/bin/@HOST@-icx.cfg"
 
+# GCC activation script adds -fno-merge-constants to default flags.
+# As this flag is not supported by clang we need to strip it out.
+# See https://github.com/conda-forge/ctng-compiler-activation-feedstock/pull/193
+export CFLAGS="${CFLAGS//-fno-merge-constants/}"
+export CXXFLAGS="${CXXFLAGS//-fno-merge-constants/}"
+
 if [ $? -ne 0 ]; then
   echo "ERROR: $(_get_sourced_filename) failed, see above for details"
 else
