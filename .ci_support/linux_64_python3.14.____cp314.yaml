@@ -23,15 +23,13 @@ docker_image:
 libhwloc:
 - 2.13.0
 libxml2_devel:
-- '2.14'
-mpich:
-- '4'
+- '2.15'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.10.* *_cpython
+- 3.14.* *_cp314
 target_platform:
 - linux-64
 zip_keys:
