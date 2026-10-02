@@ -15,7 +15,7 @@ if not exist "%CONDA_PREFIX%\opt\compiler\include\intel64\iso_fortran_env.modint
   echo Missing intrinsic module under %CONDA_PREFIX%
   exit /b 1
 )
-echo !FFLAGS! | findstr /C:"-DIFX_FFLAGS_SENTINEL" >nul || exit /b 1
-echo !FFLAGS! | findstr /C:"%PREFIX%\opt\compiler\include\intel64" >nul || exit /b 1
+echo !FFLAGS! | findstr /L /C:"-DIFX_FFLAGS_SENTINEL" >nul || exit /b 1
+echo !FFLAGS! | findstr /L /C:"%PREFIX%\opt\compiler\include\intel64" >nul || exit /b 1
 
 ifx !FFLAGS! simple.f90 -o simple.exe && simple.exe
