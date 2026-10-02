@@ -521,7 +521,7 @@ outputs:
         - cat ${PREFIX}/bin/ifx.cfg  # [unix]
         - find ${PREFIX}  # [unix]
         - ifx --version  # [unix]
-        - ifx %FFLAGS% simple.f90 -o simple.exe && simple.exe  # [win]
+        - ifx -I%PREFIX%\opt\compiler\include\intel64 simple.f90 -o simple.exe && simple.exe  # [win]
 
   - name: dpcpp_{{ target_platform }}
     script: install_activate.sh   # [unix]
@@ -609,6 +609,7 @@ outputs:
         - {{ stdlib('c') }}
       files:
         - simple.f90
+        - test_ifx_activation.bat  # [win]
       commands:
         - ls -A1 ${PREFIX}/bin/*         # [unix]
         - ls -A1 ${PREFIX}/include/*     # [unix]
@@ -616,7 +617,7 @@ outputs:
         - dir %PREFIX%\Library\bin\*  # [win]
         - dir %PREFIX%\Library\lib\*  # [win]
         - ifx ${FFLAGS} simple.f90 ${LDFLAGS} -o simple && ./simple  # [unix]
-        - ifx simple.f90 -o simple.exe && simple.exe  # [win]
+        - call test_ifx_activation.bat  # [win]
 
   - name: oneccl-devel
     version: {{ oneccl_version }}
