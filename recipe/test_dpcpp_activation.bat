@@ -3,8 +3,8 @@ setlocal EnableDelayedExpansion
 
 echo Testing DPC++ activation hook
 
-rem conda-build provides PREFIX but does not source conda activate hooks.
-rem Emulate an activated environment before calling the hook directly.
+rem conda-build activates the test env before running this script; set CONDA_PREFIX
+rem explicitly so the direct hook calls below do not depend on that.
 set "CONDA_PREFIX=%PREFIX%"
 
 rem In a recipe build the compiler sits in BUILD_PREFIX, whose Library\lib is not on LIB.
@@ -15,7 +15,10 @@ set "LIB=!LIB:%COMPILER_LIB%=!"
 set "LIB_BEFORE=!LIB!"
 
 rem Deactivating without a prior activation (package installed into an already active
-rem env) must leave LIB alone.
+rem env) must leave LIB alone. The test env has already been activated, which ran this
+rem hook, so clear its state first.
+set "_CONDA_DPCPP_LIB_SET="
+set "_CONDA_DPCPP_BACKUP_LIB="
 call "%PREFIX%\etc\conda\deactivate.d\z-deactivate-dpcpp.bat"
 if not "!LIB!"=="!LIB_BEFORE!" (
   echo Deactivation without activation changed LIB
