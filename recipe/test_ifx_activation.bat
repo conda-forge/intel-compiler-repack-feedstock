@@ -14,6 +14,22 @@ set "COMPILER_LIB=%PREFIX%\Library\lib"
 set "LIB=!LIB:%COMPILER_LIB%=!"
 set "LIB_BEFORE=!LIB!"
 
+rem Deactivating without a prior activation (package installed into an already active
+rem env) must leave LIB alone.
+call "%PREFIX%\etc\conda\deactivate.d\z-deactivate-ifx.bat"
+if not "!LIB!"=="!LIB_BEFORE!" (
+  echo Deactivation without activation changed LIB
+  exit /b 1
+)
+
+rem The stripped LIB must actually reproduce the failure, otherwise the link below would
+rem pass without exercising the hook. Pass the module path so only the link step can fail.
+ifx -I"%PREFIX%\opt\compiler\include\intel64" simple.f90 -o simple_no_activation.exe >nul 2>&1
+if not errorlevel 1 (
+  echo Linking without the activation hook unexpectedly succeeded
+  exit /b 1
+)
+
 rem Verify activation preserves caller flags and supplies the absolute module path.
 set "FFLAGS=-DIFX_FFLAGS_SENTINEL"
 call "%PREFIX%\etc\conda\activate.d\z-activate-ifx.bat"
