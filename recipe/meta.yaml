@@ -4,8 +4,8 @@
 {% set intel_build_number = "863" %}   # [linux]
 {% set intel_build_number = "864" %}   # [win]
 
-{% set oneccl_version = "2022.0.0" %}
-{% set oneccl_build_number = "49301" %}
+{% set oneccl_version = "2022.2.0" %}
+{% set oneccl_build_number = "433" %}
 
 {% set tbb_version_major = "2023" %}
 
@@ -17,9 +17,12 @@
 
 # use this if our build script changes and we need to increment beyond intel's version
 #
-# Bump this on every compiler release: `oneccl-devel` keeps its own upstream build
-# number and exact-pins `intel-sycl-rt`. See conda-forge/intel-compiler-repack-feedstock#86.
-{% set dst_build_number = '7' %}
+# `umf` and `oneccl-devel` keep their own upstream build numbers, so on a compiler
+# release this offset is the only thing that changes their build string. Reset it to 0
+# only when both of them also move to a new version; otherwise bump it, since
+# conda-forge silently skips an artifact whose build string already exists.
+# See conda-forge/intel-compiler-repack-feedstock#86.
+{% set dst_build_number = '0' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
 package:
@@ -63,7 +66,7 @@ source:
     sha256: d9f95ab18d3b581222a86b8a9f09337081f8b2f478034e28eebf70a3b7c05ed6  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/oneccl-devel-{{ oneccl_version }}-intel_{{ oneccl_build_number }}.conda  # [linux64]
     folder: oneccl-devel  # [linux64]
-    sha256: 57dd1f5032d98e72346dba3371c97003d1fbf619aba52649e44f86e649587899  # [linux64]
+    sha256: 87c0a44235051627baa0a5c2632126ab9e756f870247c67fac72894eeea098f5  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/umf-{{ umf_version }}-intel_{{ umf_build_number }}.conda  # [linux64 or win64]
     folder: umf  # [linux64 or win64]
     sha256: c03620790e30221f2087fbc843c7a40c2bbe38c1c3ffb6b48b997b8607d1807b  # [linux64]
