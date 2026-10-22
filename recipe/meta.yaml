@@ -1,25 +1,28 @@
-{% set version = "2026.1.1" %}
+{% set version = "2026.2.0" %}
 # work-around for https://github.com/conda/conda-build/issues/5443
 {% set intel_build_number = "dummy" %}
-{% set intel_build_number = "325" %}   # [linux]
-{% set intel_build_number = "327" %}   # [win]
+{% set intel_build_number = "863" %}   # [linux]
+{% set intel_build_number = "864" %}   # [win]
 
-{% set oneccl_version = "2022.0.0" %}
-{% set oneccl_build_number = "49301" %}
+{% set oneccl_version = "2022.2.0" %}
+{% set oneccl_build_number = "433" %}
 
 {% set tbb_version_major = "2023" %}
 
-{% set umf_version = "1.1.0" %}
-{% set umf_build_number = "340" %}   # [linux]
-{% set umf_build_number = "338" %}   # [win]
+{% set umf_version = "1.2.0" %}
+{% set umf_build_number = "116" %}   # [linux]
+{% set umf_build_number = "117" %}   # [win]
 
 {% set intel_ch = "https://software.repos.intel.com/python/conda" %}
 
 # use this if our build script changes and we need to increment beyond intel's version
 #
-# Bump this on every compiler release: `oneccl-devel` keeps its own upstream build
-# number and exact-pins `intel-sycl-rt`. See conda-forge/intel-compiler-repack-feedstock#86.
-{% set dst_build_number = '6' %}
+# `umf` and `oneccl-devel` keep their own upstream build numbers, so on a compiler
+# release this offset is the only thing that changes their build string. Reset it to 0
+# only when both of them also move to a new version; otherwise bump it, since
+# conda-forge silently skips an artifact whose build string already exists.
+# See conda-forge/intel-compiler-repack-feedstock#86.
+{% set dst_build_number = '0' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
 package:
@@ -30,46 +33,46 @@ source:
   # Is there a better way to specify skipping the source if it does not exist? (so it matches 'skip: True' selectors)
   - url: {{ intel_ch }}/{{ target_platform }}/ifx_impl_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.conda  # [linux64 or win64]
     folder: ifx_impl_{{ target_platform }}  # [linux64 or win64]
-    sha256: 711efb408c2fad93fd33a365e8147ac99eba4fcf2c50300b6e562d8f49af216f  # [linux64]
+    sha256: 43736c3a8831bdac771a74784f832ac9c64fa6794aedd6ee3c0a218753ac7b3a  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/ifx_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.conda  # [linux64 or win64]
     folder: ifx_{{ target_platform }}  # [linux64 or win64]
-    sha256: ee006556458221e477648b819f1a57274b4cc52ac70b190b42c4e2cc14387b52  # [linux64]
+    sha256: fc46baef96272a4bf66f1db5d21e5c5a1a7c241927c2d9b4976ba8c2f5e0e0d6  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/intel-cmplr-lic-rt-{{ version }}-intel_{{ intel_build_number }}.conda
     folder: intel-cmplr-lic-rt
-    sha256: 9533c5ae6b7dc5ab1d4559fb9dc97d0a0dadd5fce422d98d5083e2f09f526025  # [linux64]
+    sha256: 75ffce0f5dd4236da23ab2d27bdd56f6665c3c0a259d0eea0f2cb6f670f40e28  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/intel-cmplr-lib-rt-{{ version }}-intel_{{ intel_build_number }}.conda
     folder: intel-cmplr-lib-rt
-    sha256: f0cb1a764823aedd6730e890f94193da762fb0e1ff761eebc88de22b3d2f195d  # [linux64]
+    sha256: 67ab584b5e1143cc6d988340f36eeb532c7659e5c6485cb93f68ad2b0bdf6479  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/intel-cmplr-lib-ur-{{ version }}-intel_{{ intel_build_number }}.conda
     folder: intel-cmplr-lib-ur
-    sha256: b0161425ae570974a8b95edaa7246a0445725829b723fd3868b5324e8e3d0ace  # [linux64]
+    sha256: 44234982702d073d487b04bcbaf93131b9678e23851c5eab0ee7e984875a2a43  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/intel-sycl-rt-{{ version }}-intel_{{ intel_build_number }}.conda
     folder: intel-sycl-rt
-    sha256: 9c30b72f105e57147ffca47be2967648244d985baf08c3420256961d60c9d77b  # [linux64]
+    sha256: f04af77bc105465be86be2f79ed4b09c2e708480348da3fa863dbc31c94ec378  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/intel-fortran-rt-{{ version }}-intel_{{ intel_build_number }}.conda
     folder: intel-fortran-rt
-    sha256: 503138ae454968bd72dcfa82bd12f98627c0a638393ac7c44f79bed6a68c9f85  # [linux64]
+    sha256: 4dc9cdb183cbbb929ee69407ec189b0a6bd803bf4b45566fc0fce954c4d5833a  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/intel-opencl-rt-{{ version }}-intel_{{ intel_build_number }}.conda  # [linux64 or win64]
     folder: intel-opencl-rt  # [linux64 or win64]
-    sha256: f6160d9574c817304c0e5fbfcf4df018d5b4841e543d21ca0c854f971ec1f871  # [linux64]
+    sha256: 4330fecfa277d941ecc261c2ed33cd690d4eec28f593d828a6afb85b1f35cdb2  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/dpcpp-cpp-rt-{{ version }}-intel_{{ intel_build_number }}.conda  # [not win32]
     folder: dpcpp-cpp-rt  # [not win32]
-    sha256: a670749a81b931cc1e2f3b1cd2f287b93f2dfe2a9c3f489f26300585137f2a10  # [linux64]
+    sha256: 60fdd8f2117cfb75cfc08f37a10557297069d81b02c137d6a6e67edff63314d5  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/dpcpp_impl_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.conda  # [linux64 or win64]
     folder: dpcpp_impl_{{ target_platform }}  # [linux64 or win64]
-    sha256: afe034685d03bed9db503d6bb46cd966b5de74bbcb7cf74354abca29e34e78c4  # [linux64]
+    sha256: c6d6a384c79ccbc1e4808e7dc5d4257d843a90439c2f52c1af548084c30cd5e0  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/dpcpp_{{ target_platform }}-{{ version }}-intel_{{ intel_build_number }}.conda  # [linux64 or win64]
     folder: dpcpp_{{ target_platform }}  # [linux64 or win64]
-    sha256: d7ebb788458cb93be2b782dfe2ded204faee641e0476014be4abb6a9e21475fd  # [linux64]
+    sha256: d9f95ab18d3b581222a86b8a9f09337081f8b2f478034e28eebf70a3b7c05ed6  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/oneccl-devel-{{ oneccl_version }}-intel_{{ oneccl_build_number }}.conda  # [linux64]
     folder: oneccl-devel  # [linux64]
-    sha256: 57dd1f5032d98e72346dba3371c97003d1fbf619aba52649e44f86e649587899  # [linux64]
+    sha256: 87c0a44235051627baa0a5c2632126ab9e756f870247c67fac72894eeea098f5  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/umf-{{ umf_version }}-intel_{{ umf_build_number }}.conda  # [linux64 or win64]
     folder: umf  # [linux64 or win64]
-    sha256: 3414521045ed05a60ea8d3046ae0eb474bf045eebc296ac86e28f58efdb5ed42  # [linux64]
+    sha256: c03620790e30221f2087fbc843c7a40c2bbe38c1c3ffb6b48b997b8607d1807b  # [linux64]
   - url: {{ intel_ch }}/{{ target_platform }}/compiler_shared-{{ version }}-intel_{{ intel_build_number }}.conda  # [linux64 or win64]
     folder: compiler_shared  # [linux64 or win64]
-    sha256: e9ddbde2c2f0c77a82d554500b9c58e0d4d898e50fd81aa52fa89c9c561fd7d0  # [linux64]
+    sha256: 4d4c1e6ef39d7db2b486f5c6e2a383ca8a906954d25a0c494f33375c9ba0218a  # [linux64]
 
 build:
   number: {{ build_number }}
