@@ -1,4 +1,10 @@
 {% set version = "2026.2.0" %}
+{% set version_major = version.split('.')[0] %}
+# dpcpp-cpp-rt loads consumers built against an earlier release of the same
+# major. The first release of a major has none (consumers of the previous
+# major are pinned below it), so the check is off there; set it to False by
+# hand if a minor release cannot be solved with earlier consumers.
+{% set check_consumers = version.split('.')[1] != '0' %}
 # work-around for https://github.com/conda/conda-build/issues/5443
 {% set intel_build_number = "dummy" %}
 {% set intel_build_number = "863" %}   # [linux]
@@ -22,7 +28,7 @@
 # only when both of them also move to a new version; otherwise bump it, since
 # conda-forge silently skips an artifact whose build string already exists.
 # See conda-forge/intel-compiler-repack-feedstock#86.
-{% set dst_build_number = '0' %}
+{% set dst_build_number = '1' %}
 {% set build_number = intel_build_number|int + dst_build_number|int %}
 
 package:
@@ -143,9 +149,18 @@ outputs:
         Runtime for Intel® C++ Compiler Classic.
         This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
     test:
+      requires:
+        - python *
+        - pyelftools  # [linux]
+      files:
+        - tests/load_libs.py
+        - tests/check_symbols.py  # [linux]
+        - tests/abi  # [linux]
       commands:
         - ls -A1 ${PREFIX}/lib/*  # [unix]
-        - dir %PREFIX%\Library\bin\*  # [win]
+        - python tests/load_libs.py  # [linux]
+        - python tests/load_libs.py level_zero xptifwd  # [win]
+        - python tests/check_symbols.py  # [linux]
 
   - name: intel-cmplr-lib-ur
     script: repack.sh   # [unix]
@@ -199,10 +214,21 @@ outputs:
         Runtime for Intel® C++ Compiler Classic.
         This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
     test:
+      requires:
+        - python *
+        - pyelftools  # [linux]
+      files:
+        - tests/load_libs.py
+        - tests/check_symbols.py  # [linux]
+        - tests/abi  # [linux]
+        - tests/check_run_exports.py
       commands:
-        - ls -A1 ${PREFIX}/lib/*  # [unix]
-        - dir %PREFIX%\Library\bin\*  # [win]
         - test -f ${PREFIX}/lib/libur_loader.so  # [linux]
+        - python tests/load_libs.py  # [linux]
+        # the adapters import UMF.dll, which does not load on win (libhwloc-15.dll)
+        - python tests/load_libs.py level_zero loaderd ur_adapter  # [win]
+        - python tests/check_symbols.py  # [linux]
+        - python tests/check_run_exports.py intel-cmplr-lib-ur
 
   - name: intel-sycl-rt
     script: repack.sh   # [unix]
@@ -237,10 +263,20 @@ outputs:
         Intel End User License Agreement for Developer Tools.
         This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
     test:
+      requires:
+        - python *
+        - pyelftools  # [linux]
+      files:
+        - tests/load_libs.py
+        - tests/check_symbols.py  # [linux]
+        - tests/abi  # [linux]
+        - tests/check_run_exports.py
       commands:
-        - ls -A1 ${PREFIX}/licensing/compiler/*  # [unix]
         - test -f ${PREFIX}/include/sycl/sycl.hpp  # [unix]
-        - dir %PREFIX%\licensing\compiler\*  # [win]
+        - python tests/load_libs.py  # [linux]
+        - python tests/load_libs.py pstloffloadd sycl9d previewd  # [win]
+        - python tests/check_symbols.py  # [linux]
+        - python tests/check_run_exports.py intel-sycl-rt
 
   - name: intel-fortran-rt
     script: repack.sh   # [unix]
@@ -281,9 +317,20 @@ outputs:
         Runtime for Intel® Fortran Compiler Classic and Intel® Fortran Compiler (Beta).
         This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
     test:
+      requires:
+        - python *
+        - pyelftools  # [linux]
+      files:
+        - tests/load_libs.py
+        - tests/check_symbols.py  # [linux]
+        - tests/abi  # [linux]
+        - tests/check_run_exports.py
       commands:
-        - ls -A1 ${PREFIX}/lib/*  # [unix]
-        - dir %PREFIX%\Library\bin\*  # [win]
+        # libicaf (coarrays) needs MPI
+        - python tests/load_libs.py libicaf  # [linux]
+        - python tests/load_libs.py libicaf coremdd corertd  # [win]
+        - python tests/check_symbols.py  # [linux]
+        - python tests/check_run_exports.py intel-fortran-rt
 
   - name: intel-opencl-rt
     script: opencl-rt-build.sh   # [unix]
@@ -332,7 +379,12 @@ outputs:
       requires:
         - pyopencl
         - curl
+      files:
+        - tests/load_libs.py
+        - tests/check_run_exports.py
       commands:
+        - python tests/load_libs.py
+        - python tests/check_run_exports.py intel-opencl-rt
         - test -f $PREFIX/lib/intel-ocl-cpu/libintelocl.so          # [linux]
         - type %PREFIX%\Library\bin\intel-ocl-cpu\cl.cfg            # [win]
         - export OCL_ICD_DEBUG=7                                    # [linux]
@@ -371,9 +423,21 @@ outputs:
         Runtime for Intel® oneAPI DPC++/C++ Compiler.
         This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
     test:
+      requires:
+        - python *
+{% if check_consumers %}
+        - onemkl-sycl-blas >={{ version_major }},<{{ version }}  # [linux64]
+        - dal-gpu >={{ version_major }},<{{ version }}  # [linux64]
+{% endif %}
+      files:
+        - tests/load_libs.py
       commands:
         - ls -A1 $PREFIX/lib/*  # [unix]
         - dir %PREFIX%\Library\bin\*  # [win]
+{% if check_consumers %}
+        - python tests/load_libs.py --pkg=onemkl-sycl-blas +libmkl_core.so.3 +libmkl_sequential.so.3 +libmkl_intel_ilp64.so.3  # [linux64]
+        - python tests/load_libs.py --pkg=dal-gpu +libtbb.so.12 +libonedal_thread.so.4 +libonedal_core.so.4 +libonedal_parameters.so.4 +libonedal.so.4 +libmkl_core.so.3 +libmkl_sequential.so.3 +libmkl_intel_ilp64.so.3  # [linux64]
+{% endif %}
 
   - name: dpcpp_impl_{{ target_platform }}
     script: repack.sh   # [unix]
@@ -443,6 +507,10 @@ outputs:
         Implementation for Intel® oneAPI DPC++/C++ Compiler.
         This package is a repackaged set of binaries obtained directly from Intel's Anaconda.org channel.
     test:
+      requires:
+        - python *
+      files:
+        - tests/check_run_exports.py
       commands:
         - ls -A1 ${PREFIX}/bin/*         # [unix]
         - ls -A1 ${PREFIX}/include/*     # [unix]
@@ -451,6 +519,7 @@ outputs:
         - dir %PREFIX%\Library\lib\*  # [win]
         - icx --version
         - icpx --version
+        - python tests/check_run_exports.py intel-cmplr-lib-rt intel-opencl-rt intel-sycl-rt
 
   - name: ifx_impl_{{ target_platform }}
     script: repack.sh   # [unix]
@@ -513,8 +582,11 @@ outputs:
         Implementation for Intel® Fortran Compiler.
         This package is a repackaged set of binaries obtained directly from Intel channel.
     test:
+      requires:
+        - python *
       files:
         - simple.f90
+        - tests/check_run_exports.py
       commands:
         - ls -A1 ${PREFIX}/bin/*         # [unix]
         - ls -A1 ${PREFIX}/include/*     # [unix]
@@ -525,6 +597,7 @@ outputs:
         - find ${PREFIX}  # [unix]
         - ifx --version  # [unix]
         - ifx -I%PREFIX%\opt\compiler\include\intel64 simple.f90 -o simple.exe && simple.exe  # [win]
+        - python tests/check_run_exports.py intel-cmplr-lib-rt intel-fortran-rt
 
   - name: dpcpp_{{ target_platform }}
     script: install_activate.sh   # [unix]
@@ -565,9 +638,13 @@ outputs:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         - {{ stdlib('c') }}
+        - python *
+        # a run_export of this package, so not installed by the run requirements
+        - dpcpp-cpp-rt {{ version }}
       files:
         - simple.cpp
         - test_dpcpp_activation.bat  # [win]
+        - tests/check_run_exports.py
       commands:
         - ls -A1 ${PREFIX}/bin/*         # [unix]
         - ls -A1 ${PREFIX}/include/*     # [unix]
@@ -575,6 +652,10 @@ outputs:
         - dir %PREFIX%\Library\bin\*  # [win]
         - dir %PREFIX%\Library\lib\*  # [win]
         - icpx -fsycl ${CXXFLAGS} simple.cpp ${LDFLAGS} -lpthread -o simple.exe  # [unix]
+        # intel-opencl-rt provides a CPU device, so the whole sycl-rt -> UR -> OpenCL
+        # chain runs without a GPU. Windows has no UR OpenCL adapter, only Level Zero.
+        - ONEAPI_DEVICE_SELECTOR=opencl:cpu ./simple.exe  # [unix]
+        - python tests/check_run_exports.py dpcpp-cpp-rt
         - icpx -fsycl simple.cpp -I%PREFIX%\include -o simple.exe  # [win]
         - call test_dpcpp_activation.bat  # [win]
 
@@ -614,6 +695,7 @@ outputs:
         - {{ stdlib('c') }}
       files:
         - simple.f90
+        - omp.f90  # [unix]
         - test_ifx_activation.bat  # [win]
       commands:
         - ls -A1 ${PREFIX}/bin/*         # [unix]
@@ -622,6 +704,7 @@ outputs:
         - dir %PREFIX%\Library\bin\*  # [win]
         - dir %PREFIX%\Library\lib\*  # [win]
         - ifx ${FFLAGS} simple.f90 ${LDFLAGS} -o simple && ./simple  # [unix]
+        - ifx ${FFLAGS} -qopenmp omp.f90 ${LDFLAGS} -o omp && OMP_NUM_THREADS=4 ./omp  # [unix]
         - call test_ifx_activation.bat  # [win]
 
   - name: oneccl-devel
@@ -702,10 +785,19 @@ outputs:
         allowing certain allocation types to be isolated from others and
         allocated using different hardware resources as required.
     test:
+      requires:
+        - python *  # [linux]
+        - pyelftools  # [linux]
+      files:
+        - tests/load_libs.py  # [linux]
+        - tests/check_symbols.py  # [linux]
+        - tests/abi  # [linux]
       commands:
         - ls -A1 ${PREFIX}/licensing/compiler/*  # [unix]
         - ls -A1 ${PREFIX}/lib/libumf.so*  # [unix]
         - dir %PREFIX%\licensing\compiler\*  # [win]
+        - python tests/load_libs.py  # [linux]
+        - python tests/check_symbols.py  # [linux]
 
 about:
   home: https://github.com/AnacondaRecipes/intel-compilers-repack-feedstock
