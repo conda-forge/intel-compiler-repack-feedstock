@@ -1,3 +1,5 @@
+DOCKER_PLATFORM:
+- linux/amd64
 binutils_version:
 - '2.30'
 c_compiler:
